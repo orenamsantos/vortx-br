@@ -7,7 +7,7 @@
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
-  // Aceita: ?src=vortx_funnel | ?transaction_id=PPU... | referer CenterPag/PerfectPay | referer próprio site
+  // Aceita: ?src=vortx_funnel | ?transaction_id=... | referer Ticto | referer próprio site
   try {
     var params   = new URLSearchParams(window.location.search);
     var src      = params.get('src')            || '';
@@ -16,8 +16,8 @@
 
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
-    var validTx     = txid.length >= 8;                                             // transaction_id da PerfectPay/CenterPag
-    var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
+    var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {
@@ -230,10 +230,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const ctxEl = document.getElementById('cross-context');
 
   if (soro === 'sim') {
-    subEl.textContent = 'Ya tomaste la decisión correcta 2 veces. La tercera completa el stack — y trabaja mientras duermes.';
+    subEl.textContent = 'Você já tomou a decisão certa 2 vezes. A terceira completa o stack — e trabalha enquanto você dorme.';
     ctxEl.innerHTML = '<p>VORTX trabalha de dia. O Soro acelera as primeiras 2 horas. <strong>O Ignição usa as 8 horas de sono</strong> — são 56 horas extras por semana de ativação vascular que seu corpo não estava usando. Sem rotina adicional. Sem esforço extra.</p>';
   } else {
-    subEl.textContent = 'No hace falta rutina nueva. Este protocolo se activa cuando tú dejas de hacer cualquier cosa — cuando duermes.';
+    subEl.textContent = 'Não precisa de rotina nova. Esse protocolo se ativa quando você para de fazer qualquer coisa — quando dorme.';
     ctxEl.innerHTML = '<p>Enquanto o VORTX constrói o fluxo durante o dia, <strong>o Ignição força a regeneração vascular durante as 8 horas de sono</strong>. São 56 horas extras por semana onde seu corpo trabalha por você — sem fazer nada. Os homens que pulam esse passo demoram o dobro do tempo para ver resultados.</p>';
   }
 
@@ -244,7 +244,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   document.getElementById('btn-cross').addEventListener('click', function(e){
     e.preventDefault();
     // TODO: processar pagamento do Ignición, depois redirecionar
-    if(window.vortxTrack) vortxTrack('crosssell_accept',{value:14,currency:'USD',product:'protocolo_ignicion'});
+    if(window.vortxTrack) vortxTrack('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
     window.location.href = 'https://payment.ticto.app/CROSSSELL_LINK' + (n ? '?name=' + encodeURIComponent(n) : '');
   });
 

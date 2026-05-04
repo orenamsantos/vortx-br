@@ -7,7 +7,7 @@
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
-  // Aceita: ?src=vortx_funnel | ?transaction_id=PPU... | referer CenterPag/PerfectPay | referer próprio site
+  // Aceita: ?src=vortx_funnel | ?transaction_id=... | referer Ticto | referer próprio site
   try {
     var params   = new URLSearchParams(window.location.search);
     var src      = params.get('src')            || '';
@@ -16,8 +16,8 @@
 
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
-    var validTx     = txid.length >= 8;                                             // transaction_id da PerfectPay/CenterPag
-    var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
+    var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {

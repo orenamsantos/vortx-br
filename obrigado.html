@@ -7,7 +7,7 @@
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
-  // Aceita: ?src=vortx_funnel | ?transaction_id=PPU... | referer CenterPag/PerfectPay | referer próprio site
+  // Aceita: ?src=vortx_funnel | ?transaction_id=... | referer Ticto | referer próprio site
   try {
     var params   = new URLSearchParams(window.location.search);
     var src      = params.get('src')            || '';
@@ -16,8 +16,8 @@
 
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
-    var validTx     = txid.length >= 8;                                             // transaction_id da PerfectPay/CenterPag
-    var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
+    var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {
@@ -212,20 +212,20 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const p=new URLSearchParams(window.location.search),n=p.get('name');
   if(n)document.getElementById('user-name').textContent=decodeURIComponent(n);
   // Track purchase of main product
-  var purchaseValue = Number(p.get('value')) || 17;
+  var purchaseValue = Number(p.get('value')) || 27;
   var purchasePlan = p.get('plan') || 'vitalicio';
   var purchaseProduct = purchasePlan === 'mensal' ? 'vortx_mensal' : 'vortx_protocol';
   // Só dispara eventos de conversão se a página foi acessada via fluxo legítimo
   // (previne envenenamento do pixel por acesso direto ou crawlers)
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
   if (isLegit) {
-    if(window.vortxTrack) vortxTrack('purchase_confirmed',{value:purchaseValue,currency:'USD',product:purchaseProduct,plan:purchasePlan});
-    if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:9});
+    if(window.vortxTrack) vortxTrack('purchase_confirmed',{value:purchaseValue,currency:'BRL',product:purchaseProduct,plan:purchasePlan});
+    if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:19});
   }
 
   document.getElementById('btn-upsell').addEventListener('click',function(e){
     e.preventDefault();
-    if(window.vortxTrack) vortxTrack('upsell_accept',{value:9,currency:'USD',product:'soro_120'});
+    if(window.vortxTrack) vortxTrack('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
     window.location.href='https://payment.ticto.app/UPSELL_LINK'+(n?'?name='+encodeURIComponent(n):'');
   });
   document.getElementById('btn-skip').addEventListener('click',function(){

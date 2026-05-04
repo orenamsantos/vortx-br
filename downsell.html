@@ -7,7 +7,7 @@
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
-  // Aceita: ?src=vortx_funnel | ?transaction_id=PPU... | referer CenterPag/PerfectPay | referer próprio site
+  // Aceita: ?src=vortx_funnel | ?transaction_id=... | referer Ticto | referer próprio site
   try {
     var params   = new URLSearchParams(window.location.search);
     var src      = params.get('src')            || '';
@@ -16,8 +16,8 @@
 
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
-    var validTx     = txid.length >= 8;                                             // transaction_id da PerfectPay/CenterPag
-    var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
+    var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {
@@ -122,7 +122,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="price-block fade-up d3">
     <span class="price-old">Antes: R$ 27</span>
     <span class="price-tag">Agora, só por ser você:</span>
-    <div class="price-new"><small>$</small> 5</div>
+    <div class="price-new"><small>R$</small> 9</div>
     <div class="price-sub">Prefiro que você tenha do que feche essa página de mãos vazias</div>
     <div class="price-note">Pagamento único • Adicionado ao pedido • Acesso imediato</div>
   </div>
@@ -135,7 +135,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <div class="fade-up d4">
     <a href="https://payment.ticto.app/DOWNSELL_LINK" class="btn" id="btn-downsell" rel="noopener">
-      SÍ — AÑADIR POR
+      SIM — ADICIONAR POR
       <span class="btn-price">R$ 9</span>
     </a>
     <p class="btn-sub">Acesso imediato junto com seu Protocolo VORTX</p>
@@ -155,11 +155,11 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const n = p.get('name');
 
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
-  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'protocolo_ignicion_downsell', value:5}); }
+  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'protocolo_ignicion_downsell', value:9}); }
 
   document.getElementById('btn-downsell').addEventListener('click', function(e){
     e.preventDefault();
-    if(window.vortxTrack) vortxTrack('downsell_accept', {value:5, currency:'USD', product:'protocolo_ignicion_downsell'});
+    if(window.vortxTrack) vortxTrack('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
     // Pagamento processado pela Ticto (R$ 9), redireciona para acesso
     window.location.href = 'https://payment.ticto.app/DOWNSELL_LINK' + (n ? '?name=' + encodeURIComponent(n) : '');
   });
