@@ -1,369 +1,369 @@
-const BRAND={name:"VORTX",tagline:"Recuperación de la Masculinidad",year:(new Date).getFullYear()},
+const BRAND={name:"VORTX",tagline:"Recuperação da Masculinidade",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"El problema que ningún médico te explicó sobre los hombres después de los 35.",
-  subheadline:"Un cirujano de Washington identificó la causa real — y el protocolo casero que la revierte en 60 días. Haz el test de 2 minutos y descubre tu nivel exacto.",
-  cta:"EMPEZAR EL DIAGNÓSTICO",
-  timerStrip:"Test anónimo de 2 minutos. El resultado te va a sorprender.",
-  socialProof:"17.483 hombres ya revertieron. Resultado promedio: 18 días.",
-  privacySeal:"100% confidencial • Anónimo • Nadie lo sabrá",
-  badge:"Método validado por 17.483 hombres en 14 países"
+  headline:"O problema que nenhum médico te explicou sobre os homens depois dos 35.",
+  subheadline:"Um cirurgião identificou a causa real — e o protocolo caseiro que reverte em 60 dias. Faça o teste de 2 minutos e descubra seu nível exato.",
+  cta:"COMEÇAR DIAGNÓSTICO",
+  timerStrip:"Teste anônimo de 2 minutos. O resultado vai te surpreender.",
+  socialProof:"17.483 homens já reverteram. Resultado médio: 18 dias.",
+  privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
+  badge:"Método validado por 17.483 homens em 14 países"
 },
 
 PHASES=[
-  {id:1,label:"VALIDACIÓN",steps:[1,2]},
+  {id:1,label:"VALIDAÇÃO",steps:[1,2]},
   {id:2,label:"PERFIL",steps:[3,4]},
-  {id:3,label:"SÍNTOMAS",steps:[5,6,7,8,9]},
+  {id:3,label:"SINTOMAS",steps:[5,6,7,8,9]},
   {id:4,label:"HÁBITOS",steps:[10]},
-  {id:5,label:"VEREDICTO",steps:[11,12]}
+  {id:5,label:"VEREDITO",steps:[11,12]}
 ],
 
 STEPS=[
   {
     id:1,phase:1,type:"single-select",
-    question:"Vamos a ser honestos por 10 segundos.",
-    microcopy:"¿Notas que tu cuerpo ya no responde como antes de los 35?",
+    question:"Vamos ser honestos por 10 segundos.",
+    microcopy:"Você nota que seu corpo já não responde como antes dos 35?",
     options:[
-      {value:"si_molesta",label:"Sí, y me molesta más de lo que admito",icon:"💭"},
-      {value:"si_activo",label:"Sí, y por eso estoy aquí",icon:"🎯"},
-      {value:"si_empezando",label:"Sí, está empezando y quiero actuar antes",icon:"⚡"}
+      {value:"si_molesta",label:"Sim, e me incomoda mais do que admito",icon:"💭"},
+      {value:"si_activo",label:"Sim, e por isso estou aqui",icon:"🎯"},
+      {value:"si_empezando",label:"Sim, está começando e quero agir antes",icon:"⚡"}
     ],
     weight:0
   },
   {
     id:2,phase:1,type:"single-select",
-    question:"El 73% de los hombres mayores de 35 tiene esto — y los médicos no lo detectan.",
-    microcopy:"El problema no es hormonal. Es 3 veces más común de lo que dicen. ¿Lo sabías?",
+    question:"73% dos homens acima de 35 têm isso — e os médicos não detectam.",
+    microcopy:"O problema não é hormonal. É 3 vezes mais comum do que dizem. Você sabia?",
     options:[
-      {value:"no_sabia",label:"No, nunca lo había escuchado",icon:"🧐"},
-      {value:"sospechaba",label:"Sospechaba algo así",icon:"🔍"},
-      {value:"quiero_saber",label:"Quiero saber qué es exactamente",icon:"🔓"}
+      {value:"no_sabia",label:"Não, nunca tinha ouvido falar",icon:"🧐"},
+      {value:"sospechaba",label:"Suspeitava de algo assim",icon:"🔍"},
+      {value:"quiero_saber",label:"Quero saber exatamente o que é",icon:"🔓"}
     ],
     triggers:{
-      "no_sabia":"🛑 Eso es exactamente lo que las farmacéuticas no quieren que sepas. Sigue — vas a entender.",
-      "sospechaba":"⚡ Tu intuición está correcta. El test va a confirmar exactamente qué está pasando en tu cuerpo.",
-      "quiero_saber":"🔥 Bien. Responde las próximas preguntas con honestidad — el diagnóstico depende de eso."
+      "no_sabia":"🛑 Isso é exatamente o que as farmacêuticas não querem que você saiba. Continue — você vai entender.",
+      "sospechaba":"⚡ Sua intuição está certa. O teste vai confirmar exatamente o que está acontecendo no seu corpo.",
+      "quiero_saber":"🔥 Bom. Responda as próximas perguntas com honestidade — o diagnóstico depende disso."
     },
     weight:0
   },
   {
     id:3,phase:2,type:"text-input",
-    question:"¿Cómo debo llamarte?",
-    microcopy:"Necesito tu nombre para que el diagnóstico tenga sentido para ti.",
-    field:{name:"userName",placeholder:"Tu primer nombre...",maxLength:30},
+    question:"Como devo te chamar?",
+    microcopy:"Preciso do seu nome para que o diagnóstico faça sentido pra você.",
+    field:{name:"userName",placeholder:"Seu primeiro nome...",maxLength:30},
     weight:0
   },
   {
     id:4,phase:2,type:"single-select",
-    question:"{name}, ¿cuántos años tienes?",
-    microcopy:"La velocidad del daño cambia brutalmente de una franja a otra.",
+    question:"{name}, quantos anos você tem?",
+    microcopy:"A velocidade do dano muda brutalmente de uma faixa para outra.",
     options:[
-      {value:"35-39",label:"35 a 39 años",icon:"⚠️"},
-      {value:"40-44",label:"40 a 44 años",icon:"⚠️"},
-      {value:"45-49",label:"45 a 49 años",icon:"🚨"},
-      {value:"50-54",label:"50 a 54 años",icon:"🚨"},
-      {value:"55-59",label:"55 a 59 años",icon:"🛑"},
-      {value:"60-65",label:"60 a 65 años",icon:"🛑"}
+      {value:"35-39",label:"35 a 39 anos",icon:"⚠️"},
+      {value:"40-44",label:"40 a 44 anos",icon:"⚠️"},
+      {value:"45-49",label:"45 a 49 anos",icon:"🚨"},
+      {value:"50-54",label:"50 a 54 anos",icon:"🚨"},
+      {value:"55-59",label:"55 a 59 anos",icon:"🛑"},
+      {value:"60-65",label:"60 a 65 anos",icon:"🛑"}
     ],
     triggers:{
-      "35-39":"⚠ {name}, la mayoría se da cuenta después de los 40. Tú lo estás descubriendo antes — eso cambia todo.",
-      "40-44":"⚠ {name}, a esta edad el cuerpo ya empezó a reducir el flujo. En 3 años no lo vas a reconocer.",
-      "45-49":"🚨 {name}, el flujo ya cayó a la mitad y el encogimiento ya es visible — pero todavía tiene solución.",
-      "50-54":"🛑 {name}, después de los 50 el cuerpo perdió la mitad de su capacidad. Existe una forma de revertirlo.",
-      "55-59":"🛑 Franja crítica, {name}. Los vasos se están cerrando mes a mes — pero tú todavía estás aquí.",
-      "60-65":"🛑 Situación grave. Vasos casi bloqueados, pero hombres de 63 años ya revertieron con el protocolo."
+      "35-39":"⚠ {name}, a maioria percebe depois dos 40. Você está descobrindo antes — isso muda tudo.",
+      "40-44":"⚠ {name}, nessa idade o corpo já começou a reduzir o fluxo. Em 3 anos você não vai se reconhecer.",
+      "45-49":"🚨 {name}, o fluxo já caiu pela metade e o encolhimento já é visível — mas ainda tem solução.",
+      "50-54":"🛑 {name}, depois dos 50 o corpo perdeu metade da capacidade. Existe uma forma de reverter.",
+      "55-59":"🛑 Faixa crítica, {name}. Os vasos estão se fechando mês a mês — mas você ainda está aqui.",
+      "60-65":"🛑 Situação grave. Vasos quase bloqueados, mas homens de 63 anos já reverteram com o protocolo."
     },
     weight:0
   },
   {
     id:5,phase:3,type:"single-select",
-    question:"{name}, ¿qué es lo que más te corroe?",
-    microcopy:"Nadie lo va a ver. Solo tú y yo.",
+    question:"{name}, o que mais te corrói?",
+    microcopy:"Ninguém vai ver. Só você e eu.",
     options:[
-      {value:"libido",label:"Perdió tamaño, firmeza o los dos",icon:"🔥"},
-      {value:"cuerpo",label:"Barriga creció, músculo desapareció",icon:"⚖️"},
-      {value:"energia",label:"Sin energía, destruido cada día",icon:"⚡"},
-      {value:"mental",label:"Sin fuego, sin ganas de nada",icon:"🧠"}
+      {value:"libido",label:"Perdeu tamanho, firmeza ou os dois",icon:"🔥"},
+      {value:"cuerpo",label:"Barriga cresceu, músculo sumiu",icon:"⚖️"},
+      {value:"energia",label:"Sem energia, destruído todo dia",icon:"⚡"},
+      {value:"mental",label:"Sem fogo, sem vontade de nada",icon:"🧠"}
     ],
     weight:0
   },
   {
     id:6,phase:3,type:"single-select",
-    question:"¿Cuándo fue la última vez que amaneciste con erección sin necesitar nada?",
-    microcopy:"Erección matinal fuerte = sangre llegando con presión. Si paró, el problema ya está avanzado.",
+    question:"Quando foi a última vez que você acordou com ereção sem precisar de nada?",
+    microcopy:"Ereção matinal forte = sangue chegando com pressão. Se parou, o problema já está avançado.",
     options:[
-      {value:"siempre",label:"Cada día, sin falta",icon:"✅",score:3},
-      {value:"raro",label:"Rara vez, solo con suerte",icon:"⚠️",score:1},
-      {value:"nunca",label:"Hace años que no me pasa",icon:"🛑",score:0}
+      {value:"siempre",label:"Todo dia, sem falta",icon:"✅",score:3},
+      {value:"raro",label:"Raramente, só com sorte",icon:"⚠️",score:1},
+      {value:"nunca",label:"Faz anos que não acontece",icon:"🛑",score:0}
     ],
     triggers:{
-      nunca:"🛑 {name}, sin erección matinal los vasos están bloqueados. Por eso parece más pequeño. El protocolo revierte eso.",
-      raro:"⚠ {name}, vasos comprometidos — la sangre llega pero sin presión: tamaño reducido, firmeza débil."
+      nunca:"🛑 {name}, sem ereção matinal os vasos estão bloqueados. Por isso parece menor. O protocolo reverte isso.",
+      raro:"⚠ {name}, vasos comprometidos — o sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
     },
     weight:20,category:"libido"
   },
   {
     id:7,phase:3,type:"single-select",
-    question:"En el momento de la verdad, ¿cómo te va?",
-    microcopy:"Sin excusas. ¿Qué pasa cuando tienes que rendir?",
+    question:"Na hora H, como você está?",
+    microcopy:"Sem desculpas. O que acontece quando você precisa render?",
     options:[
-      {value:"toro",label:"Duro de principio a fin, siempre",icon:"💪",score:3},
-      {value:"falho",label:"No se mantiene o necesito la pastilla",icon:"🚨",score:0},
-      {value:"fujo",label:"Lo evito, le tengo miedo al fracaso",icon:"🏃",score:0}
+      {value:"toro",label:"Duro do início ao fim, sempre",icon:"💪",score:3},
+      {value:"falho",label:"Não fica em pé ou preciso da pílula",icon:"🚨",score:0},
+      {value:"fujo",label:"Evito, tenho medo de falhar",icon:"🏃",score:0}
     ],
     triggers:{
-      fujo:"🛑 {name}, huirle a tu pareja destruye a un hombre por dentro. Cuanto más huyes, peor se pone. Pero hay salida.",
-      falho:"🚨 La sangre entra pero no se queda — vasos débiles. El protocolo corrige exactamente eso."
+      fujo:"🛑 {name}, fugir da sua parceira destrói um homem por dentro. Quanto mais foge, pior fica. Mas tem saída.",
+      falho:"🚨 O sangue entra mas não fica — vasos fracos. O protocolo corrige exatamente isso."
     },
     weight:15,category:"libido"
   },
   {
     id:8,phase:3,type:"multi-select",
-    question:"Mírate ahora, {name}. ¿Qué ves?",
-    microcopy:"Cada kilo de barriga fabrica hormona femenina y le roba sangre al pene.",
+    question:"Se olhe agora, {name}. O que você vê?",
+    microcopy:"Cada quilo de barriga fabrica hormônio feminino e rouba sangue do pênis.",
     minSelections:1,
     options:[
-      {value:"barriga",label:"Barriga grande, dura o blanda",icon:"⚖️"},
-      {value:"peito",label:"Pecho hinchado, parecido a senos",icon:"🍎"},
-      {value:"braco",label:"Brazos delgados, sin músculo",icon:"📏"},
-      {value:"rosto",label:"Cara hinchada, sin estructura",icon:"🌝"},
-      {value:"nenhuma",label:"Ninguna de esas — estoy bien",icon:"✅"}
+      {value:"barriga",label:"Barriga grande, dura ou mole",icon:"⚖️"},
+      {value:"peito",label:"Peito inchado, parecido com seios",icon:"🍎"},
+      {value:"braco",label:"Braços finos, sem músculo",icon:"📏"},
+      {value:"rosto",label:"Rosto inchado, sem definição",icon:"🌝"},
+      {value:"nenhuma",label:"Nenhuma dessas — estou bem",icon:"✅"}
     ],
     triggers:{
-      _any_except_nenhuma:"🛑 {name}, esa grasa fabrica hormona femenina dentro de ti ahora mismo. Es lo que encoge, ablanda y te quita el control."
+      _any_except_nenhuma:"🛑 {name}, essa gordura fabrica hormônio feminino dentro de você agora. É o que encolhe, amolece e tira o controle."
     },
     weight:10,category:"cuerpo",scoreLogic:"count-negative"
   },
   {
     id:9,phase:3,type:"single-select",
-    question:"¿Ya necesitaste la pastilla azul para funcionar?",
-    microcopy:"Cada vez que la usas, tu cuerpo aprende a no funcionar solo.",
+    question:"Já precisou da pílula azul para funcionar?",
+    microcopy:"Cada vez que você usa, seu corpo aprende a não funcionar sozinho.",
     options:[
-      {value:"nao",label:"Nunca la necesité",icon:"🚫",score:3},
-      {value:"asvezes",label:"Ya la usé o la tengo por si acaso",icon:"💊",score:1},
-      {value:"viciado",label:"Sin ella, ya ni lo intento",icon:"🚨",score:0}
+      {value:"nao",label:"Nunca precisei",icon:"🚫",score:3},
+      {value:"asvezes",label:"Já usei ou tenho por garantia",icon:"💊",score:1},
+      {value:"viciado",label:"Sem ela, nem tento mais",icon:"🚨",score:0}
     ],
     triggers:{
-      viciado:"🛑 {name}, tu cuerpo creó dependencia. Sin la pastilla, nada funciona. Pero se puede reactivar sin química.",
-      asvezes:"⚠ Tenerla 'por si acaso' es el primer paso para volverse rehén. En 2 años, sin ella, nada va a responder."
+      viciado:"🛑 {name}, seu corpo criou dependência. Sem a pílula, nada funciona. Mas dá pra reativar sem química.",
+      asvezes:"⚠ Ter ela 'por garantia' é o primeiro passo pra virar refém. Em 2 anos, sem ela, nada vai responder."
     },
     weight:10,category:"fisica"
   },
   {
     id:10,phase:4,type:"multi-select",
-    question:"{name}, ¿cuáles de estos hábitos tienes?",
-    microcopy:"Cada uno de estos cierra los vasos que alimentan el pene por dentro.",
+    question:"{name}, quais desses hábitos você tem?",
+    microcopy:"Cada um deles fecha os vasos que alimentam o pênis por dentro.",
     minSelections:1,
     options:[
-      {value:"alcool",label:"Tomo alcohol todas las semanas",icon:"🍺"},
-      {value:"cigarro",label:"Fumo o fumé por años",icon:"🚬"},
-      {value:"remedio",label:"Medicación crónica (presión, etc.)",icon:"💊"},
-      {value:"sedentario",label:"Sin ejercicio hace meses",icon:"🛋️"},
-      {value:"nenhum",label:"Ninguno de esos",icon:"✅"}
+      {value:"alcool",label:"Bebo álcool toda semana",icon:"🍺"},
+      {value:"cigarro",label:"Fumo ou fumei por anos",icon:"🚬"},
+      {value:"remedio",label:"Medicação crônica (pressão, etc.)",icon:"💊"},
+      {value:"sedentario",label:"Sem exercício há meses",icon:"🛋️"},
+      {value:"nenhum",label:"Nenhum desses",icon:"✅"}
     ],
     triggers:{
-      _any_except_nenhum:"🛑 {name}, cada uno de esos hábitos cierra los vasos del pene. Cuantos más marcaste, más bloqueado estás."
+      _any_except_nenhum:"🛑 {name}, cada um desses hábitos fecha os vasos do pênis. Quantos mais marcou, mais bloqueado está."
     },
     weight:8,category:"habitos",scoreLogic:"count-negative"
   },
   {
     id:11,phase:5,type:"whatsapp-input",
-    question:"Tu diagnóstico está listo, {name}.",
-    microcopy:"¿Quieres que te lo envíe también por WhatsApp para guardarlo? Es opcional — puedes ver el resultado sin esto.",
-    field:{name:"whatsapp",placeholder:"+52 000 000 0000"},
-    optIn:{text:"Sí, enviarme el resumen por WhatsApp (opcional)"},
-    privacySeal:"🔒 Un único mensaje. Sin spam. Total confidencialidad.",
+    question:"Seu diagnóstico está pronto, {name}.",
+    microcopy:"Quer que eu envie pelo WhatsApp pra você guardar? É opcional — você pode ver o resultado sem isso.",
+    field:{name:"whatsapp",placeholder:"(11) 99999-9999"},
+    optIn:{text:"Sim, me enviar o resumo pelo WhatsApp (opcional)"},
+    privacySeal:"🔒 Uma única mensagem. Sem spam. Total confidencialidade.",
     optional:true,
     weight:0
   },
   {
     id:12,phase:5,type:"single-select",
-    question:"Última pregunta, {name}. ¿Por quién estás haciendo esto?",
-    microcopy:"Eso cambia el enfoque de tu protocolo.",
+    question:"Última pergunta, {name}. Por quem você está fazendo isso?",
+    microcopy:"Isso muda o foco do seu protocolo.",
     options:[
-      {value:"parceira",label:"Por mi pareja. Quiero volver a la altura",icon:"💑"},
-      {value:"eu_mesmo",label:"Por mí. Quiero sentirme hombre de nuevo",icon:"🦾"},
-      {value:"tudo",label:"Por todo — quiero mi vida de vuelta",icon:"🔥"},
-      {value:"confianza",label:"Por los dos. Quiero mi cuerpo y confianza",icon:"💪"}
+      {value:"parceira",label:"Pela minha parceira. Quero voltar à altura",icon:"💑"},
+      {value:"eu_mesmo",label:"Por mim. Quero me sentir homem de novo",icon:"🦾"},
+      {value:"tudo",label:"Por tudo — quero minha vida de volta",icon:"🔥"},
+      {value:"confianza",label:"Pelos dois. Quero meu corpo e confiança",icon:"💪"}
     ],
     weight:0
   }
 ],
 
 LOADING_DATA={
-  headline:"Analizando el mapa vascular de {name}...",
+  headline:"Analisando o mapa vascular de {name}...",
   duration:12e3,
   messages:[
-    "Cruzando tus síntomas con la base de datos...",
-    "Midiendo el grado de bloqueo vascular...",
-    "Identificando tu ventana de reversión...",
-    "Calculando pérdida estimada de tamaño y firmeza...",
-    "Comparando con 17.483 diagnósticos anteriores...",
-    "Esto va a cambiar lo que creías saber sobre tu cuerpo...",
-    "Preparando tu protocolo personalizado..."
+    "Cruzando seus sintomas com o banco de dados...",
+    "Medindo o grau de bloqueio vascular...",
+    "Identificando sua janela de reversão...",
+    "Calculando perda estimada de tamanho e firmeza...",
+    "Comparando com 17.483 diagnósticos anteriores...",
+    "Isso vai mudar o que você achava que sabia sobre seu corpo...",
+    "Preparando seu protocolo personalizado..."
   ]
 },
 
 RESULT_DATA={
-  headlineTemplate:"El diagnóstico de {name} está listo.",
+  headlineTemplate:"O diagnóstico de {name} está pronto.",
   scoreZones:[
     {
       min:0,max:35,
       label:"COMPROMETIDO",
       color:"#C44B4B",
-      description:"Tus vasos están severamente bloqueados — la sangre no llega al pene: tamaño reducido, firmeza cero, duración de segundos. Pero existe un protocolo que fuerza a la sangre a volver."
+      description:"Seus vasos estão severamente bloqueados — o sangue não chega ao pênis: tamanho reduzido, firmeza zero, duração de segundos. Mas existe um protocolo que força o sangue a voltar."
     },
     {
       min:36,max:60,
-      label:"EN DECLIVE",
+      label:"EM DECLÍNIO",
       color:"#D4940A",
-      description:"Tus vasos se están cerrando. Ya perdiste tamaño visible y la duración bajó. Todavía se puede revertir, pero la ventana se está cerrando."
+      description:"Seus vasos estão se fechando. Você já perdeu tamanho visível e a duração caiu. Ainda dá pra reverter, mas a janela está se fechando."
     },
     {
       min:61,max:80,
-      label:"EN RIESGO SILENCIOSO",
+      label:"EM RISCO SILENCIOSO",
       color:"#C9A84C",
-      description:"Tus vasos todavía funcionan pero ya están perdiendo eficiencia. Sin intervención, la caída va a acelerar en los próximos 12 meses — y cuando lo notes, será más difícil revertir."
+      description:"Seus vasos ainda funcionam mas já estão perdendo eficiência. Sem intervenção, a queda vai acelerar nos próximos 12 meses — e quando perceber, vai ser mais difícil reverter."
     },
     {
       min:81,max:100,
-      label:"EN RIESGO SILENCIOSO",
+      label:"EM RISCO SILENCIOSO",
       color:"#C9A84C",
-      description:"Tu sistema aún responde, pero los factores de riesgo ya están activos. Sin protocolo, la caída acelera en los próximos 12 meses. El momento de actuar es ahora, no después."
+      description:"Seu sistema ainda responde, mas os fatores de risco já estão ativos. Sem protocolo, a queda acelera nos próximos 12 meses. O momento de agir é agora, não depois."
     }
   ],
   criticalAreas:{
-    libido:{label:"Flujo Peniano",icon:"🍆"},
-    cuerpo:{label:"Grasa Estrogénica",icon:"⚖️"},
-    energia:{label:"Nivel de Energía",icon:"⚡"},
-    sueno:{label:"Calidad del Sueño",icon:"🌙"},
-    fisica:{label:"Dependencia Química",icon:"💊"},
-    habitos:{label:"Hábitos Destructivos",icon:"🔄"},
-    saude:{label:"Riesgo Medicamentoso",icon:"🏥"}
+    libido:{label:"Fluxo Peniano",icon:"🍆"},
+    cuerpo:{label:"Gordura Estrogênica",icon:"⚖️"},
+    energia:{label:"Nível de Energia",icon:"⚡"},
+    sueno:{label:"Qualidade do Sono",icon:"🌙"},
+    fisica:{label:"Dependência Química",icon:"💊"},
+    habitos:{label:"Hábitos Destrutivos",icon:"🔄"},
+    saude:{label:"Risco Medicamentoso",icon:"🏥"}
   }
 },
 
-BRIDGE_DATA={cta:"VER MI PROTOCOLO DE REVERSIÓN"},
+BRIDGE_DATA={cta:"VER MEU PROTOCOLO DE REVERSÃO"},
 
 PROTOCOL_DATA={
-  headline:"El Protocolo de Reversión Vascular, Diseñado para Tu Caso",
-  subheadline:"Sin cirugía, sin pastillas, sin bomba: el método que destapa los vasos y hace volver la sangre con presión total.",
+  headline:"O Protocolo de Reversão Vascular, Desenhado para o Seu Caso",
+  subheadline:"Sem cirurgia, sem pílulas, sem bomba: o método que destampa os vasos e faz o sangue voltar com pressão total.",
   features:[
     {
       icon:"🍆",
-      title:"Vasos reabiertos en 21 días — tamaño de vuelta",
-      desc:"Tu pene está más pequeño porque la sangre no llega. El protocolo destapa los vasos y restaura el volumen perdido. Diferencia visible sin pastilla, sin cirugía."
+      title:"Vasos reabertos em 21 dias — tamanho de volta",
+      desc:"Seu pênis está menor porque o sangue não chega. O protocolo destampa os vasos e restaura o volume perdido. Diferença visível sem pílula, sem cirurgia."
     },
     {
       icon:"⏱️",
-      title:"Duras 3 veces más — sin terminar antes",
-      desc:"El protocolo fortalece el músculo PC y regula el flujo. Resultado: tú decides cuándo terminas — no tu cuerpo."
+      title:"Dure 3 vezes mais — sem terminar antes",
+      desc:"O protocolo fortalece o músculo PC e regula o fluxo. Resultado: você decide quando termina — não seu corpo."
     },
     {
       icon:"🔩",
-      title:"Erección natural, sin la pastilla azul",
-      desc:"Tus vasos se reabren y la sangre llena el pene con la presión que tenías cuando tenías 25 años. Sin química, sin dependencia."
+      title:"Ereção natural, sem a pílula azul",
+      desc:"Seus vasos se reabrem e o sangue enche o pênis com a pressão que você tinha aos 25 anos. Sem química, sem dependência."
     },
     {
       icon:"🔥",
-      title:"Deseo de predador — ganas que no paran",
-      desc:"Cuando los vasos abren y las hormonas se equilibran, el deseo vuelve como una ola. Tu pareja lo siente antes que tú."
+      title:"Desejo de predador — vontade que não para",
+      desc:"Quando os vasos abrem e os hormônios se equilibram, o desejo volta como uma onda. Sua parceira sente antes de você."
     }
   ],
-  seal:"Protocolo generado en base a tu diagnóstico: acceso restringido",
-  cta:"VER EL PRECIO DE MI PROTOCOLO"
+  seal:"Protocolo gerado com base no seu diagnóstico: acesso restrito",
+  cta:"VER O PREÇO DO MEU PROTOCOLO"
 },
 
 TESTIMONIALS=[
   {
-    initials:"César M.",age:52,occupation:"Dueño de Constructora, Ciudad de México",
+    initials:"César M.",age:52,occupation:"Dono de Construtora, São Paulo",
     photo:"img/testimonials/cesar-m.jpg",
-    text:"15 días de protocolo y mi esposa me preguntó qué diablos estaba tomando. Volví a funcionar como si tuviera 30.",
-    result:"Funcionó en 15 días",highlight:"+ Tamaño y firmeza restaurados",
+    text:"15 dias de protocolo e minha esposa me perguntou que diabos eu estava tomando. Voltei a funcionar como se tivesse 30.",
+    result:"Funcionou em 15 dias",highlight:"+ Tamanho e firmeza restaurados",
     painTags:["parceira","tudo","confianza"]
   },
   {
-    initials:"Roberto Q.",age:44,occupation:"Inversionista, Bogotá",
+    initials:"Roberto Q.",age:44,occupation:"Investidor, Rio de Janeiro",
     photo:"img/testimonials/roberto-q.jpg",
-    text:"Mi pene había encogido y terminaba en 2 minutos. Era vascular — el protocolo me devolvió centímetros y control total.",
-    result:"Tamaño y duración de vuelta",highlight:"+ Control total restaurado",
+    text:"Meu pênis tinha encolhido e eu terminava em 2 minutos. Era vascular — o protocolo me devolveu centímetros e controle total.",
+    result:"Tamanho e duração de volta",highlight:"+ Controle total restaurado",
     painTags:["parceira","eu_mesmo","tudo"]
   },
   {
-    initials:"Sergio O.",age:60,occupation:"Ex-Militar, Guadalajara",
+    initials:"Sergio O.",age:60,occupation:"Ex-Militar, Curitiba",
     photo:"img/testimonials/sergio-o.jpg",
-    text:"60 años. Dependía de la pastilla. Hoy amanezco con erección fuerte, sin necesitar nada. El tamaño volvió a mis 40.",
-    result:"Sin pastilla a los 60 años",highlight:"+ Vasos reabiertos naturalmente",
+    text:"60 anos. Dependia da pílula. Hoje acordo com ereção forte, sem precisar de nada. O tamanho voltou aos meus 40.",
+    result:"Sem pílula aos 60 anos",highlight:"+ Vasos reabertos naturalmente",
     painTags:["parceira","eu_mesmo","tudo"]
   },
   {
-    initials:"Marcos T.",age:48,occupation:"Camionero, Monterrey",
+    initials:"Marcos T.",age:48,occupation:"Caminhoneiro, Belo Horizonte",
     photo:"img/testimonials/marcos-t.jpg",
-    text:"3 semanas de protocolo y mi esposa volvió al cuarto. Hoy aguanto toda la noche.",
-    result:"Duración triplicada",highlight:"+ Energía restaurada",
+    text:"3 semanas de protocolo e minha esposa voltou pro quarto. Hoje aguento a noite toda.",
+    result:"Duração triplicada",highlight:"+ Energia restaurada",
     painTags:["parceira","tudo"]
   },
   {
-    initials:"Ricardo F.",age:55,occupation:"Abogado, Medellín",
+    initials:"Ricardo F.",age:55,occupation:"Advogado, Brasília",
     photo:"img/testimonials/ricardo-f.jpg",
-    text:"Terminaba en 1 minuto. Hoy controlo cuándo quiero y mi esposa pide más.",
-    result:"De 1 minuto a 40+",highlight:"+ Control de eyaculación",
+    text:"Terminava em 1 minuto. Hoje controlo quando quero e minha esposa pede mais.",
+    result:"De 1 minuto pra 40+",highlight:"+ Controle de ejaculação",
     painTags:["eu_mesmo","parceira","tudo"]
   },
   {
-    initials:"Pablo S.",age:41,occupation:"Empresario, Ciudad de México",
+    initials:"Pablo S.",age:41,occupation:"Empresário, São Paulo",
     photo:"img/testimonials/pablo-s.jpg",
-    text:"60 días: la barriga se fue, el pecho desapareció y el tamaño volvió visiblemente. Mi esposa no lo podía creer.",
-    result:"Cuerpo y tamaño restaurados",highlight:"+ Estrógeno eliminado",
+    text:"60 dias: a barriga sumiu, o peito desapareceu e o tamanho voltou visivelmente. Minha esposa não acreditava.",
+    result:"Corpo e tamanho restaurados",highlight:"+ Estrogênio eliminado",
     painTags:["eu_mesmo","tudo","confianza"]
   },
   {
-    initials:"Andrés L.",age:49,occupation:"Ingeniero, Cali",
+    initials:"Andrés L.",age:49,occupation:"Engenheiro, Porto Alegre",
     photo:"img/testimonials/andres-l.jpg",
-    text:"30 días de protocolo: mi esposa me miró y dijo '¿qué te pasó?'. Volví a ser yo.",
-    result:"Reversión en 30 días",highlight:"+ Circulación reabierta",
+    text:"30 dias de protocolo: minha esposa olhou e disse 'o que aconteceu com você?'. Voltei a ser eu.",
+    result:"Reversão em 30 dias",highlight:"+ Circulação reaberta",
     painTags:["eu_mesmo","parceira","tudo","confianza"]
   },
   {
-    initials:"Felipe R.",age:53,occupation:"Médico, Lima",
+    initials:"Felipe R.",age:53,occupation:"Médico, Salvador",
     photo:"img/testimonials/felipe-r.jpg",
-    text:"Soy médico y no podía resolver mi propio problema. Este protocolo hizo lo que 5 años de consultas no lograron.",
-    result:"Funcionó donde la medicina falló",highlight:"+ Enfoque vascular comprobado",
+    text:"Sou médico e não conseguia resolver meu próprio problema. Esse protocolo fez o que 5 anos de consultas não conseguiram.",
+    result:"Funcionou onde a medicina falhou",highlight:"+ Abordagem vascular comprovada",
     painTags:["eu_mesmo","parceira","tudo"]
   },
   {
-    initials:"Jonathan P.",age:46,occupation:"Profesor, Buenos Aires",
+    initials:"Jonathan P.",age:46,occupation:"Professor, Florianópolis",
     photo:"img/testimonials/jonathan-p.jpg",
-    text:"El protocolo abrió los vasos y la sangre volvió con presión. Mi pareja lo notó en la primera semana.",
-    result:"Resultado visible en 7 días",highlight:"+ Flujo restaurado",
+    text:"O protocolo abriu os vasos e o sangue voltou com pressão. Minha parceira notou na primeira semana.",
+    result:"Resultado visível em 7 dias",highlight:"+ Fluxo restaurado",
     painTags:["parceira","tudo"]
   },
   {
-    initials:"Gilberto A.",age:58,occupation:"Empresario, Santiago",
+    initials:"Gilberto A.",age:58,occupation:"Empresário, Goiânia",
     photo:"img/testimonials/gilberto-a.jpg",
-    text:"3 semanas: duro como toro, duración que ella nunca había visto. No quiere salir de la cama.",
-    result:"Firmeza y duración de toro",highlight:"+ Rendimiento total",
+    text:"3 semanas: duro como touro, duração que ela nunca tinha visto. Não quer sair da cama.",
+    result:"Firmeza e duração de touro",highlight:"+ Performance total",
     painTags:["parceira","eu_mesmo","tudo"]
   },
   {
-    initials:"Carlos V.",age:43,occupation:"Policía, Ciudad de México",
+    initials:"Carlos V.",age:43,occupation:"Policial, Recife",
     photo:"img/testimonials/carlos-v.jpg",
-    text:"Antes terminaba antes de empezar. Hoy controlo y duro lo que quiero. VORTX salvó mi matrimonio.",
-    result:"Eyaculación bajo control",highlight:"+ Rendimiento restaurado",
+    text:"Antes terminava antes de começar. Hoje controlo e duro o que quero. VORTX salvou meu casamento.",
+    result:"Ejaculação sob controle",highlight:"+ Performance restaurada",
     painTags:["eu_mesmo","tudo","confianza"]
   },
   {
-    initials:"Daniel M.",age:37,occupation:"Desarrollador, Bogotá",
+    initials:"Daniel M.",age:37,occupation:"Desenvolvedor, Fortaleza",
     photo:"img/testimonials/daniel-m.jpg",
-    text:"Tenía 37 y creía que era demasiado joven para esto. 3 semanas y la firmeza volvió con fuerza total.",
-    result:"Revertido a los 37",highlight:"+ Vasos reabiertos a tiempo",
+    text:"Tinha 37 e achava que era jovem demais pra isso. 3 semanas e a firmeza voltou com força total.",
+    result:"Revertido aos 37",highlight:"+ Vasos reabertos a tempo",
     painTags:["eu_mesmo","tudo","confianza"]
   },
   {
-    initials:"Héctor M.",age:61,occupation:"Jubilado, Guadalajara",
+    initials:"Héctor M.",age:61,occupation:"Aposentado, Manaus",
     photo:"img/testimonials/hector-m.jpg",
-    text:"61 años. 5 años sin funcionar. 3 semanas de protocolo — volví con tamaño, firmeza y duración. Ella lloró.",
-    result:"Revertió todo a los 61",highlight:"+ 5 años de daño revertidos",
+    text:"61 anos. 5 anos sem funcionar. 3 semanas de protocolo — voltei com tamanho, firmeza e duração. Ela chorou.",
+    result:"Reverteu tudo aos 61",highlight:"+ 5 anos de dano revertidos",
     painTags:["parceira","eu_mesmo","tudo"]
   }
 ];
@@ -374,71 +374,71 @@ function getFilteredTestimonials(e){
 }
 
 const PRICING_DATA={
-  urgencyText:"Este precio desaparece en:",
+  urgencyText:"Esse preço desaparece em:",
   timerMinutes:8,
   checkoutCtaMap:{
-    parceira:"QUIERO RECUPERAR MI RELACIÓN AHORA",
-    eu_mesmo:"QUIERO RECUPERARME A MÍ MISMO",
-    tudo:"QUIERO MI VIDA DE VUELTA",
-    confianza:"QUIERO MI CONFIANZA DE VUELTA",
-    _default:"EMPEZAR AHORA"
+    parceira:"QUERO RECUPERAR MEU RELACIONAMENTO AGORA",
+    eu_mesmo:"QUERO ME RECUPERAR",
+    tudo:"QUERO MINHA VIDA DE VOLTA",
+    confianza:"QUERO MINHA CONFIANÇA DE VOLTA",
+    _default:"COMEÇAR AGORA"
   },
   plans:[
     {
       id:"esencial",
-      name:"ACCESO ESENCIAL",
-      price:9,
+      name:"ACESSO ESSENCIAL",
+      price:17,
       originalPrice:97,
-      period:"pago único",
-      description:"Módulo vascular básico únicamente",
+      period:"pagamento único",
+      description:"Módulo vascular básico apenas",
       badge:"",
-      ctaLabel:"QUIERO EL ACCESO ESENCIAL",
-      ctaTag:"VERSIÓN BÁSICA",
+      ctaLabel:"QUERO O ACESSO ESSENCIAL",
+      ctaTag:"VERSÃO BÁSICA",
       isAnchor:true,
       features:[
-        "Protocolo vascular básico — módulo 1 únicamente",
-        "Sin módulo de duración ni control avanzado",
-        "Sin protocolo de sueño hormonal",
-        "Sin guía de eliminación de grasa estrogénica",
-        "Sin actualizaciones futuras incluidas"
+        "Protocolo vascular básico — módulo 1 apenas",
+        "Sem módulo de duração nem controle avançado",
+        "Sem protocolo de sono hormonal",
+        "Sem guia de eliminação de gordura estrogênica",
+        "Sem atualizações futuras incluídas"
       ]
     },
     {
       id:"vitalicio",
-      name:"PROTOCOLO COMPLETO — ACCESO DE POR VIDA",
-      price:17,
+      name:"PROTOCOLO COMPLETO — ACESSO VITALÍCIO",
+      price:27,
       originalPrice:197,
-      period:"pago único, acceso de por vida",
-      description:"El protocolo completo de reversión vascular",
-      badge:"🔓 MEJOR OPCIÓN",
-      ctaLabel:"QUIERO EL PROTOCOLO COMPLETO",
-      ctaTag:"ACCESO TOTAL",
+      period:"pagamento único, acesso vitalício",
+      description:"O protocolo completo de reversão vascular",
+      badge:"🔓 MELHOR ESCOLHA",
+      ctaLabel:"QUERO O PROTOCOLO COMPLETO",
+      ctaTag:"ACESSO TOTAL",
       features:[
-        "Vasos reabiertos en 21 días — tamaño y firmeza sin pastilla",
-        "Durar 3 veces más — control total de eyaculación",
-        "Erección matinal de vuelta — sin dependencia química",
-        "Eliminación de grasa estrogénica — cuerpo que vuelve a responder",
-        "Protocolo de sueño profundo — producción hormonal nocturna",
-        "Acceso de por vida — todas las actualizaciones incluidas"
+        "Vasos reabertos em 21 dias — tamanho e firmeza sem pílula",
+        "Durar 3 vezes mais — controle total de ejaculação",
+        "Ereção matinal de volta — sem dependência química",
+        "Eliminação de gordura estrogênica — corpo voltando a responder",
+        "Protocolo de sono profundo — produção hormonal noturna",
+        "Acesso vitalício — todas as atualizações incluídas"
       ]
     }
   ],
   guarantee:{
-    title:"30 días de prueba. Si no funciona, devuelvo todo — sin preguntas.",
-    text:"Sigue el protocolo por 30 días. Si tu tamaño, tu firmeza y tu duración no mejoran de forma visible, devuelvo el 100% de tu dinero. Sin preguntas, sin burocracia. El riesgo es todo mío.",
+    title:"30 dias de teste. Se não funcionar, devolvo tudo — sem perguntas.",
+    text:"Siga o protocolo por 30 dias. Se seu tamanho, sua firmeza e sua duração não melhorarem de forma visível, devolvo 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo meu.",
     icon:"🛡️"
   },
-  paymentMethods:["Tarjeta de Crédito • PayPal • Pago 100% Seguro 🔒"]
+  paymentMethods:["Cartão de Crédito • PIX • Pagamento 100% Seguro 🔒"]
 },
 
 THANKYOU_DATA={
-  headline:"Bienvenido al otro lado, {name}.",
-  subheadline:"El protocolo de reversión vascular está liberado — a partir de ahora cada día cuenta.",
+  headline:"Bem-vindo ao outro lado, {name}.",
+  subheadline:"O protocolo de reversão vascular está liberado — a partir de agora cada dia conta.",
   steps:[
-    {number:"01",title:"Acceso llega en menos de 5 minutos",desc:"El link llega a tu WhatsApp en cuanto se confirme el pago."},
-    {number:"02",title:"Empieza por el Protocolo Vascular (Módulo 1)",desc:"Es la base de todo: sin destapar los vasos, nada funciona. Léelo hoy."},
-    {number:"03",title:"Sigue exactamente como está escrito",desc:"Va a parecer demasiado simple — no cambies nada. Ahí está el resultado."},
-    {number:"04",title:"No le cuentes a nadie, deja que el resultado hable",desc:"En 2-3 semanas tu pareja va a ser la primera en notarlo."}
+    {number:"01",title:"Acesso chega em menos de 5 minutos",desc:"O link chega no seu WhatsApp assim que o pagamento for confirmado."},
+    {number:"02",title:"Comece pelo Protocolo Vascular (Módulo 1)",desc:"É a base de tudo: sem destampar os vasos, nada funciona. Leia hoje."},
+    {number:"03",title:"Siga exatamente como está escrito",desc:"Vai parecer simples demais — não mude nada. Aí está o resultado."},
+    {number:"04",title:"Não conte pra ninguém, deixe o resultado falar",desc:"Em 2-3 semanas sua parceira vai ser a primeira a notar."}
   ],
-  cta:"ACCEDER AL PROTOCOLO AHORA"
+  cta:"ACESSAR O PROTOCOLO AGORA"
 };

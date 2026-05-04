@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <!-- Google Tag Manager (Stape custom container) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
@@ -20,7 +20,7 @@
     var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
-    if (!validSrc && !validTx && !fromPerfect && !fromSelf) {
+    if (!validSrc && !validTx && !fromTicto && !fromSelf) {
       // Acesso direto não autorizado — redireciona para home
       window.location.replace('/');
     }
@@ -470,15 +470,15 @@ body::before {
       </svg>
     </div>
 
-    <div class="status-badge">Pago en verificación</div>
+    <div class="status-badge">Pagamento em verificação</div>
 
-    <h1>Tu pedido está siendo<br><em>procesado</em></h1>
-    <p id="header-sub">Recibimos tu solicitud de pago. En cuanto se confirme, el acceso al protocolo se envía automáticamente a tu <strong>email de compra</strong>.</p>
+    <h1>Seu pedido está sendo<br><em>processado</em></h1>
+    <p id="header-sub">Recebemos sua solicitação de pagamento. Assim que for confirmado, o acesso ao protocolo é enviado automaticamente para seu <strong>email de compra</strong>.</p>
   </div>
 
   <!-- INSTRUCCIONES -->
   <div class="instructions">
-    <p class="instructions-title">¿Qué hacer ahora?</p>
+    <p class="instructions-title">O que fazer agora?</p>
 
     <!-- PIX (mostrado se for PIX) -->
     <div class="pix-section" id="pix-section">
@@ -493,22 +493,22 @@ body::before {
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-body">
-          <div class="step-title">Abre tu app bancaria</div>
-          <div class="step-desc">Ve a la opción PIX → Pagar con código → Pega el código de arriba.</div>
+          <div class="step-title">Abra seu app bancário</div>
+          <div class="step-desc">Vá em PIX → Pagar com código → Cole o código acima.</div>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
         <div class="step-body">
-          <div class="step-title">Confirma el pago</div>
-          <div class="step-desc">El valor es exactamente el que viste al finalizar la compra.</div>
+          <div class="step-title">Confirme o pagamento</div>
+          <div class="step-desc">O valor é exatamente o que você viu ao finalizar a compra.</div>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
         <div class="step-body">
-          <div class="step-title">Espera la confirmación</div>
-          <div class="step-desc">El acceso llega a tu email de compra en menos de 5 minutos después del pago.</div>
+          <div class="step-title">Aguarde a confirmação</div>
+          <div class="step-desc">O acesso chega no seu email de compra em menos de 5 minutos após o pagamento.</div>
         </div>
       </div>
     </div>
@@ -518,22 +518,22 @@ body::before {
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-body">
-          <div class="step-title">No cierres esta pestaña</div>
-          <div class="step-desc">Si pagaste, la confirmación llega en minutos. Revisa tu email de compra.</div>
+          <div class="step-title">Não feche essa aba</div>
+          <div class="step-desc">Se você pagou, a confirmação chega em minutos. Verifique seu email de compra.</div>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
         <div class="step-body">
-          <div class="step-title">Revisa tu email de compra</div>
-          <div class="step-desc">El acceso al protocolo se envía automáticamente al número que ingresaste en el quiz.</div>
+          <div class="step-title">Verifique seu email de compra</div>
+          <div class="step-desc">O acesso ao protocolo é enviado automaticamente para o número que você informou no quiz.</div>
         </div>
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
         <div class="step-body">
-          <div class="step-title">Si el pago no llega en 30 min</div>
-          <div class="step-desc">Contacta nuestro soporte con tu número de pedido. Resolvemos en el momento.</div>
+          <div class="step-title">Se o pagamento não chegar em 30 min</div>
+          <div class="step-desc">Fale com nosso suporte com seu número de pedido. Resolvemos na hora.</div>
         </div>
       </div>
     </div>
@@ -541,54 +541,54 @@ body::before {
 
   <!-- TIMER PIX -->
   <div class="timer-block" id="timer-block">
-    <div class="timer-label">Tiempo para completar el pago</div>
+    <div class="timer-label">Tempo para concluir o pagamento</div>
     <div class="timer-display" id="countdown">30:00</div>
-    <div class="timer-sub">El código expira si no se usa en este tiempo</div>
+    <div class="timer-sub">O código expira se não for usado nesse tempo</div>
   </div>
 
   <!-- ALERTA -->
   <div class="time-alert">
     <div class="time-alert-icon">⚠️</div>
     <div class="time-alert-text">
-      <strong>Tu acceso está reservado</strong>
-      Una vez confirmado el pago, el protocolo se libera de forma inmediata. El precio especial está garantizado para este pedido.
+      <strong>Seu acesso está reservado</strong>
+      Assim que o pagamento for confirmado, o protocolo é liberado imediatamente. O preço especial está garantido para esse pedido.
     </div>
   </div>
 
-  <div class="divider">Preguntas frecuentes</div>
+  <div class="divider">Perguntas frequentes</div>
 
   <!-- FAQ -->
   <div class="faq">
     <div class="faq-item">
-      <div class="faq-q">¿Cuánto tiempo tarda en llegar el acceso?</div>
-      <div class="faq-a">Para pagos con tarjeta aprobados al instante: menos de 5 minutos. Para PIX: hasta 5 minutos después de pagar. Para análisis de crédito: hasta 24 horas hábiles.</div>
+      <div class="faq-q">Quanto tempo leva para o acesso chegar?</div>
+      <div class="faq-a">Para pagamentos com cartão aprovados na hora: menos de 5 minutos. Para PIX: até 5 minutos após o pagamento. Para análise de crédito: até 24 horas úteis.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Pagué pero no recibí nada. ¿Qué hago?</div>
-      <div class="faq-a">Verifica que el email que usaste en la compra esté correcto. Si pasaron más de 30 minutos y no llegó nada, revisa la carpeta de spam o contacta soporte con el número de tu pedido.</div>
+      <div class="faq-q">Paguei mas não recebi nada. O que faço?</div>
+      <div class="faq-a">Verifique se o email que você usou na compra está correto. Se passaram mais de 30 minutos e nada chegou, veja a pasta de spam ou fale com o suporte com o número do seu pedido.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Puedo acceder desde el celular y la computadora?</div>
-      <div class="faq-a">Sí. El protocolo funciona en cualquier dispositivo. El acceso se envía por email y puedes abrirlo desde cualquier dispositivo.</div>
+      <div class="faq-q">Posso acessar pelo celular e pelo computador?</div>
+      <div class="faq-a">Sim. O protocolo funciona em qualquer dispositivo. O acesso é enviado por email e você pode abrir em qualquer dispositivo.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">¿Qué pasa si quiero cancelar?</div>
-      <div class="faq-a">Tienes 30 días de garantía total. Si no estás satisfecho con los resultados, devolvemos el 100% sin preguntas.</div>
+      <div class="faq-q">E se eu quiser cancelar?</div>
+      <div class="faq-a">Você tem 30 dias de garantia total. Se não estiver satisfeito com os resultados, devolvemos 100% sem perguntas.</div>
     </div>
   </div>
 
   <!-- SOPORTE -->
   <div class="support-block">
-    <p>¿Tuviste algún problema con el pago o tienes dudas? Nuestro equipo responde en menos de 10 minutos.</p>
-    <a href="https://wa.me/5565981389919?text=Hola,%20tuve%20un%20problema%20con%20mi%20pago%20de%20VORTX" class="btn-support" id="btn-support" target="_blank" rel="noopener">
-      💬 Contactar soporte ahora
+    <p>Teve algum problema com o pagamento ou está com dúvidas? Nossa equipe responde em menos de 10 minutos.</p>
+    <a href="https://wa.me/5565981389919?text=Olá,%20tive%20um%20problema%20com%20meu%20pagamento%20do%20VORTX" class="btn-support" id="btn-support" target="_blank" rel="noopener">
+      💬 Falar com o suporte agora
     </a>
   </div>
 
   <!-- FOOTER -->
   <div class="footer">
     <div class="footer-logo">VORTX<span></span></div>
-    <p>Protocolo de Reversión Vascular Masculina</p>
+    <p>Protocolo de Reversão Vascular Masculina</p>
   </div>
 
 </div>
@@ -604,9 +604,9 @@ body::before {
   // ── Personaliza o nome ─────────────────────────────────────
   if (name) {
     document.querySelector('.header h1').innerHTML =
-      name + ', tu pedido está siendo<br><em>procesado</em>';
+      name + ', seu pedido está sendo<br><em>processado</em>';
     document.getElementById('header-sub').textContent =
-      name + ', recibimos tu solicitud de pago. En cuanto se confirme, el acceso al protocolo se envía automáticamente a tu email de compra.';
+      name + ', recebemos sua solicitação de pagamento. Assim que for confirmado, o acesso ao protocolo é enviado automaticamente para seu email de compra.';
   }
 
   // ── Adapta conteúdo ao tipo de pagamento ──────────────────
@@ -620,7 +620,7 @@ body::before {
     document.getElementById('general-steps').style.display = 'none';
   } else if (type === 'analise') {
     document.getElementById('timer-block').style.display = 'none';
-    document.querySelector('.instructions-title').textContent = 'Tu compra está en análisis';
+    document.querySelector('.instructions-title').textContent = 'Sua compra está em análise';
   } else {
     // Cartão ou padrão — sem timer de PIX
     document.getElementById('timer-block').style.display = 'none';
@@ -644,8 +644,8 @@ body::before {
     vortxTrack('payment_pending', {
       type:     type || 'unknown',
       plan:     p.get('plan') || 'vitalicio',
-      value:    Number(p.get('value')) || 17,
-      currency: 'USD'
+      value:    Number(p.get('value')) || 27,
+      currency: 'BRL'
     });
   }
 })();

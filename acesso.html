@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <!-- Google Tag Manager (Stape custom container) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
@@ -20,7 +20,7 @@
     var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
-    if (!validSrc && !validTx && !fromPerfect && !fromSelf) {
+    if (!validSrc && !validTx && !fromTicto && !fromSelf) {
       // Acesso direto não autorizado — redireciona para home
       window.location.replace('/');
     }
@@ -31,7 +31,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>VORTX — Accede a Tu Protocolo</title>
+<title>VORTX — Acesse Seu Protocolo</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,35 +84,35 @@ h1 span{color:var(--gold)}
 
   <div class="access-icon fade-up">⚡</div>
 
-  <h1 class="fade-up d1">Todo listo, <span id="user-name">Campeón</span>.</h1>
-  <p class="sub fade-up d1">Tu protocolo está listo. Accede ahora y empieza hoy mismo.</p>
+  <h1 class="fade-up d1">Tudo pronto, <span id="user-name">Campeão</span>.</h1>
+  <p class="sub fade-up d1">Seu protocolo está pronto. Acesse agora e comece hoje mesmo.</p>
 
   <div class="access-card fade-up d2">
-    <div class="access-card-title">Tus productos</div>
+    <div class="access-card-title">Seus produtos</div>
     <div class="access-item">
       <span class="access-item-icon">📋</span>
-      <span class="access-item-label">Protocolo de Reversión Vascular VORTX</span>
+      <span class="access-item-label">Protocolo de Reversão Vascular VORTX</span>
       <span class="access-item-status">LIBERADO</span>
     </div>
     <div class="access-item" id="item-soro" style="display:none">
       <span class="access-item-icon">🧪</span>
-      <span class="access-item-label">Suero Vasodilatador de 120 Minutos</span>
+      <span class="access-item-label">Soro Vasodilatador de 120 Minutos</span>
       <span class="access-item-status">LIBERADO</span>
     </div>
     <div class="access-item" id="item-ignicion" style="display:none">
       <span class="access-item-icon">🔥</span>
-      <span class="access-item-label">Protocolo Ignición Vascular</span>
+      <span class="access-item-label">Protocolo Ignição Vascular</span>
       <span class="access-item-status">LIBERADO</span>
     </div>
   </div>
 
-  <a href="#" class="btn fade-up d3" id="btn-access">ACCEDER A MI PROTOCOLO AHORA</a>
+  <a href="#" class="btn fade-up d3" id="btn-access">ACESSAR MEU PROTOCOLO AGORA</a>
 
-  <p class="note fade-up d4">El acceso también fue enviado a tu WhatsApp y email. <strong>Si no lo encuentras, revisa el spam.</strong></p>
+  <p class="note fade-up d4">O acesso também foi enviado para seu WhatsApp e email. <strong>Se não encontrar, verifique o spam.</strong></p>
 
   <div class="footer fade-up d4">
     <div class="footer-logo">VORTX<span></span></div>
-    <p>Protocolo de Reversión Vascular Masculina</p>
+    <p>Protocolo de Reversão Vascular Masculina</p>
   </div>
 
 </div>
@@ -138,8 +138,8 @@ h1 span{color:var(--gold)}
 
   document.getElementById('btn-access').addEventListener('click', function(e){
     e.preventDefault();
-    // TODO: SUBSTITUIR por el link da área de membros
-    alert('Conecta aquí el link del área de miembros');
+    // TODO: SUBSTITUIR pelo link da área de membros
+    alert('Conecte aqui o link da área de membros');
   });
 })();
 </script>
