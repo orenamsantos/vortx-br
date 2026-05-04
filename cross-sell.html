@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google Tag Manager (Stape custom container) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
+<!-- End Google Tag Manager -->
+<script>
+(function(){
+  // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
+  // Aceita: ?src=vortx_funnel | ?transaction_id=PPU... | referer CenterPag/PerfectPay | referer próprio site
+  try {
+    var params   = new URLSearchParams(window.location.search);
+    var src      = params.get('src')            || '';
+    var txid     = params.get('transaction_id') || '';
+    var referer  = document.referrer            || '';
+
+    // Validações aceitas (em ordem de prioridade)
+    var validSrc    = src === 'vortx_funnel';
+    var validTx     = txid.length >= 8;                                             // transaction_id da PerfectPay/CenterPag
+    var fromPerfect = /go\.centerpag\.com|app\.perfectpay\.com\.br|perfectpay\.com\.br/i.test(referer);
+    var fromSelf    = referer.indexOf(location.origin) === 0;
+
+    if (!validSrc && !validTx && !fromPerfect && !fromSelf) {
+      // Acesso direto não autorizado — redireciona para home
+      window.location.replace('/');
+    }
+  } catch (e) {
+    window.location.replace('/');
+  }
+})();
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VORTX | Última Oferta</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B12;--card:rgba(255,255,255,.04);--gold:#C9A84C;--gold-l:#DFC373;--gold-d:#A68B3A;--gold-sub:rgba(201,168,76,.06);--txt:#F0EDE6;--txt2:#9A978F;--txt3:#5C5A54;--brd:rgba(255,255,255,.06);--brd-h:rgba(255,255,255,.12);--red:#C44B4B;--green:#4CAF6A;--amber:#D4940A;--r-card:20px;--r-btn:50px;--r-sm:12px;--r-md:16px;--ff-d:'Playfair Display',Georgia,serif;--ff-b:'Inter',-apple-system,sans-serif;--ff-m:'JetBrains Mono',monospace}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 20%,rgba(22,33,62,.3) 0,transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(201,168,76,.04) 0,transparent 50%);pointer-events:none;z-index:0}
+.page{position:relative;z-index:1;max-width:540px;margin:0 auto;padding:0 20px}
+
+/* HEADER */
+.cross-timer{text-align:center;margin-bottom:24px}
+.cross-timer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(212,148,10,.08);border:1px solid rgba(212,148,10,.2);border-radius:var(--r-btn);font-family:var(--ff-m);font-size:.85rem;font-weight:600;color:var(--amber)}
+.cross-header{text-align:center;padding:48px 0 32px}
+.cross-header .icon{font-size:3rem;width:80px;height:80px;display:flex;align-items:center;justify-content:center;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:50%;margin:0 auto 20px;animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+.cross-header .tag{display:inline-block;font-family:var(--ff-m);font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.cross-header h1{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.4rem,5vw,1.8rem);line-height:1.25;margin-bottom:10px}
+.cross-header h1 em{color:#F0D78C;font-style:normal}
+.cross-header .sub{font-size:.9rem;color:var(--txt2);line-height:1.65;max-width:440px;margin:0 auto}
+
+/* CONTEXT BLOCK */
+.context{padding:18px 20px;border-left:3px solid var(--gold);background:rgba(201,168,76,.04);border-radius:0 var(--r-sm) var(--r-sm) 0;margin-bottom:24px}
+.context p{font-size:.88rem;color:var(--txt2);line-height:1.65;margin:0}
+.context strong{color:var(--txt)}
+
+/* FEATURES */
+.features{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.feat{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);text-align:left}
+.feat-icon{font-size:1.2rem;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:var(--gold-sub);border-radius:var(--r-sm);flex-shrink:0}
+.feat-title{font-weight:600;font-size:.88rem;margin-bottom:2px}
+.feat-desc{font-size:.8rem;color:var(--txt2);line-height:1.5}
+
+/* COMPARISON */
+.comparison{margin-bottom:24px;overflow:hidden;border-radius:var(--r-card);border:1px solid var(--brd)}
+.comparison-row{display:flex;padding:12px 16px;align-items:center;gap:12px;font-size:.82rem}
+.comparison-row:nth-child(odd){background:var(--card)}
+.comparison-row:nth-child(even){background:rgba(255,255,255,.02)}
+.comparison-label{flex:1;color:var(--txt2)}
+.comparison-no{color:var(--red);font-weight:600;font-size:.75rem;text-align:center;min-width:60px}
+.comparison-yes{color:var(--green);font-weight:600;font-size:.75rem;text-align:center;min-width:60px}
+.comparison-header{display:flex;padding:10px 16px;background:rgba(201,168,76,.06);font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt3)}
+.comparison-header span:first-child{flex:1}
+.comparison-header span{text-align:center;min-width:60px}
+
+/* TESTIMONIAL */
+.testi{padding:18px 20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);margin-bottom:24px;text-align:left}
+.testi-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-weight:600;font-size:.82rem}.testi-stars{color:var(--gold);font-size:.65rem;margin-top:2px}
+.testi-text{font-size:.82rem;color:var(--txt2);line-height:1.6;font-style:italic}
+
+/* PRICE */
+.price-block{text-align:center;margin-bottom:20px}
+.price-compare{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px}
+.price-old{font-family:var(--ff-m);font-size:1rem;color:var(--txt3);text-decoration:line-through}
+.price-arrow{color:var(--gold);font-size:.9rem}
+.price-new{font-family:var(--ff-m);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+.price-new small{font-size:.9rem;font-weight:400;color:var(--txt3)}
+.price-saving{font-size:.78rem;color:var(--green);font-weight:600;margin-top:4px}
+.price-sub{font-size:.72rem;color:var(--txt3);margin-top:2px}
+
+/* GUARANTEE */
+.guarantee{padding:16px 18px;background:var(--card);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-card);text-align:center;margin-bottom:20px}
+.guarantee-icon{font-size:1.4rem;margin-bottom:4px}
+.guarantee-title{font-weight:600;font-size:.85rem;margin-bottom:4px}
+.guarantee-text{font-size:.78rem;color:var(--txt2);line-height:1.6}
+
+/* CTA */
+.btn{display:flex;align-items:center;justify-content:center;padding:18px 40px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--bg);font-family:var(--ff-b);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:var(--r-btn);cursor:pointer;transition:all .25s;width:100%;max-width:480px;margin:0 auto;min-height:60px;position:relative;overflow:hidden;box-shadow:0 6px 28px rgba(201,168,76,.25);text-decoration:none;flex-direction:column;line-height:1.3}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,168,76,.3)}
+.btn:active{transform:translateY(0)}
+.btn::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 4s ease-in-out infinite;will-change:transform}
+@keyframes shimmer{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+.btn-price{font-size:1.3rem;margin-top:2px}
+.btn-sub{font-size:.72rem;color:var(--txt3);text-align:center;margin-top:10px}
+.btn-skip{display:block;text-align:center;margin:20px auto 0;font-size:.78rem;color:var(--txt3);cursor:pointer;letter-spacing:.3px;transition:color .25s;border:none;background:none;font-family:var(--ff-b);padding:8px;width:100%;text-decoration:none}
+.btn-skip:hover{color:var(--txt2)}
+
+/* FOOTER */
+.footer{text-align:center;padding:32px 0 40px;border-top:1px solid var(--brd);margin-top:48px}
+.footer-logo{font-family:var(--ff-b);font-weight:700;font-size:.9rem;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.footer-logo span{display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin-left:2px;vertical-align:middle}
+.footer p{font-size:.7rem;color:var(--txt3)}
+
+.fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .6s ease forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}
+</style>
+    <script defer src="js/tracking-stub.min.js"></script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="cross-header fade-up">
+    <div class="icon">🔥</div>
+    <div class="tag">🌙 ÚLTIMA PIEZA DEL STACK</div>
+    <h1>El protocolo que funciona <em>mientras duermes</em></h1>
+    <!-- Copy adapta-se via JS baseado em ?soro=sim ou ?soro=nao -->
+    <p class="sub" id="cross-sub"></p>
+  </div>
+
+  <!-- TIMER -->
+  <div class="cross-timer fade-up d1">
+    <div class="cross-timer-badge">⏱ Esta oferta expira en <span id="cross-timer">05:00</span></div>
+  </div>
+
+  <!-- BRIDGE LINE -->
+  <div class="context fade-up" style="border-left-color:#C9A84C;margin-bottom:16px;">
+    <p>Los otros dos protocolos trabajan de día. <strong>Este trabaja 8 horas cada noche — mientras tú solo duermes.</strong></p>
+  </div>
+
+  <!-- CONTEXTO ADAPTIVO -->
+  <div class="context fade-up d1" id="cross-context"></div>
+
+  <!-- FEATURES -->
+  <div class="features fade-up d2">
+    <div class="feat">
+      <div class="feat-icon">🌙</div>
+      <div><div class="feat-title">Stack Nocturno de Testosterona</div><div class="feat-desc">3 compuestos baratos antes de dormir — fuerzan a tu cuerpo a producir testosterona durante el sueño, cuando los vasos se regeneran y el tamaño vuelve. Son las 8 horas más productivas que no estabas aprovechando.</div></div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🌡️</div>
+      <div><div class="feat-title">Rutina de Ignición (3 min)</div><div class="feat-desc">Secuencia matinal corta que activa el flujo durante el día. Complementa el trabajo nocturno sin sumarse a tu rutina del VORTX — son 3 minutos, no 3 horas.</div></div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">🍽️</div>
+      <div><div class="feat-title">Dieta Anti-Estrógeno</div><div class="feat-desc">Qué comer y qué eliminar para dejar de fabricar hormona femenina. Cada kilo de barriga eliminado = más sangre disponible. Lista de compras incluida.</div></div>
+    </div>
+    <div class="feat">
+      <div class="feat-icon">📊</div>
+      <div><div class="feat-title">Checklist de Progreso Vascular</div><div class="feat-desc">Señales del cuerpo que muestran que los vasos se están reabriendo: erección matinal, firmeza, duración — sabes exactamente dónde estás, semana a semana.</div></div>
+    </div>
+  </div>
+
+  <!-- COMPARACIÓN -->
+  <div class="comparison fade-up d3">
+    <div class="comparison-header"><span>Durante los 21 días del Protocolo VORTX</span><span>Sin</span><span>Con</span></div>
+    <div class="comparison-row"><span class="comparison-label">Regeneración vascular durante el sueño</span><span class="comparison-no">✗</span><span class="comparison-yes">✓</span></div>
+    <div class="comparison-row"><span class="comparison-label">Erección matinal en la primera semana</span><span class="comparison-no">✗</span><span class="comparison-yes">✓</span></div>
+    <div class="comparison-row"><span class="comparison-label">Grasa abdominal eliminada más rápido</span><span class="comparison-no">✗</span><span class="comparison-yes">✓</span></div>
+    <div class="comparison-row"><span class="comparison-label">Tu pareja nota el cambio sin que digas nada</span><span class="comparison-no">✗</span><span class="comparison-yes">✓</span></div>
+    <div class="comparison-row"><span class="comparison-label">Checklist para saber dónde estás cada semana</span><span class="comparison-no">✗</span><span class="comparison-yes">✓</span></div>
+  </div>
+
+  <!-- DEPOIMENTO -->
+  <div class="testi fade-up d4">
+    <div class="testi-head">
+      <div class="testi-avatar"><img src="img/testimonials/pablo-s.jpg" alt="Paulo S." loading="lazy"></div>
+      <div><div class="testi-name">Pablo S., 41, Empresario</div><div class="testi-stars">★ ★ ★ ★ ★</div></div>
+    </div>
+    <div class="testi-text">"En los primeros 5 días la erección matinal volvió. El día 14 mi pareja me preguntó qué estaba tomando. El día 21 miré hacia abajo y vi que el tamaño había vuelto. No necesité decir nada — ella lo sintió."</div>
+  </div>
+
+  <!-- PRECIO -->
+  <div class="price-block fade-up d5">
+    <div class="price-compare"><span class="price-old">$ 29</span><span class="price-arrow">→</span><div class="price-new"><small>$</small> 14</div></div>
+    <div class="price-saving">Descuento exclusivo para miembros VORTX</div>
+    <div class="price-sub">Pago único • Se añade a tu pedido • Acceso inmediato</div>
+  </div>
+
+  <!-- GARANTIA -->
+  <div class="guarantee fade-up d5">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-title">Garantía incondicional de 30 días</div>
+    <p class="guarantee-text">Sin resultado, sin cobro. Devuelvo todo.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="fade-up d6">
+    <a href="https://go.centerpag.com/PPU38CQBBOT?upsell=true" class="btn" id="btn-cross" rel="noopener">AÑADIR IGNICIÓN AL STACK<span class="btn-price">$ 14</span></a>
+    <p class="btn-sub">Se suma a tu pedido • Activación vascular nocturna • Garantía 30 días</p>
+    <a href="acesso.html?src=vortx_funnel" class="btn-skip" id="btn-skip-final" rel="noopener">Completar pedido sin Ignición →</a>
+  </div>
+
+  <div class="footer"><div class="footer-logo">VORTX<span></span></div><p>Protocolo de Reversión Vascular Masculina</p></div>
+</div>
+
+<script>
+(function(){
+  // Timer
+  let sec=5*60;const timerEl=document.getElementById('cross-timer');
+  const timerIv=setInterval(()=>{sec--;if(sec<=0){clearInterval(timerIv);sec=0}const m=Math.floor(sec/60),s=sec%60;timerEl.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(sec<=60)timerEl.style.color='#C44B4B'},1e3);
+
+  const p = new URLSearchParams(window.location.search);
+  const soro = p.get('soro');
+  const n = p.get('name');
+
+  // Copy adaptativa
+  const subEl = document.getElementById('cross-sub');
+  const ctxEl = document.getElementById('cross-context');
+
+  if (soro === 'sim') {
+    subEl.textContent = 'Ya tomaste la decisión correcta 2 veces. La tercera completa el stack — y trabaja mientras duermes.';
+    ctxEl.innerHTML = '<p>VORTX trabaja de día. El Suero acelera las primeras 2 horas. <strong>El Ignición usa las 8 horas de sueño</strong> — son 56 horas extra por semana de activación vascular que tu cuerpo no estaba usando. Sin rutina adicional. Sin esfuerzo extra.</p>';
+  } else {
+    subEl.textContent = 'No hace falta rutina nueva. Este protocolo se activa cuando tú dejas de hacer cualquier cosa — cuando duermes.';
+    ctxEl.innerHTML = '<p>Mientras VORTX construye el flujo durante el día, <strong>el Ignición fuerza la regeneración vascular durante las 8 horas de sueño</strong>. Son 56 horas extra por semana donde tu cuerpo trabaja por ti — sin que hagas nada. Los hombres que saltan este paso demoran el doble del tiempo para ver resultados.</p>';
+  }
+
+  // Track cross-sell view
+  var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
+  if (isLegit) { if(window.vortxTrack) vortxTrack('crosssell_view',{product:'protocolo_ignicion',value:14,soro_purchased:soro==='sim'}); }
+
+  document.getElementById('btn-cross').addEventListener('click', function(e){
+    e.preventDefault();
+    // TODO: processar pagamento do Ignición, depois redirecionar
+    if(window.vortxTrack) vortxTrack('crosssell_accept',{value:14,currency:'USD',product:'protocolo_ignicion'});
+    window.location.href = 'https://go.centerpag.com/PPU38CQBBOT?upsell=true' + (n ? '&name=' + encodeURIComponent(n) : '');
+  });
+
+  document.getElementById('btn-skip-final').addEventListener('click', function(){
+    if(window.vortxTrack) vortxTrack('crosssell_decline',{product:'protocolo_ignicion'});
+    window.location.href = 'acesso.html?src=vortx_funnel' + (n ? '&name=' + encodeURIComponent(n) : '');
+  });
+})();
+</script>
+
+
+
+</body>
+</html>
