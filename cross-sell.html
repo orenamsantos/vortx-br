@@ -207,7 +207,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- CTA -->
   <div class="fade-up d6">
-    <a href="https://payment.ticto.app/CROSSSELL_LINK" class="btn" id="btn-cross" rel="noopener">ADICIONAR IGNIÇÃO AO STACK<span class="btn-price">R$ 14</span></a>
+    <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-cross" rel="noopener">ADICIONAR IGNIÇÃO AO STACK<span class="btn-price">R$ 14</span></a>
     <p class="btn-sub">Adicionado ao seu pedido • Ativação vascular noturna • Garantia 30 dias</p>
     <a href="downsell.html?src=vortx_funnel" class="btn-skip" id="btn-skip-final" rel="noopener">Completar pedido sem Ignição →</a>
   </div>
@@ -243,9 +243,28 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   document.getElementById('btn-cross').addEventListener('click', function(e){
     e.preventDefault();
-    // TODO: processar pagamento do Ignición, depois redirecionar
-    if(window.vortxTrack) vortxTrack('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
-    window.location.href = 'https://payment.ticto.app/CROSSSELL_LINK' + (n ? '?name=' + encodeURIComponent(n) : '');
+    var eventId = null;
+    if (window.vortxTrackSync) {
+      eventId = window.vortxTrackSync('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
+    } else if (window.vortxTrack) {
+      vortxTrack('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
+    }
+    var checkoutUrl = 'https://checkout.ticto.app/O41BD3C90';
+    checkoutUrl += '?value=14&product=protocolo_ignicion';
+    if (n) checkoutUrl += '&name=' + encodeURIComponent(n);
+    try {
+      var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
+      if (sck) checkoutUrl += '&sck=' + encodeURIComponent(sck);
+      if (window.vortxGetAttribution) {
+        var attr = window.vortxGetAttribution();
+        if (attr.fbclid) checkoutUrl += '&fbclid=' + encodeURIComponent(attr.fbclid);
+        if (attr.fbp)    checkoutUrl += '&fbp=' + encodeURIComponent(attr.fbp);
+        if (attr.fbc)    checkoutUrl += '&fbc=' + encodeURIComponent(attr.fbc);
+        if (eventId)     checkoutUrl += '&eid=' + encodeURIComponent(eventId);
+        if (attr.utm_campaign) checkoutUrl += '&src=' + encodeURIComponent(attr.utm_campaign);
+      }
+    } catch(_) {}
+    window.location.href = checkoutUrl;
   });
 
   document.getElementById('btn-skip-final').addEventListener('click', function(){

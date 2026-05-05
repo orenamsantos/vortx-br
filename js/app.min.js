@@ -1520,7 +1520,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
 
       <div class="checkout-cta-block">
-        <a href="https://payment.ticto.app/PRODUTO_PRINCIPAL" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
+        <a href="https://checkout.ticto.app/O41BD3C90" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
         <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia em DOBRO — 30 dias</p>
         <div class="payment-methods">
           ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
@@ -1778,7 +1778,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       // ── MONTAGEM DA URL COM ATRIBUIÇÃO ─────────────────────────
       // Parâmetros nativos do quiz
       var userName = encodeURIComponent(state.userData.name || "");
-      var baseUrl  = "https://payment.ticto.app/PRODUTO_PRINCIPAL";
+      var baseUrl  = "https://checkout.ticto.app/O41BD3C90";
       var checkoutUrl = baseUrl + "?name=" + userName + "&plan=" + selectedPlan + "&value=" + price;
       if (state.userData.whatsapp) checkoutUrl += "&phonenumber=" + encodeURIComponent(state.userData.whatsapp);
 

@@ -134,7 +134,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 
   <div class="fade-up d4">
-    <a href="https://payment.ticto.app/DOWNSELL_LINK" class="btn" id="btn-downsell" rel="noopener">
+    <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-downsell" rel="noopener">
       SIM — ADICIONAR POR
       <span class="btn-price">R$ 9</span>
     </a>
@@ -159,9 +159,28 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   document.getElementById('btn-downsell').addEventListener('click', function(e){
     e.preventDefault();
-    if(window.vortxTrack) vortxTrack('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
-    // Pagamento processado pela Ticto (R$ 9), redireciona para acesso
-    window.location.href = 'https://payment.ticto.app/DOWNSELL_LINK' + (n ? '?name=' + encodeURIComponent(n) : '');
+    var eventId = null;
+    if (window.vortxTrackSync) {
+      eventId = window.vortxTrackSync('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
+    } else if (window.vortxTrack) {
+      vortxTrack('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
+    }
+    var checkoutUrl = 'https://checkout.ticto.app/O41BD3C90';
+    checkoutUrl += '?value=9&product=protocolo_ignicion_downsell';
+    if (n) checkoutUrl += '&name=' + encodeURIComponent(n);
+    try {
+      var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
+      if (sck) checkoutUrl += '&sck=' + encodeURIComponent(sck);
+      if (window.vortxGetAttribution) {
+        var attr = window.vortxGetAttribution();
+        if (attr.fbclid) checkoutUrl += '&fbclid=' + encodeURIComponent(attr.fbclid);
+        if (attr.fbp)    checkoutUrl += '&fbp=' + encodeURIComponent(attr.fbp);
+        if (attr.fbc)    checkoutUrl += '&fbc=' + encodeURIComponent(attr.fbc);
+        if (eventId)     checkoutUrl += '&eid=' + encodeURIComponent(eventId);
+        if (attr.utm_campaign) checkoutUrl += '&src=' + encodeURIComponent(attr.utm_campaign);
+      }
+    } catch(_) {}
+    window.location.href = checkoutUrl;
   });
 
   document.getElementById('btn-skip-downsell').addEventListener('click', function(){

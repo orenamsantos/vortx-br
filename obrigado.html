@@ -198,7 +198,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <p class="guarantee-text">Faça o soro, espere 2 horas e se o tamanho não aumentar visivelmente e a firmeza não voltar com força, peça reembolso. Sem perguntas, sem rodeios.</p>
     </div>
     <div class="fade-up d9">
-      <a href="https://payment.ticto.app/UPSELL_LINK" class="btn" id="btn-upsell" rel="noopener">SIM, ACELERAR MEU PROTOCOLO PARA 7 DIAS<span class="btn-price">R$ 19</span></a>
+      <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-upsell" rel="noopener">SIM, ACELERAR MEU PROTOCOLO PARA 7 DIAS<span class="btn-price">R$ 19</span></a>
       <p class="btn-sub">Adicionado ao seu pedido VORTX • Acesso imediato • Garantia total</p>
       <a href="cross-sell.html?src=vortx_funnel" class="btn-skip" id="btn-skip" rel="noopener">Não, obrigado, prefiro esperar 21 dias →</a>
     </div>
@@ -225,8 +225,28 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   document.getElementById('btn-upsell').addEventListener('click',function(e){
     e.preventDefault();
-    if(window.vortxTrack) vortxTrack('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
-    window.location.href='https://payment.ticto.app/UPSELL_LINK'+(n?'?name='+encodeURIComponent(n):'');
+    var eventId = null;
+    if (window.vortxTrackSync) {
+      eventId = window.vortxTrackSync('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
+    } else if (window.vortxTrack) {
+      vortxTrack('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
+    }
+    var checkoutUrl = 'https://checkout.ticto.app/O41BD3C90';
+    checkoutUrl += '?value=19&product=soro_120';
+    if (n) checkoutUrl += '&name=' + encodeURIComponent(n);
+    try {
+      var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
+      if (sck) checkoutUrl += '&sck=' + encodeURIComponent(sck);
+      if (window.vortxGetAttribution) {
+        var attr = window.vortxGetAttribution();
+        if (attr.fbclid) checkoutUrl += '&fbclid=' + encodeURIComponent(attr.fbclid);
+        if (attr.fbp)    checkoutUrl += '&fbp=' + encodeURIComponent(attr.fbp);
+        if (attr.fbc)    checkoutUrl += '&fbc=' + encodeURIComponent(attr.fbc);
+        if (eventId)     checkoutUrl += '&eid=' + encodeURIComponent(eventId);
+        if (attr.utm_campaign) checkoutUrl += '&src=' + encodeURIComponent(attr.utm_campaign);
+      }
+    } catch(_) {}
+    window.location.href = checkoutUrl;
   });
   document.getElementById('btn-skip').addEventListener('click',function(){
     if(window.vortxTrack) vortxTrack('upsell_decline',{product:'soro_120'});
