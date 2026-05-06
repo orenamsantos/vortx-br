@@ -636,6 +636,24 @@ a { color: var(--gold); text-decoration: none; }
   font-size: 0.9rem;
 }
 
+.whatsapp-ddi-fixed {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 58px;
+  padding: 0 12px;
+  background: rgba(255,255,255,0.04);
+  border-right: 1.5px solid var(--border-default);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  user-select: none;
+  white-space: nowrap;
+}
+
 .whatsapp-field {
   flex: 1;
   border: none !important;

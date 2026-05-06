@@ -4,6 +4,8 @@
 <!-- Google Tag Manager (Stape custom container) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
 <!-- End Google Tag Manager -->
+<!-- Ticto One-Click Funnel (flow oficial VORTX) -->
+<script src="https://midas.ticto.app/oneclickbuy.js?flow=205183b0-c660-4ffd-8992-8a0e2d62b223.109796" async></script>
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
@@ -198,9 +200,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <p class="guarantee-text">Faça o soro, espere 2 horas e se o tamanho não aumentar visivelmente e a firmeza não voltar com força, peça reembolso. Sem perguntas, sem rodeios.</p>
     </div>
     <div class="fade-up d9">
-      <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-upsell" rel="noopener">SIM, QUERO RESULTADO EM 7 DIAS<span class="btn-price">+ R$ 19</span></a>
+      <button type="button" class="btn ticto-upsell-button" id="btn-upsell" data-fallback-offer="O8EEBBCC0">SIM, QUERO RESULTADO EM 7 DIAS<span class="btn-price">+ R$ 19</span></button>
       <p class="btn-sub">Adicionado ao seu pedido VORTX • Acesso imediato • Garantia total</p>
-      <a href="cross-sell.html?src=vortx_funnel" class="btn-skip" id="btn-skip" rel="noopener">Não, prefiro esperar 21 dias pelo resultado →</a>
+      <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip">Não, prefiro esperar 21 dias pelo resultado →</button>
     </div>
   </div>
   <div class="footer"><div class="footer-logo">VORTX<span></span></div><p>Protocolo de Reversão Vascular Masculina</p></div>
@@ -223,34 +225,15 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:19});
   }
 
-  document.getElementById('btn-upsell').addEventListener('click',function(e){
-    e.preventDefault();
-    var eventId = null;
+  document.getElementById('btn-upsell').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      eventId = window.vortxTrackSync('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
+      window.vortxTrackSync('upsell_accept', {value:19, currency:'BRL', product:'soro_120'});
     } else if (window.vortxTrack) {
-      vortxTrack('upsell_accept',{value:19,currency:'BRL',product:'soro_120'});
+      window.vortxTrack('upsell_accept', {value:19, currency:'BRL', product:'soro_120'});
     }
-    var checkoutUrl = 'https://checkout.ticto.app/O41BD3C90';
-    checkoutUrl += '?value=19&product=soro_120';
-    if (n) checkoutUrl += '&name=' + encodeURIComponent(n);
-    try {
-      var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
-      if (sck) checkoutUrl += '&sck=' + encodeURIComponent(sck);
-      if (window.vortxGetAttribution) {
-        var attr = window.vortxGetAttribution();
-        if (attr.fbclid) checkoutUrl += '&fbclid=' + encodeURIComponent(attr.fbclid);
-        if (attr.fbp)    checkoutUrl += '&fbp=' + encodeURIComponent(attr.fbp);
-        if (attr.fbc)    checkoutUrl += '&fbc=' + encodeURIComponent(attr.fbc);
-        if (eventId)     checkoutUrl += '&eid=' + encodeURIComponent(eventId);
-        if (attr.utm_campaign) checkoutUrl += '&src=' + encodeURIComponent(attr.utm_campaign);
-      }
-    } catch(_) {}
-    window.location.href = checkoutUrl;
   });
-  document.getElementById('btn-skip').addEventListener('click',function(){
-    if(window.vortxTrack) vortxTrack('upsell_decline',{product:'soro_120'});
-    window.location.href='cross-sell.html?src=vortx_funnel'+(n?'&name='+encodeURIComponent(n):'');
+  document.getElementById('btn-skip').addEventListener('click', function(){
+    if (window.vortxTrack) window.vortxTrack('upsell_decline', {product:'soro_120'});
   });
 })();
 </script>
