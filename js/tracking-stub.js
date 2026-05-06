@@ -21,8 +21,8 @@ try {
 } catch(e){}
 
 // ── Geração de sck único por visitante ──────────────────────
-// Formato: latam_<timestamp_base36>_<random>
-// Ex: latam_kk2zr8w_a3f9k2m1xq2bz
+// Formato: br_<timestamp_base36>_<random>
+// Ex: br_kk2zr8w_a3f9k2m1xq2bz
 // Persistido em sessionStorage durante toda a jornada do funil (quiz → checkout).
 // É a chave que cruza dados client-side (gravados via Tag Stape Store Writer
 // no evento begin_checkout) com o webhook server-side da Ticto.
@@ -30,7 +30,7 @@ function generateSck(){
   var ts = Date.now().toString(36);
   var rnd = Math.random().toString(36).substr(2, 9);
   var rnd2 = Math.random().toString(36).substr(2, 4);
-  return "latam_" + ts + "_" + rnd + rnd2;
+  return "br_" + ts + "_" + rnd + rnd2;
 }
 
 window.vortxGetOrCreateSck = function(){

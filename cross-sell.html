@@ -134,7 +134,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="cross-header fade-up">
     <div class="icon">🔥</div>
     <div class="tag">🌙 ÚLTIMA PEÇA DO STACK</div>
-    <h1>O protocolo que funciona <em>enquanto você dorme</em></h1>
+    <h1>Enquanto você dorme, seus vasos podem se regenerar — <em>ou continuar entupindo</em></h1>
     <!-- Copy adapta-se via JS baseado em ?soro=sim ou ?soro=nao -->
     <p class="sub" id="cross-sub"></p>
   </div>
@@ -146,7 +146,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- BRIDGE LINE -->
   <div class="context fade-up" style="border-left-color:#C9A84C;margin-bottom:16px;">
-    <p>Os outros dois protocolos trabalham de dia. <strong>Esse trabalha 8 horas toda noite — enquanto você só dorme.</strong></p>
+    <p>Os outros dois protocolos trabalham de dia. <strong>Esse trabalha 8 horas toda noite — mesmo enquanto você só dorme. Quem pula esse passo demora o dobro pra ver resultado.</strong></p>
   </div>
 
   <!-- CONTEXTO ADAPTIVO -->
@@ -207,9 +207,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- CTA -->
   <div class="fade-up d6">
-    <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-cross" rel="noopener">ADICIONAR IGNIÇÃO AO STACK<span class="btn-price">R$ 14</span></a>
+    <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-cross" rel="noopener">ATIVAR REGENERAÇÃO NOTURNA<span class="btn-price">+ R$ 14</span></a>
     <p class="btn-sub">Adicionado ao seu pedido • Ativação vascular noturna • Garantia 30 dias</p>
-    <a href="downsell.html?src=vortx_funnel" class="btn-skip" id="btn-skip-final" rel="noopener">Completar pedido sem Ignição →</a>
+    <a href="downsell.html?src=vortx_funnel" class="btn-skip" id="btn-skip-final" rel="noopener">Não, prefiro deixar essas 56h/semana paradas →</a>
   </div>
 
   <div class="footer"><div class="footer-logo">VORTX<span></span></div><p>Protocolo de Reversão Vascular Masculina</p></div>
@@ -230,10 +230,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const ctxEl = document.getElementById('cross-context');
 
   if (soro === 'sim') {
-    subEl.textContent = 'Você já tomou a decisão certa 2 vezes. A terceira completa o stack — e trabalha enquanto você dorme.';
+    subEl.textContent = 'Você já acertou 2 vezes hoje. A terceira é a peça que trabalha as 8 horas que ninguém mais usa: as horas em que você dorme.';
     ctxEl.innerHTML = '<p>VORTX trabalha de dia. O Soro acelera as primeiras 2 horas. <strong>O Ignição usa as 8 horas de sono</strong> — são 56 horas extras por semana de ativação vascular que seu corpo não estava usando. Sem rotina adicional. Sem esforço extra.</p>';
   } else {
-    subEl.textContent = 'Não precisa de rotina nova. Esse protocolo se ativa quando você para de fazer qualquer coisa — quando dorme.';
+    subEl.textContent = 'Sem rotina nova. Sem soro. Sem suplemento. Esse protocolo trabalha quando seu corpo já está parado — durante o sono.';
     ctxEl.innerHTML = '<p>Enquanto o VORTX constrói o fluxo durante o dia, <strong>o Ignição força a regeneração vascular durante as 8 horas de sono</strong>. São 56 horas extras por semana onde seu corpo trabalha por você — sem fazer nada. Os homens que pulam esse passo demoram o dobro do tempo para ver resultados.</p>';
   }
 

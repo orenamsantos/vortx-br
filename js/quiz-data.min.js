@@ -1,13 +1,13 @@
 const BRAND={name:"VORTX",tagline:"Recuperação da Masculinidade",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"O problema que nenhum médico te explicou sobre os homens depois dos 35.",
-  subheadline:"Um cirurgião identificou a causa real — e o protocolo caseiro que reverte em 60 dias. Faça o teste de 2 minutos e descubra seu nível exato.",
-  cta:"COMEÇAR DIAGNÓSTICO",
-  timerStrip:"Teste anônimo de 2 minutos. O resultado vai te surpreender.",
+  headline:"Não é a idade. Não é a cabeça. É vascular — e seu urologista não vai te dizer.",
+  subheadline:"Se você passou dos 38 e percebeu que algo mudou — tamanho menor, firmeza fraca, duração caindo — não é hormônio, não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
+  cta:"DESCOBRIR MEU NÍVEL AGORA",
+  timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
   socialProof:"17.483 homens já reverteram. Resultado médio: 18 dias.",
   privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
-  badge:"Método validado por 17.483 homens em 14 países"
+  badge:"17.483 homens reverteram em média em 18 dias"
 },
 
 PHASES=[
@@ -168,10 +168,10 @@ STEPS=[
   },
   {
     id:11,phase:5,type:"whatsapp-input",
-    question:"Seu diagnóstico está pronto, {name}.",
-    microcopy:"Quer que eu envie pelo WhatsApp pra você guardar? É opcional — você pode ver o resultado sem isso.",
+    question:"Pra onde mando seu diagnóstico, {name}?",
+    microcopy:"Vou enviar o resumo pelo WhatsApp pra você guardar e revisar quando precisar. É opcional — você pode pular e ver o resultado direto na tela.",
     field:{name:"whatsapp",placeholder:"(11) 99999-9999"},
-    optIn:{text:"Sim, me enviar o resumo pelo WhatsApp (opcional)"},
+    optIn:{text:"Sim, quero receber meu diagnóstico no WhatsApp"},
     privacySeal:"🔒 Uma única mensagem. Sem spam. Total confidencialidade.",
     optional:true,
     weight:0
@@ -243,7 +243,7 @@ RESULT_DATA={
   }
 },
 
-BRIDGE_DATA={cta:"VER MEU PROTOCOLO DE REVERSÃO"},
+BRIDGE_DATA={cta:"VER COMO REVERTER MEU CASO"},
 
 PROTOCOL_DATA={
   headline:"O Protocolo de Reversão Vascular, Desenhado para o Seu Caso",
@@ -271,7 +271,7 @@ PROTOCOL_DATA={
     }
   ],
   seal:"Protocolo gerado com base no seu diagnóstico: acesso restrito",
-  cta:"VER O PREÇO DO MEU PROTOCOLO"
+  cta:"LIBERAR MEU PROTOCOLO AGORA"
 },
 
 TESTIMONIALS=[
@@ -377,11 +377,11 @@ const PRICING_DATA={
   urgencyText:"Esse preço desaparece em:",
   timerMinutes:8,
   checkoutCtaMap:{
-    parceira:"QUERO RECUPERAR MEU RELACIONAMENTO AGORA",
-    eu_mesmo:"QUERO ME RECUPERAR",
-    tudo:"QUERO MINHA VIDA DE VOLTA",
-    confianza:"QUERO MINHA CONFIANÇA DE VOLTA",
-    _default:"COMEÇAR AGORA"
+    parceira:"RECUPERAR MEU CASAMENTO HOJE",
+    eu_mesmo:"VOLTAR A SER HOMEM AGORA",
+    tudo:"REVERTER TUDO EM 60 DIAS",
+    confianza:"RECUPERAR MEU CORPO E MINHA CONFIANÇA",
+    _default:"LIBERAR MEU PROTOCOLO"
   },
   plans:[
     {
