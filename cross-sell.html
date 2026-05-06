@@ -4,6 +4,8 @@
 <!-- Google Tag Manager (Stape custom container) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
 <!-- End Google Tag Manager -->
+<!-- Ticto One-Click Funnel (flow oficial VORTX) -->
+<script src="https://midas.ticto.app/oneclickbuy.js?flow=205183b0-c660-4ffd-8992-8a0e2d62b223.109796" async></script>
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
@@ -207,9 +209,9 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- CTA -->
   <div class="fade-up d6">
-    <a href="https://checkout.ticto.app/O41BD3C90" class="btn" id="btn-cross" rel="noopener">ATIVAR REGENERAÇÃO NOTURNA<span class="btn-price">+ R$ 14</span></a>
+    <button type="button" class="btn ticto-upsell-button" id="btn-cross" data-fallback-offer="O13DB04F3">ATIVAR REGENERAÇÃO NOTURNA<span class="btn-price">+ R$ 14</span></button>
     <p class="btn-sub">Adicionado ao seu pedido • Ativação vascular noturna • Garantia 30 dias</p>
-    <a href="downsell.html?src=vortx_funnel" class="btn-skip" id="btn-skip-final" rel="noopener">Não, prefiro deixar essas 56h/semana paradas →</a>
+    <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip-final">Não, prefiro deixar essas 56h/semana paradas →</button>
   </div>
 
   <div class="footer"><div class="footer-logo">VORTX<span></span></div><p>Protocolo de Reversão Vascular Masculina</p></div>
@@ -241,35 +243,16 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
   if (isLegit) { if(window.vortxTrack) vortxTrack('crosssell_view',{product:'protocolo_ignicion',value:14,soro_purchased:soro==='sim'}); }
 
-  document.getElementById('btn-cross').addEventListener('click', function(e){
-    e.preventDefault();
-    var eventId = null;
+  document.getElementById('btn-cross').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      eventId = window.vortxTrackSync('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
+      window.vortxTrackSync('crosssell_accept', {value:14, currency:'BRL', product:'protocolo_ignicion'});
     } else if (window.vortxTrack) {
-      vortxTrack('crosssell_accept',{value:14,currency:'BRL',product:'protocolo_ignicion'});
+      window.vortxTrack('crosssell_accept', {value:14, currency:'BRL', product:'protocolo_ignicion'});
     }
-    var checkoutUrl = 'https://checkout.ticto.app/O41BD3C90';
-    checkoutUrl += '?value=14&product=protocolo_ignicion';
-    if (n) checkoutUrl += '&name=' + encodeURIComponent(n);
-    try {
-      var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
-      if (sck) checkoutUrl += '&sck=' + encodeURIComponent(sck);
-      if (window.vortxGetAttribution) {
-        var attr = window.vortxGetAttribution();
-        if (attr.fbclid) checkoutUrl += '&fbclid=' + encodeURIComponent(attr.fbclid);
-        if (attr.fbp)    checkoutUrl += '&fbp=' + encodeURIComponent(attr.fbp);
-        if (attr.fbc)    checkoutUrl += '&fbc=' + encodeURIComponent(attr.fbc);
-        if (eventId)     checkoutUrl += '&eid=' + encodeURIComponent(eventId);
-        if (attr.utm_campaign) checkoutUrl += '&src=' + encodeURIComponent(attr.utm_campaign);
-      }
-    } catch(_) {}
-    window.location.href = checkoutUrl;
   });
 
   document.getElementById('btn-skip-final').addEventListener('click', function(){
-    if(window.vortxTrack) vortxTrack('crosssell_decline',{product:'protocolo_ignicion'});
-    window.location.href = 'downsell.html?src=vortx_funnel' + (n ? '&name=' + encodeURIComponent(n) : '');
+    if (window.vortxTrack) window.vortxTrack('crosssell_decline', {product:'protocolo_ignicion'});
   });
 })();
 </script>
