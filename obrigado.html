@@ -214,7 +214,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const p=new URLSearchParams(window.location.search),n=p.get('name');
   if(n)document.getElementById('user-name').textContent=decodeURIComponent(n);
   // Track purchase of main product
-  var purchaseValue = Number(p.get('value')) || 27;
+  var purchaseValue = Number(p.get('value')) || 37;
   var purchasePlan = p.get('plan') || 'vitalicio';
   var purchaseProduct = purchasePlan === 'mensal' ? 'vortx_mensal' : 'vortx_protocol';
   // Só dispara eventos de conversão se a página foi acessada via fluxo legítimo
