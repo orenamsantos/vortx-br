@@ -1324,7 +1324,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
-          <div class="vsth-price"><span>R$</span>27</div>
+          <div class="vsth-price"><span>R$</span>37</div>
           <div class="vsth-tag">90% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
@@ -1348,7 +1348,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="guarantee-shield">🛡️</div>
         <div class="guarantee-badge">GARANTIA EM DOBRO</div>
         <div class="guarantee-title-big">Resultado visível em 30 dias — ou eu devolvo o DOBRO.</div>
-        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 27 + outros R$ 27 pelo meu erro. <strong>Total: R$ 54.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
+        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 37 + outros R$ 37 pelo meu erro. <strong>Total: R$ 74.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
         <div class="guarantee-small">Sem perguntas. Sem burocracia. Sem letrinha miúda.</div>
       </div>
 
@@ -1488,7 +1488,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vep-subtitle">Posso fazer uma coisa por você?</div>
           <div class="vep-body">
             <p><strong>Guardo seu diagnóstico de graça por 24 horas.</strong></p>
-            <p>O preço de <span class="vep-price-now">R$ 27</span> continua disponível se você decidir voltar. Depois disso, volta para <span class="vep-price-old">R$ 97</span>.</p>
+            <p>O preço de <span class="vep-price-now">R$ 37</span> continua disponível se você decidir voltar. Depois disso, volta para <span class="vep-price-old">R$ 97</span>.</p>
             <p class="vep-note">Mando pro seu WhatsApp — sem spam, uma única mensagem.</p>
           </div>
           <form class="vep-form" id="vep-form">
@@ -1554,7 +1554,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vep-success">
             <div class="vep-success-icon">✓</div>
             <div class="vep-success-title">Diagnóstico guardado!</div>
-            <p>Te mando o resumo em instantes. O preço de R$ 27 continua disponível por 24 horas.</p>
+            <p>Te mando o resumo em instantes. O preço de R$ 37 continua disponível por 24 horas.</p>
             <button class="vep-btn vep-btn-back" id="vep-stay">Continuar aqui e ver a oferta</button>
           </div>
         `;
