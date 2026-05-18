@@ -1661,6 +1661,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           if (eventId)  checkoutUrl += "&eid=" + encodeURIComponent(eventId);
           // src recebe utm_campaign (campo separado do sck, não conflita)
           if (attr.utm_campaign) checkoutUrl += "&src=" + encodeURIComponent(attr.utm_campaign);
+          // UTMs completos pra Ticto armazenar no painel + webhook Purchase
+          // (necessário pra ad_id chegar ao Meta CAPI)
+          if (attr.utm_source)  checkoutUrl += "&utm_source="  + encodeURIComponent(attr.utm_source);
+          if (attr.utm_medium)  checkoutUrl += "&utm_medium="  + encodeURIComponent(attr.utm_medium);
+          if (attr.utm_campaign) checkoutUrl += "&utm_campaign=" + encodeURIComponent(attr.utm_campaign);
+          if (attr.utm_content) checkoutUrl += "&utm_content=" + encodeURIComponent(attr.utm_content);
+          if (attr.utm_term)    checkoutUrl += "&utm_term="    + encodeURIComponent(attr.utm_term);
         }
       } catch (e) {}
 
