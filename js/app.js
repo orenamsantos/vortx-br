@@ -1391,6 +1391,14 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="fr-item">✉️ Acesso imediato por email</div>
         <div class="fr-item">🛡️ Garantia em dobro — 30 dias</div>
       </div>
+
+      <!-- Sticky CTA: aparece após o value-stack, some quando #btn-checkout entra na viewport.
+           Reaproveita o click handler de #btn-checkout via .click() (zero duplicação de lógica). -->
+      <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+        <button class="sticky-cta-btn" id="sticky-cta-btn" type="button">
+          Quero meu protocolo — R$ 37
+        </button>
+      </div>
     `;
 
     // Animated social counter
@@ -1683,6 +1691,48 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         window.location.href = checkoutUrl;
       }, 1400);
     });
+
+    // ── STICKY CTA ─────────────────────────────────────────────
+    // Aparece quando o usuário rolou abaixo do .value-stack e some
+    // quando o #btn-checkout original entra na viewport (não compete).
+    // O clique apenas dispara originalBtn.click() — reaproveita 100% do
+    // handler acima (1 único begin_checkout, mesma atribuição, mesma URL).
+    (function setupStickyCta(){
+      var stickyCta   = document.getElementById("sticky-cta");
+      var stickyBtn   = document.getElementById("sticky-cta-btn");
+      var valueStack  = document.querySelector(".value-stack");
+      var originalBtn = document.getElementById("btn-checkout");
+      if (!stickyCta || !stickyBtn || !valueStack || !originalBtn) return;
+      if (typeof IntersectionObserver === "undefined") return;
+
+      stickyBtn.addEventListener("click", function () {
+        originalBtn.click();
+      });
+
+      var pastStack = false, btnVisible = false;
+      function apply() {
+        var show = pastStack && !btnVisible;
+        stickyCta.classList.toggle("visible", show);
+        stickyCta.setAttribute("aria-hidden", show ? "false" : "true");
+      }
+
+      // Mostra quando o usuário rolou abaixo do value-stack (bottom acima da viewport).
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          pastStack = !e.isIntersecting && e.boundingClientRect.bottom < 0;
+          apply();
+        });
+      }, { threshold: 0 }).observe(valueStack);
+
+      // Esconde quando o botão original está visível na tela.
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          btnVisible = e.isIntersecting;
+          apply();
+        });
+      }, { threshold: 0.1 }).observe(originalBtn);
+    })();
+
     startPricingTimer();
   }
 
