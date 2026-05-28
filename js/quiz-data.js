@@ -15,7 +15,7 @@ PHASES=[
   {id:2,label:"PERFIL",steps:[3,4]},
   {id:3,label:"SINTOMAS",steps:[5,6,7,8,9]},
   {id:4,label:"HÁBITOS",steps:[10]},
-  {id:5,label:"VEREDITO",steps:[11,12]}
+  {id:5,label:"VEREDITO",steps:[12]}
 ],
 
 STEPS=[
@@ -165,16 +165,6 @@ STEPS=[
       _any_except_nenhum:"🛑 {name}, cada um desses hábitos fecha os vasos do pênis. Quantos mais marcou, mais bloqueado está."
     },
     weight:8,category:"habitos",scoreLogic:"count-negative"
-  },
-  {
-    id:11,phase:5,type:"whatsapp-input",
-    question:"Pra onde mando seu diagnóstico, {name}?",
-    microcopy:"Vou enviar o resumo pelo WhatsApp pra você guardar e revisar quando precisar. É opcional. Você pode pular e ver o resultado direto na tela.",
-    field:{name:"whatsapp",placeholder:"(11) 99999-9999"},
-    optIn:{text:"Sim, quero receber meu diagnóstico no WhatsApp"},
-    privacySeal:"🔒 Uma única mensagem. Sem spam. Total confidencialidade.",
-    optional:true,
-    weight:0
   },
   {
     id:12,phase:5,type:"single-select",

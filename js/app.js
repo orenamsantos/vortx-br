@@ -1835,7 +1835,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
       <div class="thankyou-steps">${stepsHtml}</div>
       <button class="btn-cta" id="btn-access-app">${THANKYOU_DATA.cta}</button>
-      <p class="body-sm" style="text-align:center;">Diagnóstico enviado para o WhatsApp <strong>${state.userData.whatsapp || "informado"}</strong></p>
     `;
     document.getElementById("btn-access-app").addEventListener("click", () => { /* CHECKOUT */ });
     if (state.timerInterval) clearInterval(state.timerInterval);
