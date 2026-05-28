@@ -1101,7 +1101,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <p class="result-description">${zone.description}</p>
       <div class="result-critical-areas">${areasHtml}</div>
       <div class="result-urgency-block">
-        <p class="result-urgency-text">Seus vasos estão se fechando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos sangue, menos tamanho, menos duração — e esse grau ainda tem reversão, mas não pra sempre.</p>
+        <p class="result-urgency-text">Seus vasos estão se fechando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos sangue, menos tamanho, menos duração. E esse grau ainda tem reversão, mas não pra sempre.</p>
         <p class="result-urgency-subtext">O protocolo de reversão vascular foi calibrado pro seu perfil exato.</p>
       </div>
       <div style="width:100%;padding:20px 0;display:flex;justify-content:center;">
@@ -1141,13 +1141,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     let bridgeText;
     if (score <= 35) {
-      bridgeText = `${name}, seus vasos estão quase fechados — mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`;
+      bridgeText = `${name}, seus vasos estão quase fechados. Mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`;
     } else if (score <= 60) {
       bridgeText = `${name}, seus vasos estão se fechando, mês a mês. O tamanho já caiu. A duração já encurtou. O protocolo de reversão vascular está calibrado pro seu grau exato de bloqueio. Mas cada mês sem agir fecha mais um vaso.`;
     } else if (score <= 80) {
       bridgeText = `${name}, a queda ainda é sutil, mas está acelerando. Em 2-3 anos sem intervenção, o dano fica irreversível. O protocolo freia a queda e maximiza o fluxo sanguíneo ao pênis enquanto ainda dá tempo.`;
     } else {
-      bridgeText = `${name}, seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção — enquanto os outros ao seu redor vão perdendo.`;
+      bridgeText = `${name}, seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção. Enquanto os outros ao seu redor vão perdendo.`;
     }
 
     document.getElementById("bridge").innerHTML = `
@@ -1274,7 +1274,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const pricingHeadline = score <= 35
       ? `${name ? name + ", seus" : "Seus"} vasos estão quase fechados. Essa é a última janela.`
       : score <= 60
-      ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível — mas não por muito tempo.`
+      ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível. Mas não por muito tempo.`
       : `${name ? name + ", o" : "O"} protocolo vascular está pronto. Só falta você.`;
 
     document.getElementById("pricing").innerHTML = `
@@ -1295,7 +1295,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
 
       <div class="pricing-anchor-block">
-        <p class="pricing-anchor-text">Cada mês sem agir você perde mais tamanho, mais firmeza, mais duração. Em 12 meses o dano fica irreversível — e o custo de não agir é perder o que te faz homem.</p>
+        <p class="pricing-anchor-text">Cada mês sem agir você perde mais tamanho, mais firmeza, mais duração. Em 12 meses o dano fica irreversível. O custo de não agir é perder o que te faz homem.</p>
       </div>
 
       <!-- HORMOZI VALUE STACK -->

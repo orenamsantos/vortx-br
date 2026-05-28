@@ -1,8 +1,8 @@
 const BRAND={name:"VORTX",tagline:"Recuperação da Masculinidade",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"Não é a idade. Não é a cabeça. É vascular — e seu urologista não vai te dizer.",
-  subheadline:"Se você passou dos 38 e percebeu que algo mudou — tamanho menor, firmeza fraca, duração caindo — não é hormônio, não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
+  headline:"Não é a idade. Não é a cabeça. É vascular. Seu urologista não vai te dizer.",
+  subheadline:"Se você passou dos 35 e percebeu que algo mudou. Tamanho menor, firmeza fraca, duração caindo. Não é hormônio. Não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
   cta:"DESCOBRIR MEU NÍVEL AGORA",
   timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
   socialProof:"17.483 homens já reverteram. Resultado médio: 18 dias.",
@@ -32,7 +32,7 @@ STEPS=[
   },
   {
     id:2,phase:1,type:"single-select",
-    question:"73% dos homens acima de 35 têm isso — e os médicos não detectam.",
+    question:"73% dos homens acima de 35 têm isso. E os médicos não detectam.",
     microcopy:"O problema não é hormonal. É 3 vezes mais comum do que dizem. Você sabia?",
     options:[
       {value:"no_sabia",label:"Não, nunca tinha ouvido falar",icon:"🧐"},
@@ -40,9 +40,9 @@ STEPS=[
       {value:"quiero_saber",label:"Quero saber exatamente o que é",icon:"🔓"}
     ],
     triggers:{
-      "no_sabia":"🛑 Isso é exatamente o que as farmacêuticas não querem que você saiba. Continue — você vai entender.",
+      "no_sabia":"🛑 Isso é exatamente o que as farmacêuticas não querem que você saiba. Continue. Você vai entender.",
       "sospechaba":"⚡ Sua intuição está certa. O teste vai confirmar exatamente o que está acontecendo no seu corpo.",
-      "quiero_saber":"🔥 Bom. Responda as próximas perguntas com honestidade — o diagnóstico depende disso."
+      "quiero_saber":"🔥 Bom. Responda as próximas perguntas com honestidade. O diagnóstico depende disso."
     },
     weight:0
   },
@@ -66,11 +66,11 @@ STEPS=[
       {value:"60-65",label:"60 a 65 anos",icon:"🛑"}
     ],
     triggers:{
-      "35-39":"⚠ {name}, a maioria percebe depois dos 40. Você está descobrindo antes — isso muda tudo.",
+      "35-39":"⚠ {name}, a maioria percebe depois dos 40. Você está descobrindo antes. Isso muda tudo.",
       "40-44":"⚠ {name}, nessa idade o corpo já começou a reduzir o fluxo. Em 3 anos você não vai se reconhecer.",
-      "45-49":"🚨 {name}, o fluxo já caiu pela metade e o encolhimento já é visível — mas ainda tem solução.",
+      "45-49":"🚨 {name}, o fluxo já caiu pela metade e o encolhimento já é visível. Mas ainda tem solução.",
       "50-54":"🛑 {name}, depois dos 50 o corpo perdeu metade da capacidade. Existe uma forma de reverter.",
-      "55-59":"🛑 Faixa crítica, {name}. Os vasos estão se fechando mês a mês — mas você ainda está aqui.",
+      "55-59":"🛑 Faixa crítica, {name}. Os vasos estão se fechando mês a mês. Mas você ainda está aqui.",
       "60-65":"🛑 Situação grave. Vasos quase bloqueados, mas homens de 63 anos já reverteram com o protocolo."
     },
     weight:0
@@ -98,7 +98,7 @@ STEPS=[
     ],
     triggers:{
       nunca:"🛑 {name}, sem ereção matinal os vasos estão bloqueados. Por isso parece menor. O protocolo reverte isso.",
-      raro:"⚠ {name}, vasos comprometidos — o sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
+      raro:"⚠ {name}, vasos comprometidos. O sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
     },
     weight:20,category:"libido"
   },
@@ -113,7 +113,7 @@ STEPS=[
     ],
     triggers:{
       fujo:"🛑 {name}, fugir da sua parceira destrói um homem por dentro. Quanto mais foge, pior fica. Mas tem saída.",
-      falho:"🚨 O sangue entra mas não fica — vasos fracos. O protocolo corrige exatamente isso."
+      falho:"🚨 O sangue entra mas não fica. Vasos fracos. O protocolo corrige exatamente isso."
     },
     weight:15,category:"libido"
   },
@@ -127,7 +127,7 @@ STEPS=[
       {value:"peito",label:"Peito inchado, parecido com seios",icon:"🍎"},
       {value:"braco",label:"Braços finos, sem músculo",icon:"📏"},
       {value:"rosto",label:"Rosto inchado, sem definição",icon:"🌝"},
-      {value:"nenhuma",label:"Nenhuma dessas — estou bem",icon:"✅"}
+      {value:"nenhuma",label:"Nenhuma dessas. Estou bem",icon:"✅"}
     ],
     triggers:{
       _any_except_nenhuma:"🛑 {name}, essa gordura fabrica hormônio feminino dentro de você agora. É o que encolhe, amolece e tira o controle."
@@ -169,7 +169,7 @@ STEPS=[
   {
     id:11,phase:5,type:"whatsapp-input",
     question:"Pra onde mando seu diagnóstico, {name}?",
-    microcopy:"Vou enviar o resumo pelo WhatsApp pra você guardar e revisar quando precisar. É opcional — você pode pular e ver o resultado direto na tela.",
+    microcopy:"Vou enviar o resumo pelo WhatsApp pra você guardar e revisar quando precisar. É opcional. Você pode pular e ver o resultado direto na tela.",
     field:{name:"whatsapp",placeholder:"(11) 99999-9999"},
     optIn:{text:"Sim, quero receber meu diagnóstico no WhatsApp"},
     privacySeal:"🔒 Uma única mensagem. Sem spam. Total confidencialidade.",
@@ -211,7 +211,7 @@ RESULT_DATA={
       min:0,max:35,
       label:"COMPROMETIDO",
       color:"#C44B4B",
-      description:"Seus vasos estão severamente bloqueados — o sangue não chega ao pênis: tamanho reduzido, firmeza zero, duração de segundos. Mas existe um protocolo que força o sangue a voltar."
+      description:"Seus vasos estão severamente bloqueados. O sangue não chega ao pênis: tamanho reduzido, firmeza zero, duração de segundos. Mas existe um protocolo que força o sangue a voltar."
     },
     {
       min:36,max:60,
@@ -223,7 +223,7 @@ RESULT_DATA={
       min:61,max:80,
       label:"EM RISCO SILENCIOSO",
       color:"#C9A84C",
-      description:"Seus vasos ainda funcionam mas já estão perdendo eficiência. Sem intervenção, a queda vai acelerar nos próximos 12 meses — e quando perceber, vai ser mais difícil reverter."
+      description:"Seus vasos ainda funcionam mas já estão perdendo eficiência. Sem intervenção, a queda vai acelerar nos próximos 12 meses. Quando perceber, vai ser mais difícil reverter."
     },
     {
       min:81,max:100,
@@ -257,7 +257,7 @@ PROTOCOL_DATA={
     {
       icon:"⏱️",
       title:"Dure 3 vezes mais — sem terminar antes",
-      desc:"O protocolo fortalece o músculo PC e regula o fluxo. Resultado: você decide quando termina — não seu corpo."
+      desc:"O protocolo fortalece o músculo PC e regula o fluxo. Resultado: você decide quando termina. Não seu corpo."
     },
     {
       icon:"🔩",
@@ -285,7 +285,7 @@ TESTIMONIALS=[
   {
     initials:"Roberto Q.",age:44,occupation:"Investidor, Rio de Janeiro",
     photo:"img/testimonials/roberto-q.jpg",
-    text:"Meu pênis tinha encolhido e eu terminava em 2 minutos. Era vascular — o protocolo me devolveu centímetros e controle total.",
+    text:"Meu pênis tinha encolhido e eu terminava em 2 minutos. Era vascular. O protocolo me devolveu centímetros e controle total.",
     result:"Tamanho e duração de volta",highlight:"+ Controle total restaurado",
     painTags:["parceira","eu_mesmo","tudo"]
   },
