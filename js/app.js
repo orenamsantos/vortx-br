@@ -12,6 +12,27 @@
 (function () {
   "use strict";
 
+// ── Helpers de foco em input (iOS bloqueia focus() programático fora de gesto) ──
+// Detecta iPad/iPhone/iPod + iPad moderno (MacIntel + touch).
+var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function safeFocus(input) {
+  if (isIOS) return; // iOS: o usuário precisa tocar; focus auto é ignorado
+  setTimeout(function () { input.focus(); }, 400);
+}
+
+// Aciona o botão Continuar quando o usuário pressiona Enter no input
+// (em mobile, "Done"/"Go" no teclado dispara sem precisar fechar o teclado).
+function bindEnterToContinue(input) {
+  input.addEventListener("keydown", function (ev) {
+    if (ev.key === "Enter") {
+      ev.preventDefault();
+      var btn = document.getElementById("btn-continue");
+      if (btn && !btn.disabled) btn.click();
+    }
+  });
+}
+
 // ═══════════════════════════════════════════════════════════════
 // CLIENT-SIDE TRACKING DISABLED — server-side será implementado externamente.
 // Stubs no-op para preservar todas as chamadas existentes sem quebrar o código.
@@ -617,7 +638,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         if (step.field.name === "userName") state.userData.name = this.value.trim();
         state.answers[step.id] = this.value.trim();
       });
-      setTimeout(() => input.focus(), 400);
+      safeFocus(input);
+      bindEnterToContinue(input);
     }
 
     if (step.type === "email-input") {
@@ -628,7 +650,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         state.userData.email = this.value.trim();
         state.answers[step.id] = this.value.trim();
       });
-      setTimeout(() => input.focus(), 400);
+      safeFocus(input);
+      bindEnterToContinue(input);
       document.getElementById("optin-toggle")?.addEventListener("click", () => {
         const check = document.getElementById("optin-check");
         check.classList.toggle("checked");
@@ -731,7 +754,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         updateWhatsappState();
       });
 
-      setTimeout(() => input.focus(), 400);
+      safeFocus(input);
+      bindEnterToContinue(input);
 
       // ── Opt-in toggle ─────────────────────────────────────────────────
       document.getElementById("optin-toggle")?.addEventListener("click", () => {
