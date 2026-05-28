@@ -1,7 +1,7 @@
 const BRAND={name:"VORTX",tagline:"Recuperação da Masculinidade",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"Não é a idade. Não é a cabeça. É vascular. Seu urologista não vai te dizer.",
+  headline:"Não é a idade. Não é a cabeça. É vascular. E seu urologista não vai te dizer.",
   subheadline:"Se você passou dos 35 e percebeu que algo mudou. Tamanho menor, firmeza fraca, duração caindo. Não é hormônio. Não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
   cta:"DESCOBRIR MEU NÍVEL AGORA",
   timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
