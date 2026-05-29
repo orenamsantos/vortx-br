@@ -1343,13 +1343,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </div>
 
         <div class="value-stack-total">
-          <div class="vst-label">VALOR TOTAL:</div>
+          <div class="vst-label">VALOR SE COMPRADO SEPARADO:</div>
           <div class="vst-old">R$ 259</div>
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
-          <div class="vsth-price"><span>R$</span>37</div>
-          <div class="vsth-tag">90% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-price"><span>R$</span>47</div>
+          <div class="vsth-tag">81% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
@@ -1372,7 +1372,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="guarantee-shield">🛡️</div>
         <div class="guarantee-badge">GARANTIA EM DOBRO</div>
         <div class="guarantee-title-big">Resultado visível em 30 dias — ou eu devolvo o DOBRO.</div>
-        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 37 + outros R$ 37 pelo meu erro. <strong>Total: R$ 74.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
+        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 47 + outros R$ 47 pelo meu erro. <strong>Total: R$ 94.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
         <div class="guarantee-small">Sem perguntas. Sem burocracia. Sem letrinha miúda.</div>
       </div>
 
@@ -1381,17 +1381,17 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="wa-test-header">📱 Mensagens reais de clientes</div>
         <div class="wa-test-grid">
           <div class="wa-placeholder" data-slot="1">
-            <!-- Insert WhatsApp screenshot #1 here (upload to /img/wa1.jpg) -->
-            <img src="img/wa1.jpg" alt="Mensagem de cliente" loading="lazy" onerror="this.style.display='none'">
+            <!-- Insert WhatsApp screenshot #1 here (upload to /img/wa1.webp) -->
+            <img src="img/wa1.webp" alt="Mensagem de cliente" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <div class="wa-placeholder" data-slot="2">
-            <img src="img/wa2.jpg" alt="Mensagem de cliente" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/wa2.webp" alt="Mensagem de cliente" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <div class="wa-placeholder" data-slot="3">
-            <img src="img/wa3.jpg" alt="Mensagem de cliente" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/wa3.webp" alt="Mensagem de cliente" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
           <div class="wa-placeholder" data-slot="4">
-            <img src="img/wa4.jpg" alt="Mensagem de cliente" loading="lazy" onerror="this.style.display='none'">
+            <img src="img/wa4.webp" alt="Mensagem de cliente" loading="lazy" decoding="async" onerror="this.style.display='none'">
           </div>
         </div>
       </div>
@@ -1420,7 +1420,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
            Reaproveita o click handler de #btn-checkout via .click() (zero duplicação de lógica). -->
       <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
         <button class="sticky-cta-btn" id="sticky-cta-btn" type="button">
-          Quero meu protocolo — R$ 37
+          Quero meu protocolo — R$ 47
         </button>
       </div>
     `;
@@ -1520,7 +1520,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vep-subtitle">Posso fazer uma coisa por você?</div>
           <div class="vep-body">
             <p><strong>Guardo seu diagnóstico de graça por 24 horas.</strong></p>
-            <p>O preço de <span class="vep-price-now">R$ 37</span> continua disponível se você decidir voltar. Depois disso, volta para <span class="vep-price-old">R$ 97</span>.</p>
+            <p>O preço de <span class="vep-price-now">R$ 47</span> continua disponível se você decidir voltar. Depois disso, volta para <span class="vep-price-old">R$ 197</span>.</p>
             <p class="vep-note">Mando pro seu WhatsApp — sem spam, uma única mensagem.</p>
           </div>
           <form class="vep-form" id="vep-form">
@@ -1586,7 +1586,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vep-success">
             <div class="vep-success-icon">✓</div>
             <div class="vep-success-title">Diagnóstico guardado!</div>
-            <p>Te mando o resumo em instantes. O preço de R$ 37 continua disponível por 24 horas.</p>
+            <p>Te mando o resumo em instantes. O preço de R$ 47 continua disponível por 24 horas.</p>
             <button class="vep-btn vep-btn-back" id="vep-stay">Continuar aqui e ver a oferta</button>
           </div>
         `;
