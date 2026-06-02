@@ -63,7 +63,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // Continua validando acesso direto às thank-you pages (independente de pixel)
   try {
     var params = new URLSearchParams(window.location.search);
-    // (hottok removido — migrado para PerfectPay)
+    // (hottok removido — checkout via Ticto)
     if (/^HP[A-Z0-9]{6,}/i.test(params.get("transaction")||"")) return true;
     if (params.get("src") === "vortx_funnel") return true;
     var ref = document.referrer || "";
@@ -1601,7 +1601,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     }
 
     // ── CHECKOUT TRANSITION SCREEN ────────────────────────────
-    // Tela de preparação mental antes do redirect para PerfectPay
+    // Tela de preparação mental antes do redirect para o Ticto
     function showCheckoutTransition() {
       var existing = document.getElementById("checkout-transition");
       if (existing) return;
