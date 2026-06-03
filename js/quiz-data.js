@@ -260,8 +260,8 @@ PROTOCOL_DATA={
       desc:"Quando os vasos abrem e os hormônios se equilibram, o desejo volta como uma onda. Sua parceira sente antes de você."
     }
   ],
-  seal:"Protocolo gerado com base no seu diagnóstico: acesso restrito",
-  cta:"LIBERAR MEU PROTOCOLO AGORA"
+  seal:"Seu protocolo já está montado no app VORTX, com base no seu diagnóstico. Acesso restrito.",
+  cta:"ABRIR MEU PROTOCOLO AGORA"
 },
 
 TESTIMONIALS=[

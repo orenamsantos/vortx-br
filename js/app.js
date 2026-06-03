@@ -1300,7 +1300,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <!-- HORMOZI VALUE STACK -->
       <div class="value-stack">
-        <div class="value-stack-header">O QUE VOCÊ RECEBE HOJE:</div>
+        <div class="value-stack-header">O QUE VOCÊ DESBLOQUEIA HOJE NO APP VORTX:</div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
@@ -1313,7 +1313,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
             <div class="vsi-title">Protocolo Vascular de 21 Dias</div>
-            <div class="vsi-desc">As 4 rotinas — quase nenhuma leva mais de 4 minutos por dia</div>
+            <div class="vsi-desc">As 4 rotinas organizadas dia a dia no app, quase nenhuma leva mais de 4 minutos</div>
           </div>
           <div class="vsi-price">R$ 97</div>
         </div>
@@ -1336,8 +1336,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🎁</div>
           <div class="vsi-content">
-            <div class="vsi-title">BÔNUS: Acesso vitalício</div>
-            <div class="vsi-desc">Todas as atualizações futuras incluídas — sem custo extra</div>
+            <div class="vsi-title">BÔNUS: O app é seu pra sempre</div>
+            <div class="vsi-desc">O app fica no seu celular com acesso vitalício, e toda atualização nova já entra liberada</div>
           </div>
           <div class="vsi-price">R$ 47</div>
         </div>
@@ -1404,6 +1404,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <div class="checkout-cta-block">
         <a href="https://checkout.ticto.app/O7AAE3550" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
+        <p class="checkout-sub">Em 2 minutos o app tá aberto no seu celular. Amanhã de manhã você já sabe exatamente o que fazer.</p>
         <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia em DOBRO — 30 dias</p>
         <div class="payment-methods">
           ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
