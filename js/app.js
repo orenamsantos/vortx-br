@@ -1215,6 +1215,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <h2 class="heading-xl">${headline}</h2>
         <p class="body-md" style="margin-top:8px;">${PROTOCOL_DATA.subheadline}</p>
       </div>
+      <div style="display:flex;justify-content:center;margin:18px 0 4px;">
+        <img src="img/app-mockup.webp" alt="App VORTX: seu protocolo dia a dia no celular" width="260" height="713" loading="lazy" decoding="async" style="width:260px;max-width:72%;height:auto;border-radius:22px;box-shadow:0 18px 50px -18px rgba(0,0,0,.7);border:1px solid rgba(212,175,55,.28);">
+      </div>
+      <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular</p>
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
