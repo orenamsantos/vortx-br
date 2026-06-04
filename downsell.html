@@ -19,7 +19,7 @@
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
     var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
-    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto/i.test(referer);
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto|ticto\.app/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {
