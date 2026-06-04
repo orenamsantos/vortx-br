@@ -88,6 +88,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .6s ease forwards}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}
+.ds-timer{text-align:center;margin-bottom:24px}
+.ds-timer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(212,148,10,.08);border:1px solid rgba(212,148,10,.2);border-radius:var(--r-btn);font-family:var(--ff-m);font-size:.85rem;font-weight:600;color:var(--amber)}
 </style>
   <script defer src="js/tracking-stub.min.js?v=2"></script>
 </head>
@@ -99,6 +101,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     <div class="tag">UM MOMENTO</div>
     <h1>Tudo bem, <em>não precisa levar tudo de uma vez</em>.</h1>
     <p class="sub">Mas antes de fechar, tem a versão mais enxuta do que acelera seu resultado, e custa <strong>menos que um almoço</strong>.</p>
+  </div>
+
+  <div class="ds-timer fade-up">
+    <div class="ds-timer-badge">⏱ Essa oferta sai do ar em <span id="ds-timer">05:00</span></div>
   </div>
 
   <div class="alert-box fade-up d1">
@@ -153,6 +159,10 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
 <script>
 (function(){
+  // Timer visual (paridade com obrigado/cross), nao toca tracking
+  var sec=5*60;var tEl=document.getElementById('ds-timer');
+  var tIv=setInterval(function(){sec--;if(sec<=0){clearInterval(tIv);sec=0}var m=Math.floor(sec/60),s=sec%60;tEl.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(sec<=60)tEl.style.color='#C44B4B'},1e3);
+
   const p = new URLSearchParams(window.location.search);
   const n = p.get('name');
 
