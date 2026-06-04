@@ -49,7 +49,7 @@ STEPS=[
   {
     id:3,phase:2,type:"text-input",
     question:"Como devo te chamar?",
-    microcopy:"Preciso do seu nome para que o diagnóstico faça sentido pra você.",
+    microcopy:"Só o seu primeiro nome. O diagnóstico que vem a seguir é seu, e eu quero te chamar pelo nome enquanto te mostro o que travou. Fica entre nós, ninguém mais vê.",
     field:{name:"userName",placeholder:"Seu primeiro nome...",maxLength:30},
     weight:0
   },
@@ -169,7 +169,7 @@ STEPS=[
   {
     id:12,phase:5,type:"single-select",
     question:"Última pergunta, {name}. Por quem você está fazendo isso?",
-    microcopy:"Isso muda o foco do seu protocolo.",
+    microcopy:"Guarda esse motivo. Daqui a 2 minutos ele vai ser o que te faz começar hoje, e não 'segunda que vem'.",
     options:[
       {value:"parceira",label:"Pela minha parceira. Quero voltar à altura",icon:"💑"},
       {value:"eu_mesmo",label:"Por mim. Quero me sentir homem de novo",icon:"🦾"},
@@ -237,7 +237,7 @@ BRIDGE_DATA={cta:"VER COMO REVERTER MEU CASO"},
 
 PROTOCOL_DATA={
   headline:"O Protocolo de Reversão Vascular, Desenhado para o Seu Caso",
-  subheadline:"Sem cirurgia, sem pílulas, sem bomba: o método que destampa os vasos e faz o sangue voltar com pressão total.",
+  subheadline:"Sem cirurgia, sem pílulas, sem bomba: o método que destampa os vasos e faz o sangue voltar com pressão total. Montado dia a dia no app VORTX, no seu celular, pro seu diagnóstico: você abre e já sabe exatamente o que fazer hoje.",
   features:[
     {
       icon:"🍆",
@@ -261,7 +261,7 @@ PROTOCOL_DATA={
     }
   ],
   seal:"Seu protocolo já está montado no app VORTX, com base no seu diagnóstico. Acesso restrito.",
-  cta:"ABRIR MEU PROTOCOLO AGORA"
+  cta:"QUERO DESTRAVAR ISSO AGORA"
 },
 
 TESTIMONIALS=[

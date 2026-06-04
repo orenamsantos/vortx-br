@@ -1236,10 +1236,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const painArea  = state.answers[12];
     const name      = state.userData.name || "";
+    const motivationCta = (PRICING_DATA.checkoutCtaMap && (PRICING_DATA.checkoutCtaMap[painArea] || PRICING_DATA.checkoutCtaMap._default)) || "LIBERAR MEU PROTOCOLO";
     const buildCheckoutCta = (planId) => {
       const plan = PRICING_DATA.plans.find((p) => p.id === planId);
       if (!plan) return "";
-      return `<span style="display:block;font-size:0.65rem;letter-spacing:2px;opacity:0.7;margin-bottom:2px;">${plan.ctaTag}</span>${plan.ctaLabel}<br><span style="display:block;font-size:1.4rem;margin-top:4px;">R$ ${plan.price}</span>`;
+      return `<span style="display:block;font-size:0.65rem;letter-spacing:2px;opacity:0.7;margin-bottom:2px;">${plan.ctaTag}</span>${motivationCta}<br><span style="display:block;font-size:1.4rem;margin-top:4px;">R$ ${plan.price}</span>`;
     };
 
     const plansHtml = PRICING_DATA.plans.map((plan) => {
@@ -1421,7 +1422,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
            Reaproveita o click handler de #btn-checkout via .click() (zero duplicação de lógica). -->
       <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
         <button class="sticky-cta-btn" id="sticky-cta-btn" type="button">
-          Quero meu protocolo — R$ 37
+          ${motivationCta} · R$ ${selectedPrice}
         </button>
       </div>
     `;
