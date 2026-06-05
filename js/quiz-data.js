@@ -5,9 +5,9 @@ GATE_DATA={
   subheadline:"Se você passou dos 35 e percebeu que algo mudou. Tamanho menor, firmeza fraca, duração caindo. Não é hormônio. Não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
   cta:"DESCOBRIR MEU NÍVEL AGORA",
   timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
-  socialProof:"17.483 homens já reverteram. Resultado médio: 18 dias.",
+  socialProof:"17.483 homens já reverteram. Resultado médio: 21 dias.",
   privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
-  badge:"17.483 homens reverteram em média em 18 dias"
+  badge:"17.483 homens reverteram em média em 21 dias"
 },
 
 PHASES=[
@@ -22,11 +22,11 @@ STEPS=[
   {
     id:1,phase:1,type:"single-select",
     question:"Vamos ser honestos por 10 segundos.",
-    microcopy:"Você nota que seu corpo já não responde como antes dos 35?",
+    microcopy:"Passou dos 35 e algo mudou. O que mais pesa em você?",
     options:[
-      {value:"si_molesta",label:"Sim, e me incomoda mais do que admito",icon:"💭"},
-      {value:"si_activo",label:"Sim, e por isso estou aqui",icon:"🎯"},
-      {value:"si_empezando",label:"Sim, está começando e quero agir antes",icon:"⚡"}
+      {value:"si_molesta",label:"Perdi firmeza ou tamanho",icon:"🔥"},
+      {value:"si_activo",label:"Não duro como antes",icon:"⏱️"},
+      {value:"si_empezando",label:"Sinto que tá começando agora",icon:"⚡"}
     ],
     weight:0
   },
@@ -181,7 +181,7 @@ STEPS=[
 ],
 
 LOADING_DATA={
-  headline:"Analisando o mapa vascular de {name}...",
+  headline:"Analisando seu mapa vascular, {name}...",
   duration:12e3,
   messages:[
     "Cruzando seus sintomas com o banco de dados...",
@@ -195,7 +195,7 @@ LOADING_DATA={
 },
 
 RESULT_DATA={
-  headlineTemplate:"O diagnóstico de {name} está pronto.",
+  headlineTemplate:"Seu diagnóstico está pronto, {name}.",
   scoreZones:[
     {
       min:0,max:35,
@@ -217,8 +217,8 @@ RESULT_DATA={
     },
     {
       min:81,max:100,
-      label:"EM RISCO SILENCIOSO",
-      color:"#C9A84C",
+      label:"ALERTA PRECOCE",
+      color:"#7FA86B",
       description:"Seu sistema ainda responde, mas os fatores de risco já estão ativos. Sem protocolo, a queda acelera nos próximos 12 meses. O momento de agir é agora, não depois."
     }
   ],

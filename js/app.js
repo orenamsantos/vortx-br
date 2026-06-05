@@ -111,7 +111,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       headline: 'O mapa vascular de <span class="highlight">{name}</span> não é animador.',
       getText: () => {
         const pastilla = state.answers[9];
-        const nome     = state.userData.name || "tú";
+        const nome     = state.userData.name || "guerreiro";
         if (pastilla === "viciado") {
           return `${nome}, seu corpo criou dependência química. Sem a pílula, nada funciona. Mas dá pra reativar sem química.`;
         }
@@ -128,7 +128,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       emoji: "🔴",
       headline: 'Você vai ver um número agora. <span class="highlight">Revela quanto seus vasos se fecharam.</span>',
       getText: () => {
-        const nome = state.userData.name || "tú";
+        const nome = state.userData.name || "guerreiro";
         return `${nome}, o sistema cruzou suas respostas com 17.483 diagnósticos. Alguns homens ficam em choque, outros sentem alívio. Prepare-se.`;
       },
       stat: "A maioria dos homens nunca soube que esse número existia.",
@@ -219,7 +219,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function getCurrentPhase() { const s = getCurrentStep(); return s ? s.phase : 1; }
 
   function injectName(text) {
-    return text.replace(/\{name\}/g, state.userData.name || "você");
+    return text.replace(/\{name\}/g, state.userData.name || "guerreiro");
   }
 
   // ── RENDER GATE ───────────────────────────────────────────
@@ -292,7 +292,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     if (counterNum && counterPct) {
       const totalSteps = stepOrder.length;
       const currentIdx = stepOrder.findIndex((s) => s.id === step.id) + 1;
-      const pct        = Math.round((currentIdx / totalSteps) * 100);
+      // Endowed progress: conta como se 1 passo já estivesse feito (sensação de avanço no passo 1)
+      const pct        = Math.round(((currentIdx + 1) / (totalSteps + 1)) * 100);
       counterNum.textContent = `Passo ${currentIdx} de ${totalSteps}`;
       counterPct.textContent = `${pct}%`;
     }
@@ -446,9 +447,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     html += `<div id="step-trigger" class="step-trigger"></div>`;
 
     if (!isSingle) {
+      const isName = step.type === "text-input" && step.field && step.field.name === "userName";
       html += `
         <div class="step-footer">
-          <button class="btn-cta" id="btn-continue" disabled>Continuar</button>
+          <button class="btn-cta" id="btn-continue"${isName ? "" : " disabled"}>Continuar</button>
+          ${isName ? `<button class="btn-skip-name" id="btn-skip-name" type="button">Prefiro não dizer</button>` : ""}
         </div>
       `;
     }
@@ -505,12 +508,15 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   }
 
   function renderTextInput(step) {
+    const isName = step.field.name === "userName";
     return `
       <div class="input-group">
         <input type="text" class="input-field" id="input-${step.field.name}"
           name="${step.field.name}" placeholder="${step.field.placeholder}"
-          maxlength="${step.field.maxLength || 50}" autocomplete="given-name">
+          maxlength="${step.field.maxLength || 50}" autocomplete="given-name"
+          autocapitalize="words" enterkeyhint="next" autofocus>
       </div>
+      ${isName && isIOS ? `<p class="name-hint">toque no campo para escrever</p>` : ""}
     `;
   }
 
@@ -633,13 +639,26 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     if (step.type === "text-input") {
       const input = document.getElementById(`input-${step.field.name}`);
+      const isName = step.field.name === "userName";
       input.addEventListener("input", function () {
-        if (btnContinue) btnContinue.disabled = !this.value.trim();
-        if (step.field.name === "userName") state.userData.name = this.value.trim();
         state.answers[step.id] = this.value.trim();
+        if (isName) {
+          state.userData.name = this.value.trim();
+          // nome é opcional: o botão Continuar fica sempre habilitado
+        } else if (btnContinue) {
+          btnContinue.disabled = !this.value.trim();
+        }
       });
       safeFocus(input);
       bindEnterToContinue(input);
+      if (isName) {
+        const skip = document.getElementById("btn-skip-name");
+        if (skip) skip.addEventListener("click", function () {
+          state.userData.name = "";
+          state.answers[step.id] = "";
+          advanceStep();
+        });
+      }
     }
 
     if (step.type === "email-input") {
@@ -950,7 +969,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function startLoading() {
     showScreen("loading");
     if (window.vortxTrack) vortxTrack("quiz_complete");
-    const name = state.userData.name || "tú";
+    const name = state.userData.name || "guerreiro";
 
     const testimonialsHtml = TESTIMONIALS.map((t, i) => `
       <div class="loading-testimonial-card ${i === 0 ? "active" : ""}" data-testimonial="${i}">
@@ -1132,7 +1151,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── BRIDGE ────────────────────────────────────────────────
   function showBridge() {
     showScreen("bridge");
-    const name  = state.userData.name || "tú";
+    const name  = state.userData.name || "guerreiro";
     const score = state.score;
 
     const diasJanela = score <= 35 ? 47 : score <= 60 ? 90 : score <= 80 ? 180 : 365;
@@ -1172,7 +1191,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── PROTOCOL ──────────────────────────────────────────────
   function showProtocol() {
     showScreen("protocol");
-    const name     = state.userData.name || "tú";
+    const name     = state.userData.name || "guerreiro";
     const painArea = state.answers[12];
 
     const headlineMap = {
@@ -1211,7 +1230,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     document.getElementById("protocol").innerHTML = `
       <div style="text-align:center;">
-        <p class="body-sm text-gold" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Preparado para ${name}</p>
+        <p class="body-sm text-gold" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Pronto, ${name}</p>
         <h2 class="heading-xl">${headline}</h2>
         <p class="body-md" style="margin-top:8px;">${PROTOCOL_DATA.subheadline}</p>
       </div>
@@ -1277,7 +1296,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const score = state.score;
     const pricingHeadline = score <= 35
-      ? `${name ? name + ", seus" : "Seus"} vasos estão quase fechados. Essa é a última janela.`
+      ? `${name ? name + ", no" : "No"} seu nível o sangue quase não passa. Cada semana que você espera, perde mais firmeza.`
       : score <= 60
       ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível. Mas não por muito tempo.`
       : `${name ? name + ", o" : "O"} protocolo vascular está pronto. Só falta você.`;
@@ -1297,10 +1316,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="pricing-social-num" id="social-counter">17.483</div>
         <div class="pricing-social-txt">homens já começaram o protocolo</div>
         <div class="pricing-social-live"><span class="pulse-dot"></span> 34 pessoas vendo essa página agora</div>
-      </div>
-
-      <div class="pricing-anchor-block">
-        <p class="pricing-anchor-text">Cada mês sem agir você perde mais tamanho, mais firmeza, mais duração. Em 12 meses o dano fica irreversível. O custo de não agir é perder o que te faz homem.</p>
       </div>
 
       <!-- HORMOZI VALUE STACK -->
@@ -1360,6 +1375,30 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <div class="pricing-plans" style="display:none;">${plansHtml}</div>
 
+      <!-- HORMOZI DOUBLE-YOUR-MONEY GUARANTEE (risk reversal antes do CTA) -->
+      <div class="guarantee-box guarantee-box--doubled">
+        <div class="guarantee-shield">🛡️</div>
+        <div class="guarantee-badge">GARANTIA EM DOBRO</div>
+        <div class="guarantee-title-big">Resultado visível em 30 dias, ou eu devolvo o DOBRO.</div>
+        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 37 + outros R$ 37 pelo meu erro. <strong>Total: R$ 74.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
+        <div class="guarantee-small">Sem perguntas. Sem burocracia. Sem letrinha miúda.</div>
+      </div>
+
+      <div class="testimonial-pre-cta">
+        <div class="testimonial-pre-cta-stars">★★★★★</div>
+        <p class="testimonial-pre-cta-text">"61 anos, 5 anos sem funcionar. 3 semanas de protocolo e voltei com tamanho, firmeza e duração."</p>
+        <span class="testimonial-pre-cta-author">Héctor M., 61 anos · Manaus</span>
+      </div>
+
+      <div class="checkout-cta-block">
+        <a href="https://checkout.ticto.app/O7AAE3550" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
+        <p class="checkout-sub">Em 2 minutos o app tá aberto no seu celular. Amanhã de manhã você já sabe exatamente o que fazer.</p>
+        <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia em DOBRO, 30 dias</p>
+        <div class="payment-methods">
+          ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
+        </div>
+      </div>
+
       <div class="effort-box">
         <div class="effort-icon">⏱️</div>
         <div class="effort-content">
@@ -1370,15 +1409,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <div class="pricing-urgency-bio-block">
         <p class="pricing-urgency-bio-text">Hoje à noite você vai deitar. Vai olhar pro teto e vai saber que podia ter feito algo diferente. Amanhã vai acordar igual ou pior. O bloqueio vascular não espera, não para, não negocia. <strong>A única pergunta é: você vai agir enquanto ainda dá tempo?</strong></p>
-      </div>
-
-      <!-- HORMOZI DOUBLE-YOUR-MONEY GUARANTEE -->
-      <div class="guarantee-box guarantee-box--doubled">
-        <div class="guarantee-shield">🛡️</div>
-        <div class="guarantee-badge">GARANTIA EM DOBRO</div>
-        <div class="guarantee-title-big">Resultado visível em 30 dias — ou eu devolvo o DOBRO.</div>
-        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 37 + outros R$ 37 pelo meu erro. <strong>Total: R$ 74.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
-        <div class="guarantee-small">Sem perguntas. Sem burocracia. Sem letrinha miúda.</div>
       </div>
 
       <!-- WHATSAPP-STYLE TESTIMONIAL PLACEHOLDERS (you'll add real images here) -->
@@ -1401,25 +1431,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </div>
       </div>
 
-      <div class="testimonial-pre-cta">
-        <div class="testimonial-pre-cta-stars">★★★★★</div>
-        <p class="testimonial-pre-cta-text">"No dia 14 minha esposa me olhou diferente. Eu não disse nada. Não precisei."</p>
-        <span class="testimonial-pre-cta-author">— Roberto M., 44 anos · Rio de Janeiro</span>
-      </div>
-
-      <div class="checkout-cta-block">
-        <a href="https://checkout.ticto.app/O7AAE3550" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
-        <p class="checkout-sub">Em 2 minutos o app tá aberto no seu celular. Amanhã de manhã você já sabe exatamente o que fazer.</p>
-        <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia em DOBRO — 30 dias</p>
-        <div class="payment-methods">
-          ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
-        </div>
-      </div>
-
       <div class="final-reassurance">
         <div class="fr-item">🔒 Pagamento 100% seguro</div>
         <div class="fr-item">✉️ Acesso imediato por email</div>
-        <div class="fr-item">🛡️ Garantia em dobro — 30 dias</div>
+        <div class="fr-item">🛡️ Garantia em dobro, 30 dias</div>
       </div>
 
       <!-- Sticky CTA: aparece após o value-stack, some quando #btn-checkout entra na viewport.

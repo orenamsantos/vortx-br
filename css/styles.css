@@ -691,12 +691,34 @@ a { color: var(--gold); text-decoration: none; }
   width: 100%;
   padding: 32px 0 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   margin-top: auto;
 }
 
 .step-footer .btn-cta {
+  width: 100%;
   max-width: 480px;
+}
+
+.btn-skip-name {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+}
+.btn-skip-name:hover { color: var(--gold); }
+
+.name-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
 }
 
 /* ── INTERSTITIAL SCREENS (HARNA-style motivational) ─────── */
