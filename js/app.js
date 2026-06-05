@@ -1089,7 +1089,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const score = state.score;
     if (window.vortxTrack) vortxTrack("view_result", { score: score });
     const zone  = RESULT_DATA.scoreZones.find((z) => score >= z.min && score <= z.max);
-    const name  = state.userData.name || "Usuário";
+    const name  = state.userData.name || "";
     const circ  = 2 * Math.PI * 80;
     const offset= circ - (score / 100) * circ;
 
@@ -1104,7 +1104,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     `).join("");
 
     document.getElementById("result").innerHTML = `
-      <h2 class="heading-xl">${RESULT_DATA.headlineTemplate.replace("{name}", name)}</h2>
+      <h2 class="heading-xl">${name ? RESULT_DATA.headlineTemplate.replace("{name}", name) : "Seu diagnóstico está pronto."}</h2>
       <div class="result-gauge">
         <svg viewBox="0 0 200 200">
           <circle class="result-gauge-bg" cx="100" cy="100" r="80"/>
@@ -1838,7 +1838,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── THANK YOU ─────────────────────────────────────────────
   function showThankYou() {
     showScreen("thankyou");
-    const name = state.userData.name || "Usuário";
+    const name = state.userData.name || "";
     const stepsHtml = THANKYOU_DATA.steps.map((s) => `
       <div class="thankyou-step">
         <div class="thankyou-step-number">${s.number}</div>
@@ -1851,7 +1851,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     document.getElementById("thankyou").innerHTML = `
       <div class="thankyou-checkmark">✓</div>
       <div>
-        <h2 class="heading-xl">${THANKYOU_DATA.headline.replace("{name}", name)}</h2>
+        <h2 class="heading-xl">${name ? THANKYOU_DATA.headline.replace("{name}", name) : "Bem-vindo ao outro lado."}</h2>
         <p class="body-md" style="margin-top:8px;text-align:center;">${THANKYOU_DATA.subheadline}</p>
       </div>
       <div class="thankyou-steps">${stepsHtml}</div>
