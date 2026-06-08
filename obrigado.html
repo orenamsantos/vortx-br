@@ -181,7 +181,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <span class="testi-badge" style="margin-top:14px;">Primeiros sinais já na primeira semana</span>
     </div>
     <div class="price-block fade-up d4">
-      <div class="price-compare"><span class="price-old">R$ 47</span><span class="price-arrow">→</span><div class="price-new"><small>R$</small> 19</div></div>
+      <div class="price-compare"><span class="price-old">R$ 67</span><span class="price-arrow">→</span><div class="price-new"><small>R$</small> 27</div></div>
       <div class="price-saving">Condição de cliente, só nesta página, porque você já tem o VORTX</div>
       <div class="price-sub">Pagamento único • Adicionado ao seu pedido atual • Acesso imediato</div>
     </div>
@@ -191,7 +191,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <p class="guarantee-text">Faça o soro do jeito certo por 7 dias. Se a firmeza e o fluxo não melhorarem, peça reembolso. Sem perguntas, sem rodeios. O risco é meu.</p>
     </div>
     <div class="fade-up d5">
-      <button type="button" class="btn ticto-upsell-button" id="btn-upsell" data-fallback-offer="O8EEBBCC0">SIM, QUERO DAR A LARGADA<span class="btn-price">+ R$ 19</span></button>
+      <button type="button" class="btn ticto-upsell-button" id="btn-upsell" data-fallback-offer="O8EEBBCC0">SIM, QUERO DAR A LARGADA<span class="btn-price">+ R$ 27</span></button>
       <p class="btn-sub">Adicionado ao seu pedido VORTX • Acesso imediato • Garantia total</p>
       <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip">Não, prefiro começar sem a largada →</button>
     </div>
@@ -220,14 +220,14 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
   if (isLegit) {
     if(window.vortxTrack) vortxTrack('purchase_confirmed',{value:purchaseValue,currency:'BRL',product:purchaseProduct,plan:purchasePlan});
-    if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:19});
+    if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:27});
   }
 
   document.getElementById('btn-upsell').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      window.vortxTrackSync('upsell_accept', {value:19, currency:'BRL', product:'soro_120'});
+      window.vortxTrackSync('upsell_accept', {value:27, currency:'BRL', product:'soro_120'});
     } else if (window.vortxTrack) {
-      window.vortxTrack('upsell_accept', {value:19, currency:'BRL', product:'soro_120'});
+      window.vortxTrack('upsell_accept', {value:27, currency:'BRL', product:'soro_120'});
     }
   });
   document.getElementById('btn-skip').addEventListener('click', function(){
