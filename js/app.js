@@ -1711,6 +1711,9 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           // fbp/fbc passados como params diretos
           if (attr.fbp) checkoutUrl += "&fbp=" + encodeURIComponent(attr.fbp);
           if (attr.fbc) checkoutUrl += "&fbc=" + encodeURIComponent(attr.fbc);
+          // TikTok Ads: ttclid (clique) + ttp (cookie do pixel) pro webhook do Ticto
+          if (attr.ttclid) checkoutUrl += "&ttclid=" + encodeURIComponent(attr.ttclid);
+          if (attr.ttp) checkoutUrl += "&ttp=" + encodeURIComponent(attr.ttp);
           if (eventId)  checkoutUrl += "&eid=" + encodeURIComponent(eventId);
           // src recebe utm_campaign (campo separado do sck, não conflita)
           if (attr.utm_campaign) checkoutUrl += "&src=" + encodeURIComponent(attr.utm_campaign);

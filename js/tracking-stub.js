@@ -14,6 +14,9 @@ try {
     sessionStorage.setItem("vx_fbclid", fbclid);
     sessionStorage.setItem("vx_fbc", "fb.1." + Date.now() + "." + fbclid);
   }
+  // TikTok: captura o ttclid (clique de anúncio) pra usar na URL do checkout
+  var ttclid = url.get("ttclid");
+  if (ttclid) sessionStorage.setItem("vx_ttclid", ttclid);
   ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
     var v = url.get(k);
     if (v) sessionStorage.setItem("vx_" + k, v);
@@ -99,6 +102,11 @@ window.vortxGetAttribution = function(){
     var fbc    = sessionStorage.getItem("vx_fbc");
     if (fbclid) p.fbclid = fbclid;
     if (fbc)    p.fbc    = fbc;
+    // TikTok: ttclid (sessionStorage) + ttp (cookie _ttp setado pelo pixel TikTok)
+    var ttclid = sessionStorage.getItem("vx_ttclid");
+    if (ttclid) p.ttclid = ttclid;
+    var ttp = (document.cookie.match(/(?:^|;\s*)_ttp=([^;]+)/) || [])[1];
+    if (ttp) p.ttp = decodeURIComponent(ttp);
     ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
       var v = sessionStorage.getItem("vx_" + k);
       if (v) p[k] = v;
