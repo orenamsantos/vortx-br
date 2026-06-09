@@ -1727,6 +1727,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         }
       } catch (e) {}
 
+      // PIX como metodo pre-selecionado no checkout do Ticto (91% pagam PIX; reduz friccao).
+      // Aditivo: so muda a pre-selecao; quem paga cartao clica em "Cartao". Nao afeta tracking
+      // (e so mais um query param; sck/fbc/ttclid/utm seguem intactos e o begin_checkout ja disparou).
+      checkoutUrl += "&payment_method=pix";
+
       // ── TELA DE TRANSIÇÃO "PREPARANDO TU PAGO" ──────────────
       // Prepara mentalmente o lead para o redirect (evita estranhamento
       // ao ver checkout.ticto.com.br na barra de endereço) + dá tempo para o
