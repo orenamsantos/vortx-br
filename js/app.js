@@ -100,7 +100,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     {
       afterStep: 6,  // após erección matinal
       emoji: "🔬",
-      headline: '{name}, isso tem nome: <span class="highlight">bloqueio vascular peniano.</span>',
+      headline: 'Isso tem nome: <span class="highlight">bloqueio vascular peniano.</span>',
       getText: () => "Não é a idade. É obstrução nos vasos que levam sangue ao pênis. Agora vamos mapear o dano.",
       stat: "Quem identifica o padrão agora tem 3.7x mais chances de reverter.",
       cta: "MAPEAR O DANO",
@@ -108,17 +108,16 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     {
       afterStep: 9,  // após pastilla
       emoji: "🧠",
-      headline: 'O mapa vascular de <span class="highlight">{name}</span> não é animador.',
+      headline: 'O seu <span class="highlight">mapa vascular</span> não é animador.',
       getText: () => {
         const pastilla = state.answers[9];
-        const nome     = state.userData.name || "guerreiro";
         if (pastilla === "viciado") {
-          return `${nome}, seu corpo criou dependência química. Sem a pílula, nada funciona. Mas dá pra reativar sem química.`;
+          return `Seu corpo criou dependência química. Sem a pílula, nada funciona. Mas dá pra reativar sem química.`;
         }
         if (pastilla === "asvezes") {
-          return `${nome}, ter ela "por garantia" já é sinal. Em 2 anos, sem ela, nada vai responder.`;
+          return `Ter ela "por garantia" já é sinal. Em 2 anos, sem ela, nada vai responder.`;
         }
-        return `${nome}, seus vasos estão se fechando. Agora cruzamos com seus hábitos pra descobrir o que está acelerando isso.`;
+        return `Seus vasos estão se fechando. Agora cruzamos com seus hábitos pra descobrir o que está acelerando isso.`;
       },
       stat: "93% dos homens com esse perfil respondem ao protocolo em menos de 21 dias.",
       cta: "VER MEUS HÁBITOS",
@@ -128,8 +127,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       emoji: "🔴",
       headline: 'Você vai ver um número agora. <span class="highlight">Revela quanto seus vasos se fecharam.</span>',
       getText: () => {
-        const nome = state.userData.name || "guerreiro";
-        return `${nome}, o sistema cruzou suas respostas com 17.483 diagnósticos. Alguns homens ficam em choque, outros sentem alívio. Prepare-se.`;
+        return `O sistema cruzou suas respostas com 17.483 diagnósticos. Alguns homens ficam em choque, outros sentem alívio. Prepare-se.`;
       },
       stat: "A maioria dos homens nunca soube que esse número existia.",
       cta: "VER MEU DIAGNÓSTICO",
@@ -219,7 +217,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function getCurrentPhase() { const s = getCurrentStep(); return s ? s.phase : 1; }
 
   function injectName(text) {
-    return text.replace(/\{name\}/g, state.userData.name || "guerreiro");
+    // sem nome: corta o vocativo "{name}, " inteiro (nada de apelido genérico)
+    const n = state.userData.name;
+    if (n) return text.replace(/\{name\}/g, n);
+    return text.replace(/\{name\},\s*/g, "").replace(/\{name\}/g, "você");
   }
 
   // ── RENDER GATE ───────────────────────────────────────────
@@ -1179,7 +1180,9 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── BRIDGE ────────────────────────────────────────────────
   function showBridge() {
     showScreen("bridge");
-    const name  = state.userData.name || "guerreiro";
+    const name  = state.userData.name || "";
+    // com nome: "Flavio, seus vasos..."; sem nome: "Seus vasos..." (sem apelido genérico)
+    const comVoc = (body) => name ? `${name}, ${body}` : body.charAt(0).toUpperCase() + body.slice(1);
     const score = state.score;
 
     const diasJanela = score <= 35 ? 47 : score <= 60 ? 90 : score <= 80 ? 180 : 365;
@@ -1188,13 +1191,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     let bridgeText;
     if (score <= 35) {
-      bridgeText = `${name}, seus vasos estão quase fechados. Mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`;
+      bridgeText = comVoc(`seus vasos estão quase fechados. Mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`);
     } else if (score <= 60) {
-      bridgeText = `${name}, seus vasos estão se fechando, mês a mês. O tamanho já caiu. A duração já encurtou. O protocolo de reversão vascular está calibrado pro seu grau exato de bloqueio. Mas cada mês sem agir fecha mais um vaso.`;
+      bridgeText = comVoc(`seus vasos estão se fechando, mês a mês. O tamanho já caiu. A duração já encurtou. O protocolo de reversão vascular está calibrado pro seu grau exato de bloqueio. Mas cada mês sem agir fecha mais um vaso.`);
     } else if (score <= 80) {
-      bridgeText = `${name}, a queda ainda é sutil, mas está acelerando. Em 2-3 anos sem intervenção, o dano fica irreversível. O protocolo freia a queda e maximiza o fluxo sanguíneo ao pênis enquanto ainda dá tempo.`;
+      bridgeText = comVoc(`a queda ainda é sutil, mas está acelerando. Em 2-3 anos sem intervenção, o dano fica irreversível. O protocolo freia a queda e maximiza o fluxo sanguíneo ao pênis enquanto ainda dá tempo.`);
     } else {
-      bridgeText = `${name}, seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção. Enquanto os outros ao seu redor vão perdendo.`;
+      bridgeText = comVoc(`seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção. Enquanto os outros ao seu redor vão perdendo.`);
     }
 
     document.getElementById("bridge").innerHTML = `
@@ -1219,7 +1222,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── PROTOCOL ──────────────────────────────────────────────
   function showProtocol() {
     showScreen("protocol");
-    const name     = state.userData.name || "guerreiro";
+    const name     = state.userData.name || "";
     const painArea = state.answers[12];
 
     const headlineMap = {
@@ -1258,7 +1261,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     document.getElementById("protocol").innerHTML = `
       <div style="text-align:center;">
-        <p class="body-sm text-gold" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Pronto, ${name}</p>
+        <p class="body-sm text-gold" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">${name ? `Pronto, ${name}` : "Pronto"}</p>
         <h2 class="heading-xl">${headline}</h2>
         <p class="body-md" style="margin-top:8px;">${PROTOCOL_DATA.subheadline}</p>
       </div>
