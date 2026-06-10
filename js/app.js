@@ -87,6 +87,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     score: 0,
     criticalAreas: [],
     timerInterval: null,
+    viewersTimer: null,
     timerSeconds: PRICING_DATA.timerMinutes * 60,
     history: [],
     audioCtx: null,
@@ -1346,7 +1347,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="pricing-social-counter">
         <div class="pricing-social-num" id="social-counter">17.483</div>
         <div class="pricing-social-txt">homens já começaram o protocolo</div>
-        <div class="pricing-social-live"><span class="pulse-dot"></span> 34 pessoas vendo essa página agora</div>
+        <div class="pricing-social-live"><span class="pulse-dot"></span> <span id="live-viewers">34</span> pessoas vendo essa página agora</div>
       </div>
 
       <!-- HORMOZI VALUE STACK -->
@@ -1818,6 +1819,28 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     })();
 
     startPricingTimer();
+    startLiveViewers();
+  }
+
+  // ── LIVE VIEWERS — prova social dinâmica ──────────────────
+  function startLiveViewers() {
+    if (state.viewersTimer) clearTimeout(state.viewersTimer);
+    const h = new Date().getHours();
+    // base por horário (madrugada/manhã/tarde/noite) + jitter por pageview
+    const base = h < 6 ? 16 : h < 12 ? 26 : h < 18 ? 33 : 44;
+    let n = base + Math.floor(Math.random() * 9) - 4;
+    const min = Math.max(9, n - 10), max = n + 12;
+    const render = () => {
+      const el = document.getElementById("live-viewers");
+      if (el) el.textContent = n;
+    };
+    render();
+    const tick = () => {
+      n = Math.min(max, Math.max(min, n + Math.floor(Math.random() * 6) - 2));
+      render();
+      state.viewersTimer = setTimeout(tick, 5000 + Math.random() * 9000);
+    };
+    state.viewersTimer = setTimeout(tick, 5000 + Math.random() * 9000);
   }
 
   function startPricingTimer() {
