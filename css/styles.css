@@ -3064,3 +3064,6 @@ a { color: var(--gold); text-decoration: none; }
 .vx-vsgroup--bonus{color:#f0d987}
 .vx-vsgroup--bonus::after{background:#4a3b18}
 .vx-onlynow{color:#ff6b6b;font-size:9px;font-weight:600}
+
+/* títulos dos bônus em dourado pra saltarem como valor extra (igual ao mockup) */
+.value-stack-bonus .vsi-title { color: #f0d987; }

@@ -31,8 +31,8 @@
 
 <!-- styles.css carregado sem bloquear render. fonts.css é carregado depois do `load` (não é
      necessário para o gate — as @font-face dos fontes acima-do-fold estão inline acima). -->
-<link rel="preload" href="css/styles.min.css?v=12" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/styles.min.css?v=12"></noscript>
+<link rel="preload" href="css/styles.min.css?v=14" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/styles.min.css?v=14"></noscript>
 <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 </head>
 <body>
@@ -112,7 +112,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=13';
+        s2.src='js/app.min.js?v=14';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){
