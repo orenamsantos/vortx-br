@@ -195,7 +195,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- PREÇO -->
   <div class="price-block fade-up d5">
-    <div class="price-compare"><span class="price-old">R$ 39</span><span class="price-arrow">→</span><div class="price-new"><small>R$</small> 14</div></div>
+    <div class="price-compare"><span class="price-old">R$ 39</span><span class="price-arrow">→</span><div class="price-new"><small>R$</small> 19</div></div>
     <div class="price-saving">Desconto exclusivo para membros VORTX</div>
     <div class="price-sub">Pagamento único • Desbloqueia agora dentro do seu app VORTX • Acesso imediato</div>
   </div>
@@ -209,7 +209,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   <!-- CTA -->
   <div class="fade-up d6">
-    <button type="button" class="btn ticto-upsell-button" id="btn-cross" data-fallback-offer="O13DB04F3">ATIVAR REGENERAÇÃO NOTURNA<span class="btn-price">+ R$ 14</span></button>
+    <button type="button" class="btn ticto-upsell-button" id="btn-cross" data-fallback-offer="O13DB04F3">ATIVAR REGENERAÇÃO NOTURNA<span class="btn-price">+ R$ 19</span></button>
     <p class="btn-sub">Adicionado ao seu pedido • Ativação vascular noturna • Garantia 30 dias</p>
     <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip-final">Não, prefiro deixar essas 56h/semana paradas →</button>
   </div>
@@ -241,13 +241,13 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 
   // Track cross-sell view
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
-  if (isLegit) { if(window.vortxTrack) vortxTrack('crosssell_view',{product:'protocolo_ignicion',value:14,soro_purchased:soro==='sim'}); }
+  if (isLegit) { if(window.vortxTrack) vortxTrack('crosssell_view',{product:'protocolo_ignicion',value:19,soro_purchased:soro==='sim'}); }
 
   document.getElementById('btn-cross').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      window.vortxTrackSync('crosssell_accept', {value:14, currency:'BRL', product:'protocolo_ignicion'});
+      window.vortxTrackSync('crosssell_accept', {value:19, currency:'BRL', product:'protocolo_ignicion'});
     } else if (window.vortxTrack) {
-      window.vortxTrack('crosssell_accept', {value:14, currency:'BRL', product:'protocolo_ignicion'});
+      window.vortxTrack('crosssell_accept', {value:19, currency:'BRL', product:'protocolo_ignicion'});
     }
   });
 
