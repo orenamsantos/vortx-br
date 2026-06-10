@@ -1863,9 +1863,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     (function setupStickyCta(){
       var stickyCta   = document.getElementById("sticky-cta");
       var stickyBtn   = document.getElementById("sticky-cta-btn");
-      var valueStack  = document.querySelector(".value-stack");
+      // Gatilho ADIANTADO: o botão começa a seguir assim que o lead passa do
+      // bloco do app (já viu o entregável). Antes só aparecia depois de TODO o
+      // value-stack (que ficou longo com o app + 5 bônus), deixando um trecho
+      // grande sem CTA à vista. Fallback pro value-stack se o bloco não existir.
+      var anchorEl    = document.querySelector(".vx-appblock") || document.querySelector(".value-stack");
       var originalBtn = document.getElementById("btn-checkout");
-      if (!stickyCta || !stickyBtn || !valueStack || !originalBtn) return;
+      if (!stickyCta || !stickyBtn || !anchorEl || !originalBtn) return;
       if (typeof IntersectionObserver === "undefined") return;
 
       stickyBtn.addEventListener("click", function () {
@@ -1879,13 +1883,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         stickyCta.setAttribute("aria-hidden", show ? "false" : "true");
       }
 
-      // Mostra quando o usuário rolou abaixo do value-stack (bottom acima da viewport).
+      // Mostra quando o usuário rolou abaixo do bloco-âncora (bottom acima da viewport).
       new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           pastStack = !e.isIntersecting && e.boundingClientRect.bottom < 0;
           apply();
         });
-      }, { threshold: 0 }).observe(valueStack);
+      }, { threshold: 0 }).observe(anchorEl);
 
       // Esconde quando o botão original está visível na tela.
       new IntersectionObserver(function (entries) {
