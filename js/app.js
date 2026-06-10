@@ -1368,7 +1368,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="pricing-timer-container">
         <div class="pricing-timer-label">${PRICING_DATA.urgencyText}</div>
         <div class="pricing-timer" id="pricing-timer">08:00</div>
-        <div class="pricing-timer-sub">Depois disso o preço volta para R$ 197</div>
+        <div class="pricing-timer-sub">Depois disso volta para o valor real: R$ 547</div>
       </div>
 
       <div class="pricing-social-counter">
@@ -1651,7 +1651,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vep-subtitle">Posso fazer uma coisa por você?</div>
           <div class="vep-body">
             <p><strong>Guardo seu diagnóstico de graça por 24 horas.</strong></p>
-            <p>O preço de <span class="vep-price-now">R$ 37</span> continua disponível se você decidir voltar. Depois disso, volta para <span class="vep-price-old">R$ 197</span>.</p>
+            <p>O preço de <span class="vep-price-now">R$ 37</span> continua disponível se você decidir voltar. Depois disso, volta para o valor real: <span class="vep-price-old">R$ 547</span>.</p>
             <p class="vep-note">Mando pro seu WhatsApp — sem spam, uma única mensagem.</p>
           </div>
           <form class="vep-form" id="vep-form">
@@ -1943,7 +1943,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
             <div class="timer-expired-block">
               <div class="timer-expired-icon">⏰</div>
               <p class="timer-expired-title">Esse preço não está mais disponível.</p>
-              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 197.</p>
+              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 547.</p>
               <button class="btn-cta" id="btn-recover-offer">QUERO 10 MINUTOS A MAIS COM O PREÇO ESPECIAL</button>
             </div>
           `;
