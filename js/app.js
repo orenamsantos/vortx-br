@@ -1266,10 +1266,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <h2 class="heading-xl">${headline}</h2>
         <p class="body-md" style="margin-top:8px;">${PROTOCOL_DATA.subheadline}</p>
       </div>
-      <div style="display:flex;justify-content:center;margin:18px 0 4px;">
-        <img src="img/app-mockup.webp" alt="App VORTX: seu protocolo dia a dia no celular" width="260" height="713" loading="lazy" decoding="async" style="width:260px;max-width:72%;height:auto;border-radius:22px;box-shadow:0 18px 50px -18px rgba(0,0,0,.7);border:1px solid rgba(212,175,55,.28);">
+      <div style="margin:18px 0 4px;">
+        ${appMockupHtml(name)}
       </div>
-      <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular</p>
+      <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
@@ -1285,6 +1285,30 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   }
 
   // ── PRICING ───────────────────────────────────────────────
+  // Mockup do app personalizado (mesma peça na revelação e no pricing pra
+  // não mostrar dois apps diferentes). `name` entra no "Bom dia, {nome}".
+  function appMockupHtml(name) {
+    const greet = name ? `Bom dia, ${name}` : "Bom dia";
+    return `
+      <div class="vx-phone">
+        <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">V<i>X</i></div><div><b>VORTX</b><small>Protocolo Vascular</small></div></div><div class="vx-ph-bell">🔔</div></div>
+        <div class="vx-ph-hero">
+          <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#26262f" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#e9c55a" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
+          <div class="vx-ph-hbody"><div class="vx-ph-greet">${greet}</div><div class="vx-ph-htitle">Seus vasos já reagem.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 4 min hoje e o fluxo sobe.</div></div>
+        </div>
+        <div class="vx-ph-sec">Hoje</div>
+        <div class="vx-today">
+          <span class="vx-tflag">🔓 Liberado agora</span>
+          <div class="vx-tname">Reabertura Vascular</div>
+          <div class="vx-tmeta">Fase 2 · <b>4 rotinas</b> · 9 min</div>
+          <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🫀</div><div class="vx-clb">Bomba</div></div><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">💪</div><div class="vx-clb">Músculo</div></div><div class="vx-chip"><div class="vx-cic">🥗</div><div class="vx-clb">Pré</div></div></div>
+          <div class="vx-tcta">▶ Começar a rotina de hoje</div>
+        </div>
+        <div class="vx-ph-sec">Sua trilha de 21 dias</div>
+        <div class="vx-trail"><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D1</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D2</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D3</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D4</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D5</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D6</div></div><div class="vx-day now"><div class="vx-dot">7</div><div class="vx-dl vx-dl-now">hoje</div></div><div class="vx-day"><div class="vx-dot">8</div><div class="vx-dl">D8</div></div></div>
+      </div>`;
+  }
+
   function showPricing() {
     showScreen("pricing");
     if (window.vortxTrack) vortxTrack("view_pricing", { score: state.score });
@@ -1368,23 +1392,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <span class="vx-ab-flag">🔓 É isto que abre no seu celular</span>
           <div class="vx-ab-title">Não é um PDF. É o seu app.</div>
           <div class="vx-ab-sub">Login com o seu nome, sua trilha de <b>21 dias</b>, a rotina de cada dia e a barra de progresso enchendo. Seu pra sempre, no seu bolso.</div>
-          <div class="vx-phone">
-            <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">V<i>X</i></div><div><b>VORTX</b><small>Protocolo Vascular</small></div></div><div class="vx-ph-bell">🔔</div></div>
-            <div class="vx-ph-hero">
-              <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#26262f" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#e9c55a" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
-              <div class="vx-ph-hbody"><div class="vx-ph-greet">Bom dia${name ? ", " + name : ""}</div><div class="vx-ph-htitle">Seus vasos já reagem.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 4 min hoje e o fluxo sobe.</div></div>
-            </div>
-            <div class="vx-ph-sec">Hoje</div>
-            <div class="vx-today">
-              <span class="vx-tflag">🔓 Liberado agora</span>
-              <div class="vx-tname">Reabertura Vascular</div>
-              <div class="vx-tmeta">Fase 2 · <b>4 rotinas</b> · 9 min</div>
-              <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🫀</div><div class="vx-clb">Bomba</div></div><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">💪</div><div class="vx-clb">Músculo</div></div><div class="vx-chip"><div class="vx-cic">🥗</div><div class="vx-clb">Pré</div></div></div>
-              <div class="vx-tcta">▶ Começar a rotina de hoje</div>
-            </div>
-            <div class="vx-ph-sec">Sua trilha de 21 dias</div>
-            <div class="vx-trail"><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D1</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D2</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D3</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D4</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D5</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D6</div></div><div class="vx-day now"><div class="vx-dot">7</div><div class="vx-dl vx-dl-now">hoje</div></div><div class="vx-day"><div class="vx-dot">8</div><div class="vx-dl">D8</div></div></div>
-          </div>
+          ${appMockupHtml(name)}
           <div class="vx-ph-cap">É <b>exatamente assim</b> que ele abre, com o seu nome em cima.</div>
         </div>
 
