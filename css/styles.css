@@ -3001,3 +3001,66 @@ a { color: var(--gold); text-decoration: none; }
 
 /* Reserva espaço pra sticky não cobrir o conteúdo final */
 .pricing-screen { padding-bottom: 96px; }
+
+/* ════════════════════════════════════════════════════════════
+   PRICING v2 — recap personalizado + app na decisão + grupos
+   (aditivo; namespaced .vx- pra não colidir com o existente)
+   ════════════════════════════════════════════════════════════ */
+.vx-recap{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#1a1622,#141019);border:1px solid #3a2f1a;border-radius:16px;padding:13px 15px;margin:0 0 20px}
+.vx-recap-ic{width:40px;height:40px;flex:0 0 40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;background:linear-gradient(145deg,#241d10,#15131b);border:1px solid #4a3b18}
+.vx-recap-txt{font-size:12.5px;line-height:1.45;color:#8b8b9a}
+.vx-recap-txt b{color:#f5f3ee}
+.vx-recap-tag{color:#f0d987;font-weight:700}
+
+.vx-appblock{background:linear-gradient(160deg,#1b1622,#100c16);border:1px solid #2c2333;border-radius:22px;padding:18px 16px 20px;margin:0 0 20px;position:relative;overflow:hidden}
+.vx-appblock::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 90% at 100% 0%,rgba(212,175,55,.12),transparent 60%);pointer-events:none}
+.vx-ab-flag{display:inline-block;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#0b0b0f;background:linear-gradient(90deg,#d4af37,#f0d987);padding:4px 11px;border-radius:20px;font-weight:800;margin-bottom:12px}
+.vx-ab-title{font-family:'Playfair Display',serif;font-size:21px;line-height:1.18;margin-bottom:5px;color:#f5f3ee}
+.vx-ab-sub{font-size:12px;color:#8b8b9a;line-height:1.45;margin-bottom:16px}
+.vx-ab-sub b{color:#f0d987}
+
+.vx-phone{width:262px;max-width:88%;margin:0 auto;background:radial-gradient(120% 50% at 50% 0%,#17141c 0%,#0b0b0f 60%);border:1px solid #2a2333;border-radius:24px;padding:13px 12px 11px;box-shadow:0 24px 54px -26px #000,0 0 0 4px #07070a,0 0 0 5px #1d1a24}
+.vx-ph-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.vx-ph-brand{display:flex;align-items:center;gap:7px}
+.vx-ph-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(145deg,#2a2535,#15131b);border:1px solid #3a3320;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:13px;color:#f0d987}
+.vx-ph-logo i{color:#8a6f2a;font-style:normal}
+.vx-ph-brand b{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:2px;color:#f5f3ee}
+.vx-ph-brand small{display:block;font-size:7px;letter-spacing:2px;color:#8b8b9a;text-transform:uppercase}
+.vx-ph-bell{width:28px;height:28px;border-radius:50%;background:#16161f;border:1px solid #24242f;display:flex;align-items:center;justify-content:center;font-size:11px}
+.vx-ph-hero{background:linear-gradient(160deg,#1d1a24,#141019);border:1px solid #2a2333;border-radius:15px;padding:13px;display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.vx-ring{position:relative;width:70px;height:70px;flex:0 0 70px}
+.vx-ring .vx-pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.vx-ring .vx-pct b{font-family:'Playfair Display',serif;font-size:19px;color:#f0d987;line-height:1}
+.vx-ring .vx-pct span{font-size:7px;letter-spacing:1px;color:#8b8b9a;text-transform:uppercase;margin-top:2px}
+.vx-ph-hbody{flex:1}
+.vx-ph-greet{font-size:9px;letter-spacing:1px;color:#d4af37;text-transform:uppercase;font-weight:700}
+.vx-ph-htitle{font-family:'Playfair Display',serif;font-size:14.5px;margin:3px 0 4px;line-height:1.15;color:#f5f3ee}
+.vx-ph-hsub{font-size:10px;color:#8b8b9a;line-height:1.4}
+.vx-ph-hsub b{color:#f5f3ee}
+.vx-ph-sec{font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:#8b8b9a;font-weight:700;margin:0 2px 7px}
+.vx-today{background:linear-gradient(135deg,#221c12,#17161d 60%);border:1px solid #4a3b18;border-radius:13px;padding:12px;position:relative;overflow:hidden;margin-bottom:12px}
+.vx-today::after{content:"DIA 7";position:absolute;top:10px;right:12px;font-family:'Playfair Display',serif;font-size:24px;color:#3a3320;font-weight:700}
+.vx-tflag{display:inline-block;font-size:7.5px;letter-spacing:1px;text-transform:uppercase;color:#0b0b0f;background:linear-gradient(90deg,#d4af37,#f0d987);padding:3px 8px;border-radius:20px;font-weight:800}
+.vx-tname{font-family:'Playfair Display',serif;font-size:14px;margin:8px 0 2px;color:#f5f3ee}
+.vx-tmeta{font-size:9.5px;color:#8b8b9a;margin-bottom:10px}
+.vx-tmeta b{color:#f0d987}
+.vx-routine{display:flex;gap:5px;margin-bottom:11px}
+.vx-chip{flex:1;background:#0e0e14;border:1px solid #24242f;border-radius:9px;padding:7px 3px;text-align:center}
+.vx-cic{font-size:14px}
+.vx-clb{font-size:7px;color:#8b8b9a;margin-top:3px;line-height:1.1}
+.vx-tcta{display:flex;align-items:center;justify-content:center;gap:6px;background:linear-gradient(90deg,#d4af37,#f0d987);color:#0b0b0f;font-weight:800;font-size:11px;padding:10px;border-radius:10px;box-shadow:0 8px 20px -10px rgba(212,175,55,.55)}
+.vx-trail{display:flex;gap:5px;justify-content:space-between}
+.vx-day{flex:0 0 auto;width:31px;text-align:center}
+.vx-dot{width:31px;height:31px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;border:1px solid #24242f;background:#16161f;color:#8b8b9a}
+.vx-day.done .vx-dot{background:linear-gradient(145deg,#2a2410,#1a160c);border-color:#5a4a1c;color:#f0d987}
+.vx-day.now .vx-dot{background:linear-gradient(145deg,#d4af37,#f0d987);color:#0b0b0f;border-color:#f0d987;box-shadow:0 0 0 3px rgba(212,175,55,.16)}
+.vx-dl{font-size:7px;color:#8b8b9a;margin-top:3px}
+.vx-dl-now{color:#f0d987}
+.vx-ph-cap{font-size:11px;text-align:center;color:#c9a84c;margin-top:13px;line-height:1.4}
+.vx-ph-cap b{color:#f5f3ee}
+
+.vx-vsgroup{display:flex;align-items:center;gap:8px;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:#8b8b9a;font-weight:700;margin:18px 2px 8px}
+.vx-vsgroup::after{content:"";flex:1;height:1px;background:#26262f}
+.vx-vsgroup--bonus{color:#f0d987}
+.vx-vsgroup--bonus::after{background:#4a3b18}
+.vx-onlynow{color:#ff6b6b;font-size:9px;font-weight:600}
