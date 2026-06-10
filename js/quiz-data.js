@@ -12,7 +12,7 @@ GATE_DATA={
 
 PHASES=[
   {id:1,label:"VALIDAÇÃO",steps:[1,2]},
-  {id:2,label:"PERFIL",steps:[3,4]},
+  {id:2,label:"PERFIL",steps:[4]},
   {id:3,label:"SINTOMAS",steps:[5,6,7,8,9]},
   {id:4,label:"HÁBITOS",steps:[10]},
   {id:5,label:"VEREDITO",steps:[12]}
@@ -47,15 +47,8 @@ STEPS=[
     weight:0
   },
   {
-    id:3,phase:2,type:"text-input",
-    question:"Como devo te chamar?",
-    microcopy:"Só o seu primeiro nome. O diagnóstico que vem a seguir é seu, e eu quero te chamar pelo nome enquanto te mostro o que travou. Fica entre nós, ninguém mais vê.",
-    field:{name:"userName",placeholder:"Seu primeiro nome...",maxLength:30},
-    weight:0
-  },
-  {
     id:4,phase:2,type:"single-select",
-    question:"{name}, quantos anos você tem?",
+    question:"Quantos anos você tem?",
     microcopy:"A velocidade do dano muda brutalmente de uma faixa para outra.",
     options:[
       {value:"35-39",label:"35 a 39 anos",icon:"⚠️"},
@@ -66,18 +59,18 @@ STEPS=[
       {value:"60-65",label:"60 a 65 anos",icon:"🛑"}
     ],
     triggers:{
-      "35-39":"⚠ {name}, a maioria percebe depois dos 40. Você está descobrindo antes. Isso muda tudo.",
-      "40-44":"⚠ {name}, nessa idade o corpo já começou a reduzir o fluxo. Em 3 anos você não vai se reconhecer.",
-      "45-49":"🚨 {name}, o fluxo já caiu pela metade e o encolhimento já é visível. Mas ainda tem solução.",
-      "50-54":"🛑 {name}, depois dos 50 o corpo perdeu metade da capacidade. Existe uma forma de reverter.",
-      "55-59":"🛑 Faixa crítica, {name}. Os vasos estão se fechando mês a mês. Mas você ainda está aqui.",
+      "35-39":"⚠ A maioria percebe depois dos 40. Você está descobrindo antes. Isso muda tudo.",
+      "40-44":"⚠ Nessa idade o corpo já começou a reduzir o fluxo. Em 3 anos você não vai se reconhecer.",
+      "45-49":"🚨 O fluxo já caiu pela metade e o encolhimento já é visível. Mas ainda tem solução.",
+      "50-54":"🛑 Depois dos 50 o corpo perdeu metade da capacidade. Existe uma forma de reverter.",
+      "55-59":"🛑 Faixa crítica. Os vasos estão se fechando mês a mês. Mas você ainda está aqui.",
       "60-65":"🛑 Situação grave. Vasos quase bloqueados, mas homens de 63 anos já reverteram com o protocolo."
     },
     weight:0
   },
   {
     id:5,phase:3,type:"single-select",
-    question:"{name}, o que mais te corrói?",
+    question:"O que mais te corrói?",
     microcopy:"Ninguém vai ver. Só você e eu.",
     options:[
       {value:"libido",label:"Perdeu tamanho, firmeza ou os dois",icon:"🔥"},
@@ -97,8 +90,8 @@ STEPS=[
       {value:"nunca",label:"Faz anos que não acontece",icon:"🛑",score:0}
     ],
     triggers:{
-      nunca:"🛑 {name}, sem ereção matinal os vasos estão bloqueados. Por isso parece menor. O protocolo reverte isso.",
-      raro:"⚠ {name}, vasos comprometidos. O sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
+      nunca:"🛑 Sem ereção matinal os vasos estão bloqueados. Por isso parece menor. O protocolo reverte isso.",
+      raro:"⚠ Vasos comprometidos. O sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
     },
     weight:20,category:"libido"
   },
@@ -112,14 +105,14 @@ STEPS=[
       {value:"fujo",label:"Evito, tenho medo de falhar",icon:"🏃",score:0}
     ],
     triggers:{
-      fujo:"🛑 {name}, fugir da sua parceira destrói um homem por dentro. Quanto mais foge, pior fica. Mas tem saída.",
+      fujo:"🛑 Fugir da sua parceira destrói um homem por dentro. Quanto mais foge, pior fica. Mas tem saída.",
       falho:"🚨 O sangue entra mas não fica. Vasos fracos. O protocolo corrige exatamente isso."
     },
     weight:15,category:"libido"
   },
   {
     id:8,phase:3,type:"multi-select",
-    question:"Se olhe agora, {name}. O que você vê?",
+    question:"Se olhe agora. O que você vê?",
     microcopy:"Cada quilo de barriga fabrica hormônio feminino e rouba sangue do pênis.",
     minSelections:1,
     options:[
@@ -130,7 +123,7 @@ STEPS=[
       {value:"nenhuma",label:"Nenhuma dessas. Estou bem",icon:"✅"}
     ],
     triggers:{
-      _any_except_nenhuma:"🛑 {name}, essa gordura fabrica hormônio feminino dentro de você agora. É o que encolhe, amolece e tira o controle."
+      _any_except_nenhuma:"🛑 Essa gordura fabrica hormônio feminino dentro de você agora. É o que encolhe, amolece e tira o controle."
     },
     weight:10,category:"cuerpo",scoreLogic:"count-negative"
   },
@@ -144,14 +137,14 @@ STEPS=[
       {value:"viciado",label:"Sem ela, nem tento mais",icon:"🚨",score:0}
     ],
     triggers:{
-      viciado:"🛑 {name}, seu corpo criou dependência. Sem a pílula, nada funciona. Mas dá pra reativar sem química.",
+      viciado:"🛑 Seu corpo criou dependência. Sem a pílula, nada funciona. Mas dá pra reativar sem química.",
       asvezes:"⚠ Ter ela 'por garantia' é o primeiro passo pra virar refém. Em 2 anos, sem ela, nada vai responder."
     },
     weight:10,category:"fisica"
   },
   {
     id:10,phase:4,type:"multi-select",
-    question:"{name}, quais desses hábitos você tem?",
+    question:"Quais desses hábitos você tem?",
     microcopy:"Cada um deles fecha os vasos que alimentam o pênis por dentro.",
     minSelections:1,
     options:[
@@ -162,13 +155,13 @@ STEPS=[
       {value:"nenhum",label:"Nenhum desses",icon:"✅"}
     ],
     triggers:{
-      _any_except_nenhum:"🛑 {name}, cada um desses hábitos fecha os vasos do pênis. Quantos mais marcou, mais bloqueado está."
+      _any_except_nenhum:"🛑 Cada um desses hábitos fecha os vasos do pênis. Quantos mais marcou, mais bloqueado está."
     },
     weight:8,category:"habitos",scoreLogic:"count-negative"
   },
   {
     id:12,phase:5,type:"single-select",
-    question:"Última pergunta, {name}. Por quem você está fazendo isso?",
+    question:"Última pergunta. Por quem você está fazendo isso?",
     microcopy:"Guarda esse motivo. Daqui a 2 minutos ele vai ser o que te faz começar hoje, e não 'segunda que vem'.",
     options:[
       {value:"parceira",label:"Pela minha parceira. Quero voltar à altura",icon:"💑"},
@@ -181,7 +174,7 @@ STEPS=[
 ],
 
 LOADING_DATA={
-  headline:"Analisando seu mapa vascular, {name}...",
+  headline:"Analisando seu mapa vascular...",
   duration:12e3,
   messages:[
     "Cruzando seus sintomas com o banco de dados...",
@@ -192,6 +185,14 @@ LOADING_DATA={
     "Isso vai mudar o que você achava que sabia sobre seu corpo...",
     "Preparando seu protocolo personalizado..."
   ]
+},
+
+NAMEGATE_DATA={
+  headline:"Análise concluída",
+  question:"Como devo te chamar?",
+  microcopy:"Só o seu primeiro nome. O diagnóstico que vem a seguir é seu, e eu quero te chamar pelo nome enquanto te mostro o que travou. Fica entre nós, ninguém mais vê.",
+  placeholder:"Seu primeiro nome...",
+  cta:"VER MEU DIAGNÓSTICO"
 },
 
 RESULT_DATA={

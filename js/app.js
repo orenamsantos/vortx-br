@@ -969,7 +969,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function startLoading() {
     showScreen("loading");
     if (window.vortxTrack) vortxTrack("quiz_complete");
-    const name = state.userData.name || "guerreiro";
 
     const testimonialsHtml = TESTIMONIALS.map((t, i) => `
       <div class="loading-testimonial-card ${i === 0 ? "active" : ""}" data-testimonial="${i}">
@@ -1036,7 +1035,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       if (pct >= 100) {
         clearInterval(progressInterval);
         clearInterval(testimonialInterval);
-        setTimeout(() => showResult(), 400);
+        setTimeout(() => showNameGate(), 400);
       }
     }, 50);
   }
@@ -1081,6 +1080,35 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       state.criticalAreas.push({ category: cat, score: sc, status, ...RESULT_DATA.criticalAreas[cat] });
     }
     state.criticalAreas.sort((a, b) => a.score - b.score);
+  }
+
+  // ── NAME GATE — nome pedido na porta do diagnóstico ───────
+  function showNameGate() {
+    const el = document.getElementById("loading");
+    el.innerHTML = `
+      <p class="body-sm text-gold" style="letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">${NAMEGATE_DATA.headline}</p>
+      <h2 class="step-question">${NAMEGATE_DATA.question}</h2>
+      <p class="step-microcopy">${NAMEGATE_DATA.microcopy}</p>
+      <div class="input-group" style="width:100%;">
+        <input type="text" class="input-field" id="input-userName" name="userName"
+          placeholder="${NAMEGATE_DATA.placeholder}" maxlength="30"
+          autocomplete="given-name" autocapitalize="words" enterkeyhint="go">
+      </div>
+      <div class="step-footer" style="width:100%;">
+        <button class="btn-cta" id="btn-gate-continue">${NAMEGATE_DATA.cta}</button>
+      </div>
+    `;
+    const input = document.getElementById("input-userName");
+    let done = false;
+    const go = () => {
+      if (done) return;
+      done = true;
+      state.userData.name = (input.value || "").trim().slice(0, 30);
+      showResult();
+    };
+    document.getElementById("btn-gate-continue").addEventListener("click", go);
+    input.addEventListener("keydown", (e) => { if (e.key === "Enter") go(); });
+    safeFocus(input);
   }
 
   // ── RESULT ────────────────────────────────────────────────
