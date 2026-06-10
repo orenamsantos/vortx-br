@@ -3067,3 +3067,12 @@ a { color: var(--gold); text-decoration: none; }
 
 /* títulos dos bônus em dourado pra saltarem como valor extra (igual ao mockup) */
 .value-stack-bonus .vsi-title { color: #f0d987; }
+
+/* garantia em dobro em VERDE (segurança/dinheiro de volta) no lugar do dourado */
+.guarantee-box--doubled {
+  background: linear-gradient(135deg, rgba(76,175,106,0.10), rgba(76,175,106,0.03));
+  border-color: rgba(76,175,106,0.55);
+  box-shadow: 0 8px 32px rgba(76,175,106,0.14);
+}
+.guarantee-box--doubled .guarantee-badge { background: #4caf6a; }
+.guarantee-box--doubled .guarantee-text-big strong { color: #6fcf97; }

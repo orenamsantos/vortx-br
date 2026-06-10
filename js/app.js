@@ -1305,7 +1305,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vx-tcta">▶ Começar a rotina de hoje</div>
         </div>
         <div class="vx-ph-sec">Sua trilha de 21 dias</div>
-        <div class="vx-trail"><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D1</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D2</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D3</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D4</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D5</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D6</div></div><div class="vx-day now"><div class="vx-dot">7</div><div class="vx-dl vx-dl-now">hoje</div></div><div class="vx-day"><div class="vx-dot">8</div><div class="vx-dl">D8</div></div></div>
+        <div class="vx-trail"><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D1</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D2</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D3</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D4</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D5</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D6</div></div><div class="vx-day now"><div class="vx-dot">7</div><div class="vx-dl vx-dl-now">hoje</div></div></div>
       </div>`;
   }
 
