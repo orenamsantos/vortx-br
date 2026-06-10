@@ -1332,6 +1332,9 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       : score <= 60
       ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível. Mas não por muito tempo.`
       : `${name ? name + ", o" : "O"} protocolo vascular está pronto. Só falta você.`;
+    // nível pro recap personalizado (mesma régua da headline)
+    const nivel = score <= 35 ? "Fluxo travado" : score <= 60 ? "Fluxo parcial" : "Quase reaberto";
+    const vocRecap = name ? `${name}, ` : "";
 
     document.getElementById("pricing").innerHTML = `
       <div style="text-align:center;">
@@ -1350,9 +1353,42 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         <div class="pricing-social-live"><span class="pulse-dot"></span> <span id="live-viewers">34</span> pessoas vendo essa página agora</div>
       </div>
 
+      <!-- RECAP PERSONALIZADO -->
+      <div class="vx-recap">
+        <div class="vx-recap-ic">🩺</div>
+        <div class="vx-recap-txt">Pelas suas respostas, ${vocRecap}montei seu plano pro nível <span class="vx-recap-tag">${nivel}</span>. Ele já está pronto, esperando você no <b>Dia 1</b>.</div>
+      </div>
+
       <!-- HORMOZI VALUE STACK -->
       <div class="value-stack">
-        <div class="value-stack-header">O QUE VOCÊ DESBLOQUEIA HOJE NO APP VORTX:</div>
+        <div class="value-stack-header">TUDO QUE VOCÊ DESBLOQUEIA HOJE NO APP VORTX:</div>
+
+        <!-- APP NA DECISÃO -->
+        <div class="vx-appblock">
+          <span class="vx-ab-flag">🔓 É isto que abre no seu celular</span>
+          <div class="vx-ab-title">Não é um PDF. É o seu app.</div>
+          <div class="vx-ab-sub">Login com o seu nome, sua trilha de <b>21 dias</b>, a rotina de cada dia e a barra de progresso enchendo. Seu pra sempre, no seu bolso.</div>
+          <div class="vx-phone">
+            <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">V<i>X</i></div><div><b>VORTX</b><small>Protocolo Vascular</small></div></div><div class="vx-ph-bell">🔔</div></div>
+            <div class="vx-ph-hero">
+              <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#26262f" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#e9c55a" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
+              <div class="vx-ph-hbody"><div class="vx-ph-greet">Bom dia${name ? ", " + name : ""}</div><div class="vx-ph-htitle">Seus vasos já reagem.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 4 min hoje e o fluxo sobe.</div></div>
+            </div>
+            <div class="vx-ph-sec">Hoje</div>
+            <div class="vx-today">
+              <span class="vx-tflag">🔓 Liberado agora</span>
+              <div class="vx-tname">Reabertura Vascular</div>
+              <div class="vx-tmeta">Fase 2 · <b>4 rotinas</b> · 9 min</div>
+              <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🫀</div><div class="vx-clb">Bomba</div></div><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">💪</div><div class="vx-clb">Músculo</div></div><div class="vx-chip"><div class="vx-cic">🥗</div><div class="vx-clb">Pré</div></div></div>
+              <div class="vx-tcta">▶ Começar a rotina de hoje</div>
+            </div>
+            <div class="vx-ph-sec">Sua trilha de 21 dias</div>
+            <div class="vx-trail"><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D1</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D2</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D3</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D4</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D5</div></div><div class="vx-day done"><div class="vx-dot">✓</div><div class="vx-dl">D6</div></div><div class="vx-day now"><div class="vx-dot">7</div><div class="vx-dl vx-dl-now">hoje</div></div><div class="vx-day"><div class="vx-dot">8</div><div class="vx-dl">D8</div></div></div>
+          </div>
+          <div class="vx-ph-cap">É <b>exatamente assim</b> que ele abre, com o seu nome em cima.</div>
+        </div>
+
+        <div class="vx-vsgroup">O protocolo</div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
@@ -1385,23 +1421,57 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           </div>
           <div class="vsi-price">R$ 29</div>
         </div>
+
+        <div class="vx-vsgroup vx-vsgroup--bonus">Bônus de hoje</div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">🔥</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Protocolo Primeira Noite</div>
+            <div class="vsi-desc">A rotina de choque pra você sentir a diferença já nas primeiras 72h</div>
+          </div>
+          <div class="vsi-price">R$ 67</div>
+        </div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">❤️‍🔥</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Modo Casal: como ela volta a te procurar</div>
+            <div class="vsi-desc">O jeito discreto de reacender o desejo dela sem você ter que falar nada</div>
+          </div>
+          <div class="vsi-price">R$ 97</div>
+        </div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">⚡</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Turbo 48h <span class="vx-onlynow">· só pra quem entra agora</span></div>
+            <div class="vsi-desc">Um empurrão concentrado que destrava o fluxo nas primeiras 48 horas</div>
+          </div>
+          <div class="vsi-price">R$ 57</div>
+        </div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">🛡️</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Manutenção Vitalícia</div>
+            <div class="vsi-desc">Como continuar firme depois dos 21 dias, pra nunca mais voltar atrás</div>
+          </div>
+          <div class="vsi-price">R$ 67</div>
+        </div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🎁</div>
           <div class="vsi-content">
-            <div class="vsi-title">BÔNUS: O app é seu pra sempre</div>
+            <div class="vsi-title">App vitalício, seu pra sempre</div>
             <div class="vsi-desc">O app fica no seu celular com acesso vitalício, e toda atualização nova já entra liberada</div>
           </div>
           <div class="vsi-price">R$ 47</div>
         </div>
 
         <div class="value-stack-total">
-          <div class="vst-label">VALOR SE COMPRADO SEPARADO:</div>
-          <div class="vst-old">R$ 259</div>
+          <div class="vst-label">VALOR REAL DE TUDO ISTO:</div>
+          <div class="vst-old">R$ 547</div>
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
           <div class="vsth-price"><span>R$</span>37</div>
-          <div class="vsth-tag">85% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-tag">93% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
@@ -1823,20 +1893,23 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   }
 
   // ── LIVE VIEWERS — prova social dinâmica ──────────────────
+  // Piso fixo de 34 (nunca mostra menos) e tendência de ALTA: enquanto o lead
+  // está na página o número sobe (mais gente chegando), com recuos pequenos e
+  // raros pra não parecer travado. Teto varia por sessão pra não repetir.
   function startLiveViewers() {
     if (state.viewersTimer) clearTimeout(state.viewersTimer);
-    const h = new Date().getHours();
-    // base por horário (madrugada/manhã/tarde/noite) + jitter por pageview
-    const base = h < 6 ? 16 : h < 12 ? 26 : h < 18 ? 33 : 44;
-    let n = base + Math.floor(Math.random() * 9) - 4;
-    const min = Math.max(9, n - 10), max = n + 12;
+    const FLOOR = 34;
+    let n = FLOOR + Math.floor(Math.random() * 7);     // começa em 34..40
+    const ceil = 78 + Math.floor(Math.random() * 16);  // teto 78..93 por sessão
     const render = () => {
       const el = document.getElementById("live-viewers");
       if (el) el.textContent = n;
     };
     render();
     const tick = () => {
-      n = Math.min(max, Math.max(min, n + Math.floor(Math.random() * 6) - 2));
+      // ~78% das vezes sobe 1..3; ~22% recua 1. Sempre clampado em [34, teto].
+      const step = Math.random() < 0.78 ? 1 + Math.floor(Math.random() * 3) : -1;
+      n = Math.max(FLOOR, Math.min(ceil, n + step));
       render();
       state.viewersTimer = setTimeout(tick, 5000 + Math.random() * 9000);
     };
