@@ -112,7 +112,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 
   <div class="offer-card fade-up d2">
-    <div class="offer-card-title">O que você recebe por R$ 9</div>
+    <div class="offer-card-title">O que você recebe por R$ 17</div>
     <div class="offer-item">
       <span class="offer-item-icon">🌙</span>
       <span class="offer-item-text"><strong>Protocolo Noturno de 3 Minutos:</strong> a sequência exata antes de dormir que força o corpo a regenerar os vasos durante o sono. Sem suplementos. Sem soro. Sem preparo.</span>
@@ -130,21 +130,21 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="price-block fade-up d3">
     <span class="price-old">Antes: R$ 39</span>
     <span class="price-tag">Agora, só por ser você:</span>
-    <div class="price-new"><small>R$</small> 9</div>
+    <div class="price-new"><small>R$</small> 17</div>
     <div class="price-sub">Prefiro que você tenha do que feche essa página de mãos vazias</div>
     <div class="price-note">Pagamento único • Desbloqueia no seu app VORTX • Acesso imediato</div>
   </div>
 
   <div class="guarantee fade-up d3">
     <div class="guarantee-icon">🛡️</div>
-    <div class="guarantee-title">Sem risco, menos que um café</div>
+    <div class="guarantee-title">Sem risco nenhum</div>
     <p class="guarantee-text">Se não te ajudar a acelerar o resultado do Protocolo VORTX, devolvo cada centavo. 30 dias. Sem perguntas.</p>
   </div>
 
   <div class="fade-up d4">
     <button type="button" class="btn ticto-upsell-button" id="btn-downsell" data-fallback-offer="O696FA45D">
       SIM, QUERO ACELERAR POR
-      <span class="btn-price">+ R$ 9</span>
+      <span class="btn-price">+ R$ 17</span>
     </button>
     <p class="btn-sub">Acesso imediato junto com seu Protocolo VORTX</p>
     <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip-downsell">Não, prefiro continuar sem o protocolo noturno →</button>
@@ -167,13 +167,13 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const n = p.get('name');
 
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
-  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'protocolo_ignicion_downsell', value:9}); }
+  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'protocolo_ignicion_downsell', value:17}); }
 
   document.getElementById('btn-downsell').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      window.vortxTrackSync('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
+      window.vortxTrackSync('downsell_accept', {value:17, currency:'BRL', product:'protocolo_ignicion_downsell'});
     } else if (window.vortxTrack) {
-      window.vortxTrack('downsell_accept', {value:9, currency:'BRL', product:'protocolo_ignicion_downsell'});
+      window.vortxTrack('downsell_accept', {value:17, currency:'BRL', product:'protocolo_ignicion_downsell'});
     }
   });
 
