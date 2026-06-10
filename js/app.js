@@ -1095,7 +1095,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           placeholder="${NAMEGATE_DATA.placeholder}" maxlength="30"
           autocomplete="given-name" autocapitalize="words" enterkeyhint="go">
       </div>
-      <div class="step-footer" style="width:100%;">
+      <div class="step-footer" style="width:100%;margin-top:0;padding-top:4px;">
         <button class="btn-cta" id="btn-gate-continue">${NAMEGATE_DATA.cta}</button>
       </div>
     `;
