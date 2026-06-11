@@ -99,8 +99,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div class="header fade-up">
     <div class="icon">💭</div>
     <div class="tag">UM MOMENTO</div>
-    <h1>Tudo bem, <em>não precisa levar tudo de uma vez</em>.</h1>
-    <p class="sub">Mas antes de fechar, tem a versão mais enxuta do que acelera seu resultado, e custa <strong>menos que um almoço</strong>.</p>
+    <h1>Tudo bem. <em>Mas não sai daqui sozinho.</em></h1>
+    <p class="sub">Se o acompanhamento completo pesou agora, leva pelo menos a versão essencial: <strong>o empurrão diário que dobra sua chance de chegar ao Dia 21</strong>, por menos da metade.</p>
   </div>
 
   <div class="ds-timer fade-up">
@@ -108,31 +108,31 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 
   <div class="alert-box fade-up d1">
-    <p>O Ignição <strong>NÃO é um soro</strong>. Não é um líquido. Não é uma receita para preparar. <strong>É um protocolo noturno de 3 minutos</strong> que funciona de forma independente, enquanto você dorme. É bem diferente do que você acabou de recusar.</p>
+    <p>Não é outro produto. <strong>É o mesmo acompanhamento que você acabou de ver, na versão essencial:</strong> sem o painel no app, sem as missões, só o que mais importa, o lembrete diário no seu WhatsApp pra você não furar nenhum dia.</p>
   </div>
 
   <div class="offer-card fade-up d2">
-    <div class="offer-card-title">O que você recebe por R$ 17</div>
+    <div class="offer-card-title">O que você recebe por R$ 24</div>
     <div class="offer-item">
-      <span class="offer-item-icon">🌙</span>
-      <span class="offer-item-text"><strong>Protocolo Noturno de 3 Minutos:</strong> a sequência exata antes de dormir que força o corpo a regenerar os vasos durante o sono. Sem suplementos. Sem soro. Sem preparo.</span>
+      <span class="offer-item-icon">📲</span>
+      <span class="offer-item-text"><strong>Lembrete diário no WhatsApp, 21 dias:</strong> todo dia chega o passo de hoje, no horário certo. Você só segue a mensagem, sem decidir nada.</span>
     </div>
     <div class="offer-item">
-      <span class="offer-item-icon">📋</span>
-      <span class="offer-item-text"><strong>Stack de 3 hábitos noturnos:</strong> as 3 mudanças simples que disparam testosterona durante as 8 horas de sono (você já tem tudo em casa).</span>
+      <span class="offer-item-icon">🔔</span>
+      <span class="offer-item-text"><strong>O empurrão na hora da preguiça:</strong> o aviso que transforma "amanhã eu faço" em feito. É o que segura sua sequência quando a vontade some.</span>
     </div>
     <div class="offer-item">
-      <span class="offer-item-icon">📊</span>
-      <span class="offer-item-text"><strong>Checklist semanal de progresso:</strong> os sinais que confirmam que seu Protocolo VORTX está funcionando, antes de ver no espelho.</span>
+      <span class="offer-item-icon">✅</span>
+      <span class="offer-item-text"><strong>Sua sequência até o Dia 21:</strong> cada dia confirmado mantém o ritmo. Quem é lembrado todo dia, faz todo dia, e termina.</span>
     </div>
   </div>
 
   <div class="price-block fade-up d3">
-    <span class="price-old">Antes: R$ 39</span>
+    <span class="price-old">Antes: R$ 47</span>
     <span class="price-tag">Agora, só por ser você:</span>
-    <div class="price-new"><small>R$</small> 17</div>
-    <div class="price-sub">Prefiro que você tenha do que feche essa página de mãos vazias</div>
-    <div class="price-note">Pagamento único • Desbloqueia no seu app VORTX • Acesso imediato</div>
+    <div class="price-new"><small>R$</small> 24</div>
+    <div class="price-sub">Prefiro que você tenha o empurrão do que feche essa página de mãos vazias</div>
+    <div class="price-note">Pagamento único • Lembrete diário no WhatsApp por 21 dias • Ativa agora</div>
   </div>
 
   <div class="guarantee fade-up d3">
@@ -142,12 +142,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   </div>
 
   <div class="fade-up d4">
-    <button type="button" class="btn ticto-upsell-button" id="btn-downsell" data-fallback-offer="O696FA45D">
-      SIM, QUERO ACELERAR POR
-      <span class="btn-price">+ R$ 17</span>
+    <button type="button" class="btn ticto-upsell-button" id="btn-downsell" data-fallback-offer="O2B9EB812">
+      QUERO O EMPURRÃO DIÁRIO POR
+      <span class="btn-price">+ R$ 24</span>
     </button>
-    <p class="btn-sub">Acesso imediato junto com seu Protocolo VORTX</p>
-    <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip-downsell">Não, prefiro continuar sem o protocolo noturno →</button>
+    <p class="btn-sub">Ativa agora junto com seu Protocolo VORTX</p>
+    <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip-downsell">Não, prefiro ir sem nenhum lembrete →</button>
   </div>
 
   <div class="footer fade-up d5">
@@ -167,18 +167,18 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const n = p.get('name');
 
   var isLegit = window.vortxIsLegitimateConversionPage ? window.vortxIsLegitimateConversionPage() : true;
-  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'protocolo_ignicion_downsell', value:17}); }
+  if (isLegit) { if(window.vortxTrack) vortxTrack('downsell_view', {product:'acompanhamento_essencial', value:24}); }
 
   document.getElementById('btn-downsell').addEventListener('click', function(){
     if (window.vortxTrackSync) {
-      window.vortxTrackSync('downsell_accept', {value:17, currency:'BRL', product:'protocolo_ignicion_downsell'});
+      window.vortxTrackSync('downsell_accept', {value:24, currency:'BRL', product:'acompanhamento_essencial'});
     } else if (window.vortxTrack) {
-      window.vortxTrack('downsell_accept', {value:17, currency:'BRL', product:'protocolo_ignicion_downsell'});
+      window.vortxTrack('downsell_accept', {value:24, currency:'BRL', product:'acompanhamento_essencial'});
     }
   });
 
   document.getElementById('btn-skip-downsell').addEventListener('click', function(){
-    if (window.vortxTrack) window.vortxTrack('downsell_decline', {product:'protocolo_ignicion_downsell'});
+    if (window.vortxTrack) window.vortxTrack('downsell_decline', {product:'acompanhamento_essencial'});
   });
 })();
 </script>
