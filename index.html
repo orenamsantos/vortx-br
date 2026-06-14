@@ -100,7 +100,7 @@
     function load(){
       if(loading) return; loading=true;
       var s1=document.createElement('script');
-      s1.src='js/quiz-data.min.js?v=16';
+      s1.src='js/quiz-data.min.js?v=17';
       s1.onload=function(){
         // Patch escopado: captura o DOMContentLoaded handler do app.js sem registrá-lo.
         // Restaurado imediatamente após o onload do app.js para não afetar o restante da página.
@@ -112,7 +112,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=16';
+        s2.src='js/app.min.js?v=17';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){

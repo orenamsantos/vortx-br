@@ -77,7 +77,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
   // ── STATE ─────────────────────────────────────────────────
   const state = {
-    exitIntentShown: false,
     currentScreen: "gate",
     currentStepIndex: 0,
     answers: {},
@@ -1478,8 +1477,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
-          <div class="vsth-price"><span>R$</span>37</div>
-          <div class="vsth-tag">93% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-price"><span>R$</span>67</div>
+          <div class="vsth-tag">88% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
@@ -1488,9 +1487,9 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <!-- HORMOZI DOUBLE-YOUR-MONEY GUARANTEE (risk reversal antes do CTA) -->
       <div class="guarantee-box guarantee-box--doubled">
         <div class="guarantee-shield">🛡️</div>
-        <div class="guarantee-badge">GARANTIA EM DOBRO</div>
-        <div class="guarantee-title-big">Resultado visível em 30 dias, ou eu devolvo o DOBRO.</div>
-        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, devolvo os R$ 37 + outros R$ 37 pelo meu erro. <strong>Total: R$ 74.</strong> O risco é 100% meu. Você só precisa seguir o protocolo.</p>
+        <div class="guarantee-badge">GARANTIA DE 30 DIAS</div>
+        <div class="guarantee-title-big">Resultado visível em 30 dias, ou seu dinheiro de volta.</div>
+        <p class="guarantee-text-big">Se em 30 dias sua parceira não notar a mudança sem que você precise dizer nada, eu devolvo cada centavo. O risco é 100% meu. Você só precisa seguir o protocolo.</p>
         <div class="guarantee-small">Sem perguntas. Sem burocracia. Sem letrinha miúda.</div>
       </div>
 
@@ -1503,7 +1502,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="checkout-cta-block">
         <a href="https://checkout.ticto.app/O7AAE3550" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
         <p class="checkout-sub">Em 2 minutos o app tá aberto no seu celular. Amanhã de manhã você já sabe exatamente o que fazer.</p>
-        <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia em DOBRO, 30 dias</p>
+        <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia de 30 dias</p>
         <div class="payment-methods">
           ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
         </div>
@@ -1544,7 +1543,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="final-reassurance">
         <div class="fr-item">🔒 Pagamento 100% seguro</div>
         <div class="fr-item">✉️ Acesso imediato por email</div>
-        <div class="fr-item">🛡️ Garantia em dobro, 30 dias</div>
+        <div class="fr-item">🛡️ Garantia de 30 dias</div>
       </div>
 
       <!-- Sticky CTA: aparece após o value-stack, some quando #btn-checkout entra na viewport.
@@ -1558,10 +1557,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     // Animated social counter
     animateSocialCounter();
-
-    // Exit intent popup (desktop mouseleave + mobile scroll up detection)
-    setupExitIntent();
-
 
     // WhatsApp testimonial lightbox (tap to enlarge) — com suporte ao botão voltar
     document.querySelectorAll(".wa-placeholder img").forEach(function(img) {
@@ -1591,145 +1586,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
 
 
-    // ── EXIT INTENT POPUP ─────────────────────────────────────
-    // Oferta A (recomendada): guardar diagnóstico por 24h SEM desconto.
-    // Captura WhatsApp/email para recovery. NÃO treina o lead a esperar desconto.
-    function setupExitIntent() {
-      if (state.exitIntentShown) return;
-      if (sessionStorage.getItem("vx_exit_shown_v1")) return;
-
-      var fired = false;
-      function fire() {
-        if (fired) return;
-        fired = true;
-        state.exitIntentShown = true;
-        try { sessionStorage.setItem("vx_exit_shown_v1", "1"); } catch (e) {}
-        showExitIntentPopup();
-      }
-
-      // DESKTOP: detecta mouse saindo do topo da viewport
-      var mouseLeaveHandler = function (ev) {
-        if (ev.clientY <= 0) fire();
-      };
-      document.addEventListener("mouseleave", mouseLeaveHandler);
-
-      // MOBILE: detecta scroll rápido pra cima após chegar ao final
-      var lastY = window.scrollY;
-      var reachedBottom = false;
-      var scrollHandler = function () {
-        var currentY = window.scrollY;
-        var pct = (currentY + window.innerHeight) / document.body.scrollHeight;
-        if (pct > 0.70) reachedBottom = true;
-        if (reachedBottom && lastY - currentY > 45) {
-          // scroll UP rápido depois de ter descido → intent de sair
-          fire();
-        }
-        lastY = currentY;
-      };
-      window.addEventListener("scroll", scrollHandler, { passive: true });
-
-      // MOBILE FALLBACK: tempo longo parado sem scroll (60s) na pricing
-      setTimeout(function () {
-        if (!fired && window.scrollY < 200) fire();
-      }, 60000);
-    }
-
-    function showExitIntentPopup() {
-      if (document.getElementById("vx-exit-popup")) return;
-
-      var userName = (state.userData && state.userData.name) || "";
-      var prefillWhatsapp = (state.userData && state.userData.whatsapp) || "";
-
-      var popup = document.createElement("div");
-      popup.id = "vx-exit-popup";
-      popup.className = "vx-exit-popup";
-      popup.innerHTML = `
-        <div class="vep-card">
-          <button class="vep-close" aria-label="Fechar">✕</button>
-          <div class="vep-icon">⏸</div>
-          <div class="vep-title">Espera${userName ? ", " + escapeHtml(userName) : ""} — antes de ir</div>
-          <div class="vep-subtitle">Posso fazer uma coisa por você?</div>
-          <div class="vep-body">
-            <p><strong>Guardo seu diagnóstico de graça por 24 horas.</strong></p>
-            <p>O preço de <span class="vep-price-now">R$ 37</span> continua disponível se você decidir voltar. Depois disso, volta para o valor real: <span class="vep-price-old">R$ 547</span>.</p>
-            <p class="vep-note">Mando pro seu WhatsApp — sem spam, uma única mensagem.</p>
-          </div>
-          <form class="vep-form" id="vep-form">
-            <input type="tel" id="vep-whatsapp" placeholder="Seu WhatsApp (com DDD)" value="${prefillWhatsapp ? escapeHtml(prefillWhatsapp) : ""}" required>
-            <button type="submit" class="vep-btn">GUARDA MEU DIAGNÓSTICO</button>
-          </form>
-          <button class="vep-skip" id="vep-skip">Não, obrigado, fechar</button>
-          <div class="vep-footer">
-            <span>🔒 100% privado</span>
-            <span>•</span>
-            <span>Uma única mensagem</span>
-            <span>•</span>
-            <span>Sem spam</span>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(popup);
-
-      // Track
-      if (window.vortxTrack) vortxTrack("exit_intent_shown");
-
-      var closePopup = function () {
-        popup.classList.add("vep-closing");
-        setTimeout(function () { popup.remove(); }, 250);
-      };
-
-      popup.querySelector(".vep-close").addEventListener("click", closePopup);
-      popup.querySelector("#vep-skip").addEventListener("click", function () {
-        if (window.vortxTrack) vortxTrack("exit_intent_decline");
-        closePopup();
-      });
-
-      // Click no overlay (fora do card) fecha
-      popup.addEventListener("click", function (ev) {
-        if (ev.target === popup) closePopup();
-      });
-
-      popup.querySelector("#vep-form").addEventListener("submit", function (ev) {
-        ev.preventDefault();
-        var wa = popup.querySelector("#vep-whatsapp").value.trim();
-        if (!wa || wa.length < 7) return;
-
-        // Persist para usar no recovery
-        try {
-          state.userData.whatsapp = wa;
-          localStorage.setItem("vx_exit_recovery", JSON.stringify({
-            whatsapp: wa,
-            name: userName,
-            timestamp: Date.now(),
-            plan: state.selectedPlan
-          }));
-        } catch (e) {}
-
-        if (window.vortxTrack) {
-          vortxTrack("exit_intent_captured", {
-            has_whatsapp: true,
-            plan: state.selectedPlan
-          });
-        }
-
-        // Mostrar confirmação dentro do próprio popup
-        popup.querySelector(".vep-card").innerHTML = `
-          <div class="vep-success">
-            <div class="vep-success-icon">✓</div>
-            <div class="vep-success-title">Diagnóstico guardado!</div>
-            <p>Te mando o resumo em instantes. O preço de R$ 37 continua disponível por 24 horas.</p>
-            <button class="vep-btn vep-btn-back" id="vep-stay">Continuar aqui e ver a oferta</button>
-          </div>
-        `;
-        popup.querySelector("#vep-stay").addEventListener("click", closePopup);
-      });
-    }
-
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, function (c) {
-        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-      });
-    }
 
     // ── CHECKOUT TRANSITION SCREEN ────────────────────────────
     // Tela de preparação mental antes do redirect para o Ticto
