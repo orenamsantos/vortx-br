@@ -397,7 +397,7 @@ const PRICING_DATA={
     {
       id:"vitalicio",
       name:"PROTOCOLO COMPLETO — ACESSO VITALÍCIO",
-      price:67,
+      price:37,
       originalPrice:547,
       period:"pagamento único, acesso vitalício",
       description:"O protocolo completo de reversão vascular",

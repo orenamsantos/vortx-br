@@ -1477,8 +1477,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
-          <div class="vsth-price"><span>R$</span>67</div>
-          <div class="vsth-tag">88% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-price"><span>R$</span>37</div>
+          <div class="vsth-tag">93% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
