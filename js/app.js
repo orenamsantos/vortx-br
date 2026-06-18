@@ -1614,12 +1614,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
             </div>
             <div class="ct-step ct-step-3">
               <span class="ct-check">✓</span>
-              <span>Conectando com Ticto...</span>
+              <span>Conectando ao checkout seguro...</span>
             </div>
           </div>
           <div class="ct-footer">
             <img src="data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23C9A84C\'><path d=\'M12 1l3.09 6.26L22 8.27l-5 4.87 1.18 6.88L12 16.77l-6.18 3.25L7 13.14 2 8.27l6.91-1.01L12 1z\'/></svg>" alt="" class="ct-badge-icon">
-            <span>Processado pela <strong>Ticto</strong> — plataforma 100% segura</span>
+            <span>Processado por <strong>plataforma de pagamento 100% segura</strong></span>
           </div>
         </div>
       `;
@@ -1656,7 +1656,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       // ── MONTAGEM DA URL COM ATRIBUIÇÃO ─────────────────────────
       // Parâmetros nativos do quiz
       var userName = encodeURIComponent(state.userData.name || "");
-      var baseUrl  = "https://checkout.ticto.app/O7AAE3550";
+      // CHECKOUT MIGRADO PRA LASTLINK (18/06). Rollback = voltar este baseUrl pro Ticto
+      // "https://checkout.ticto.app/O7AAE3550". sck+UTMs seguem anexados (LastLink preserva
+      // e devolve no webhook -> tracking + entrega server-side).
+      var baseUrl  = "https://lastlink.com/p/C297FF55B/checkout-payment/";
       var checkoutUrl = baseUrl + "?name=" + userName + "&plan=" + selectedPlan + "&value=" + price;
       if (state.userData.whatsapp) checkoutUrl += "&phonenumber=" + encodeURIComponent(state.userData.whatsapp);
 
