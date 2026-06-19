@@ -1500,7 +1500,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
 
       <div class="checkout-cta-block">
-        <a href="https://lastlink.com/p/C297FF55B/checkout-payment/" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
+        <a href="https://lastlink.com/p/CD688C370/checkout-payment/" class="btn-cta btn-cta--checkout" id="btn-checkout" rel="noopener">${buildCheckoutCta(state.selectedPlan)}</a>
         <p class="checkout-sub">Em 2 minutos o app tá aberto no seu celular. Amanhã de manhã você já sabe exatamente o que fazer.</p>
         <p class="checkout-sub">Acesso imediato • Sem assinatura oculta • Garantia de 30 dias</p>
         <div class="payment-methods">
@@ -1658,7 +1658,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       var userName = encodeURIComponent(state.userData.name || "");
       // Checkout LastLink. sck+UTMs seguem anexados (LastLink preserva
       // e devolve no webhook -> tracking + entrega server-side).
-      var baseUrl  = "https://lastlink.com/p/C297FF55B/checkout-payment/";
+      var baseUrl  = "https://lastlink.com/p/CD688C370/checkout-payment/";
       var checkoutUrl = baseUrl + "?name=" + userName + "&plan=" + selectedPlan + "&value=" + price;
       if (state.userData.whatsapp) checkoutUrl += "&phonenumber=" + encodeURIComponent(state.userData.whatsapp);
 
