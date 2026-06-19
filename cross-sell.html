@@ -19,7 +19,7 @@
     // Validações aceitas (em ordem de prioridade)
     var validSrc    = src === 'vortx_funnel';
     var validTx     = txid.length >= 8;                                             // transaction_id da Ticto
-    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto|ticto\.app/i.test(referer);
+    var fromTicto   = /ticto\.com\.br|payment\.ticto|checkout\.ticto|ticto\.app|lastlink\.com/i.test(referer);
     var fromSelf    = referer.indexOf(location.origin) === 0;
 
     if (!validSrc && !validTx && !fromTicto && !fromSelf) {
@@ -127,7 +127,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}
 </style>
-    <script defer src="js/tracking-stub.min.js?v=2"></script>
+    <script defer src="js/tracking-stub.min.js?v=3"></script>
 </head>
 <body>
 <div class="page">

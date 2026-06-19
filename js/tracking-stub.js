@@ -126,7 +126,7 @@ window.vortxIsLegitimateConversionPage = function(){
     if (/^HP[A-Z0-9]{6,}/i.test(params.get("transaction")||"")) return true;
     if (params.get("src") === "vortx_funnel") return true;
     var ref = document.referrer || "";
-    if (/ticto\.com\.br|payment\.ticto|checkout\.ticto|ticto\.app/i.test(ref)) return true;
+    if (/ticto\.com\.br|payment\.ticto|checkout\.ticto|ticto\.app|lastlink\.com/i.test(ref)) return true;
     if (ref.indexOf(location.origin) === 0) return true;
     return false;
   } catch(e){ return false; }
