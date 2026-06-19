@@ -4,8 +4,7 @@
 <!-- Google Tag Manager (Stape custom container) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://data.desconecta.shop/76tifylkies.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','9d=GgFULDg0SyI%2FXCE4Wy0sTwVYW0VdXwIHTgEMGA8WCAwQEQhFHxEJGQ%3D%3D');</script>
 <!-- End Google Tag Manager -->
-<!-- Ticto One-Click Funnel (flow oficial VORTX) -->
-<script src="https://midas.ticto.app/oneclickbuy.js?flow=205183b0-c660-4ffd-8992-8a0e2d62b223.109796" async></script>
+<!-- Upsell one-click via LastLink: engine carregada junto dos botoes, no fim da pagina -->
 <script>
 (function(){
   // VORTX Access Guard v3 — bloqueia acesso direto às thank-you pages
@@ -191,10 +190,30 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
       <p class="guarantee-text">Siga o acompanhamento por 30 dias. Se ele não te fizer ir mais longe do que você iria sozinho, peça reembolso. Sem perguntas. O risco é meu.</p>
     </div>
     <div class="fade-up d5">
-      <button type="button" class="btn ticto-upsell-button" id="btn-upsell" data-fallback-offer="O51779FE6">QUERO SER ACOMPANHADO ATÉ O FIM<span class="btn-price">+ R$ 47</span></button>
+      <div class="btn" id="llupsell-C6B648FAC-" style="cursor:pointer">QUERO SER ACOMPANHADO ATÉ O FIM<span class="btn-price">+ R$ 47</span></div>
       <p class="btn-sub">Adicionado ao seu pedido VORTX • 21 dias de acompanhamento • Garantia 30 dias</p>
-      <button type="button" class="btn-skip ticto-refuse-button" id="btn-skip">Não, prefiro tentar na base da força de vontade →</button>
+      <div class="btn-skip" id="denyButton51cafa3" style="cursor:pointer">Não, prefiro tentar na base da força de vontade →</div>
     </div>
+    <!-- LastLink one-click upsell: aceite cobra e vai pro cross-sell; recusa vai pro downsell -->
+    <script src="https://cdn.lastlink.com/upsell.min.js"></script>
+    <script>
+    var upsellRedirect = "https://www.desconecta.shop/cross-sell.html?src=vortx_funnel";
+    function setupDenyButtons() {
+      document.querySelectorAll('[id^="denyButton"]').forEach(function(button){
+        button.onclick = function() {
+          var currentUrl = new URL(window.location.href);
+          var newUrl = new URL("https://www.desconecta.shop/downsell.html?src=vortx_funnel");
+          currentUrl.searchParams.forEach(function(value, key){ newUrl.searchParams.append(key, value); });
+          window.location.href = newUrl.toString();
+        };
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupDenyButtons);
+    } else {
+      setupDenyButtons();
+    }
+    </script>
   </div>
   <div class="how-title" style="margin:36px 0 14px;">Seu acesso, passo a passo</div>
   <div class="steps">
@@ -223,14 +242,16 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     if(window.vortxTrack) vortxTrack('upsell_view',{product:'acompanhamento_21d',value:47});
   }
 
-  document.getElementById('btn-upsell').addEventListener('click', function(){
+  var _accept = document.getElementById('llupsell-C6B648FAC-');
+  if (_accept) _accept.addEventListener('click', function(){
     if (window.vortxTrackSync) {
       window.vortxTrackSync('upsell_accept', {value:47, currency:'BRL', product:'acompanhamento_21d'});
     } else if (window.vortxTrack) {
       window.vortxTrack('upsell_accept', {value:47, currency:'BRL', product:'acompanhamento_21d'});
     }
   });
-  document.getElementById('btn-skip').addEventListener('click', function(){
+  var _deny = document.getElementById('denyButton51cafa3');
+  if (_deny) _deny.addEventListener('click', function(){
     if (window.vortxTrack) window.vortxTrack('upsell_decline', {product:'acompanhamento_21d'});
   });
 })();
