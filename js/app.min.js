@@ -63,7 +63,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // Continua validando acesso direto às thank-you pages (independente de pixel)
   try {
     var params = new URLSearchParams(window.location.search);
-    // (hottok removido — checkout via Ticto)
+    // (hottok removido — checkout via LastLink)
     if (/^HP[A-Z0-9]{6,}/i.test(params.get("transaction")||"")) return true;
     if (params.get("src") === "vortx_funnel") return true;
     var ref = document.referrer || "";
@@ -1588,7 +1588,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
 
     // ── CHECKOUT TRANSITION SCREEN ────────────────────────────
-    // Tela de preparação mental antes do redirect para o Ticto
+    // Tela de preparação mental antes do redirect para o checkout
     function showCheckoutTransition() {
       var existing = document.getElementById("checkout-transition");
       if (existing) return;
@@ -1656,8 +1656,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       // ── MONTAGEM DA URL COM ATRIBUIÇÃO ─────────────────────────
       // Parâmetros nativos do quiz
       var userName = encodeURIComponent(state.userData.name || "");
-      // CHECKOUT MIGRADO PRA LASTLINK (18/06). Rollback = voltar este baseUrl pro Ticto
-      // "https://checkout.ticto.app/O7AAE3550". sck+UTMs seguem anexados (LastLink preserva
+      // Checkout LastLink. sck+UTMs seguem anexados (LastLink preserva
       // e devolve no webhook -> tracking + entrega server-side).
       var baseUrl  = "https://lastlink.com/p/C297FF55B/checkout-payment/";
       var checkoutUrl = baseUrl + "?name=" + userName + "&plan=" + selectedPlan + "&value=" + price;
@@ -1667,7 +1666,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       // sck é a chave única por visitante, gerada em tracking-stub.js
       // e incluída automaticamente no dataLayer.push de begin_checkout.
       // Cruza dados client-side (Stape Store, gravado pela Tag BD InitiateCheckout)
-      // com o webhook server-side da Ticto.
+      // com o webhook server-side da LastLink.
       try {
         // sck único por visitante (mesmo que vai no dataLayer do begin_checkout)
         var sck = window.vortxGetOrCreateSck ? window.vortxGetOrCreateSck() : null;
@@ -1680,13 +1679,13 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           // fbp/fbc passados como params diretos
           if (attr.fbp) checkoutUrl += "&fbp=" + encodeURIComponent(attr.fbp);
           if (attr.fbc) checkoutUrl += "&fbc=" + encodeURIComponent(attr.fbc);
-          // TikTok Ads: ttclid (clique) + ttp (cookie do pixel) pro webhook do Ticto
+          // TikTok Ads: ttclid (clique) + ttp (cookie do pixel) pro webhook da LastLink
           if (attr.ttclid) checkoutUrl += "&ttclid=" + encodeURIComponent(attr.ttclid);
           if (attr.ttp) checkoutUrl += "&ttp=" + encodeURIComponent(attr.ttp);
           if (eventId)  checkoutUrl += "&eid=" + encodeURIComponent(eventId);
           // src recebe utm_campaign (campo separado do sck, não conflita)
           if (attr.utm_campaign) checkoutUrl += "&src=" + encodeURIComponent(attr.utm_campaign);
-          // UTMs completos pra Ticto armazenar no painel + webhook Purchase
+          // UTMs completos pra LastLink armazenar + webhook Purchase
           // (necessário pra ad_id chegar ao Meta CAPI)
           if (attr.utm_source)  checkoutUrl += "&utm_source="  + encodeURIComponent(attr.utm_source);
           if (attr.utm_medium)  checkoutUrl += "&utm_medium="  + encodeURIComponent(attr.utm_medium);
@@ -1696,11 +1695,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         }
       } catch (e) {}
 
-      // (param &payment_method=pix REMOVIDO a pedido do Flavio em 14/06 — checkout volta ao seletor padrao do Ticto)
+      // (param &payment_method=pix REMOVIDO em 14/06 — checkout usa o seletor padrão da LastLink)
 
       // ── TELA DE TRANSIÇÃO "PREPARANDO TU PAGO" ──────────────
       // Prepara mentalmente o lead para o redirect (evita estranhamento
-      // ao ver checkout.ticto.com.br na barra de endereço) + dá tempo para o
+      // ao ver o domínio do checkout na barra de endereço) + dá tempo para o
       // Pixel do Meta disparar antes da navegação.
       // Atualiza href do <a> para que GTM detecte navegação correta como gtm.linkClick
       try { ev.target.closest("a").setAttribute("href", checkoutUrl); } catch(_) {}
