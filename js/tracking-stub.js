@@ -107,6 +107,9 @@ window.vortxGetAttribution = function(){
     if (ttclid) p.ttclid = ttclid;
     var ttp = (document.cookie.match(/(?:^|;\s*)_ttp=([^;]+)/) || [])[1];
     if (ttp) p.ttp = decodeURIComponent(ttp);
+    // Meta: fbp (cookie _fbp setado pelo pixel do Meta) -> EMQ no Purchase server-side da LastLink
+    var fbp = (document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/) || [])[1];
+    if (fbp) p.fbp = decodeURIComponent(fbp);
     ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
       var v = sessionStorage.getItem("vx_" + k);
       if (v) p[k] = v;
