@@ -20,11 +20,12 @@ Reescrever o funil principal (gate, quiz, diagnóstico, oferta) para:
 | Risco/escopo | Reescrever o funil principal COM rollback pronto (versionar o atual, reverter em minutos se a métrica cair) |
 | Foco | DE + EP, hiper-personalizado por resposta, anti-template, aberto a vídeo (Flavio gera no Omniflash/Google) |
 | Mecanismo | "O Circuito Adormecido": um sistema único que cobre PRESSÃO (ereção) e GATILHO (controle/durar). Respiração é a CHAVE que liga, não o produto |
-| História | Jornada do herói do Dr. Marcus Hale + Andes + "Respiração do Condor" como o interruptor |
+| História | Jornada do herói do Dr. Renato Vasquez + Andes + "Respiração do Condor" como o interruptor |
 | Marca | CONDOR substitui VORTX na fachada (texto visível). Tracking/app internos migram depois |
 | Gamificação | Medidor de BLOQUEIO ao vivo (sempre negativo, nunca "ativo") + "Teste do Gatilho" sem perdedor |
 | Quiz | 10 perguntas, 3 rotas ramificadas (DE / EP / ambos), teste no meio com porta de fuga |
-| Front | R$37, âncora de R$197 (R$547 é irreal). Decoy Essencial R$17 (de R$67) |
+| Vídeo | Sim, na revelação/oferta (pós-quiz, alta intenção). Espaço reservado no código, Flavio gera no Omniflash |
+| Front | Oferta ÚNICA R$37, âncora de R$197 (R$547 é irreal). SEM decoy (R$17 canibalizaria por estar perto demais do R$37) |
 | Bumps | 3: Gatilho de Aço +R$9 (durar), Pressão Máxima +R$12 (firmeza), Cabeça Blindada +R$19 (ansiedade) |
 | Pós-compra | Upsell Condor Acelerado R$47 > downsell R$24; cross Ritual de Ignição R$19 |
 | Garantia | 30 dias, devolução total |
@@ -37,18 +38,18 @@ Todo homem nasce com uma circulação de reserva na pélvis: vasos e um gatilho 
 
 A "Respiração do Condor" é o interruptor que religa. O app Condor é o protocolo de 21 dias que guia a reativação dia a dia, medindo e destravando por etapa.
 
-### Jornada do herói (Dr. Marcus Hale), costurada entre as perguntas
+### Jornada do herói (Dr. Renato Vasquez), costurada entre as perguntas
 1. O fracasso pessoal: falhou na cama aos 41, exames normais, medicina deu de ombros.
 2. O exílio: foi atrás de uma população isolada dos Andes que não conhece impotência nem termina cedo.
 3. A descoberta: não era dieta nem gene, era o circuito mantido aberto pela altitude e um ritual de gerações.
 4. A supressão: tentou publicar e foi ignorado, ninguém engarrafa e patenteia uma respiração.
-5. A prova: testou em si e em mais de 17 mil homens, virou o protocolo Condor.
+5. A prova: testou em si e em mais de 17 mil homens, virou o protocolo Condor. Esta etapa pode receber o vídeo curto (revelação/oferta) gerado no Omniflash.
 6. O chamado (você): o quiz mede quanto do SEU circuito já adormeceu, o app é o mapa para reacender.
 
 Cada resposta puxa o próximo trecho da história + um diagnóstico daquele sintoma, então o quiz vira um capítulo sobre o usuário.
 
 ### Limites de claim (boundary)
-Mecanismo é dispositivo narrativo de marketing. Manter as travas já adotadas na linha VORTX/LATAM: nada de promessa de aumento permanente garantido de tamanho, nada de cura médica garantida, resultados variam. Sem inventar estudo específico falso. Mantém o Dr. Marcus Hale como persona já existente do funil.
+Mecanismo é dispositivo narrativo de marketing. Manter as travas já adotadas na linha VORTX/LATAM: nada de promessa de aumento permanente garantido de tamanho, nada de cura médica garantida, resultados variam. Sem inventar estudo específico falso. Dr. Renato Vasquez é persona de marketing (fictícia), nome novo para não reciclar o Dr. Hale já usado em outro funil.
 
 ## 4. Blueprint do quiz
 
@@ -106,13 +107,14 @@ A rota definida na Q1 reweight a experiência inteira:
 
 Resultado escrito sob medida combinando rota + idade + medidor final + porta do teste. Depoimentos filtrados por rota e por motivação (Q10). CTA final mapeado pela Q10 (parceira / por mim / os dois).
 
-Espaço reservado para vídeo personalizado (Omniflash/Google) no resultado ou na revelação do app, a inserir quando o Flavio gerar.
+### Vídeo (revelação/oferta)
+Espaço reservado no código para um vídeo curto no momento de alta intenção (pós-quiz, na revelação do app / oferta): o Dr. Vasquez conta a descoberta e revela o Condor. NÃO vai no gate (mata o carregamento e rouba o protagonismo do quiz). Flavio gera no Omniflash/Google e a gente pluga. Go-live não depende do vídeo (entra como melhoria).
 
 ## 7. Oferta e esteira (LastLink)
 
 ### Checkout
-- Decoy: Condor Essencial R$17 (de R$67), só módulo 1, ancora pra cima.
-- Principal: Método Condor Completo, acesso vitalício, R$37 (de R$197). Reativa o Circuito Adormecido (pressão + gatilho), protocolo 21 dias no app.
+- Oferta ÚNICA: Método Condor Completo, acesso vitalício, R$37 (de R$197). Reativa o Circuito Adormecido (pressão + gatilho), protocolo 21 dias no app.
+- SEM decoy. O R$17 foi cortado: a R$20 do principal ele canibaliza em vez de ancorar (decoy só funciona com distância grande de preço). A âncora R$197 e os 3 bumps fazem o trabalho de percepção de valor e AOV.
 
 ### Order bumps (3, eixos virgens, escadinha, sem sobreposição)
 1. Gatilho de Aço +R$9: controle avançado pra durar (aprofunda EP).
@@ -144,13 +146,13 @@ Princípio: cada bump é dono de um eixo (durar / firmeza / cabeça). Donos úni
 
 - Migração do nome interno VORTX no tracking/app (fica para depois do rebrand de fachada).
 - Conteúdo dos módulos/bônus dentro do app (entrega separada).
-- Criação dos vídeos (Flavio gera no Omniflash).
+- Criação do vídeo da revelação (Flavio gera no Omniflash; código deixa o espaço pronto).
 - Identidade visual nova finalizada (exploração paralela, não bloqueia).
 
 ## 11. Critérios de sucesso
 
 - Funil no ar com rota DE/EP/ambos ramificando de verdade e medidor de bloqueio funcionando.
 - Tracking preservado e validado (begin_checkout e purchase chegando com sck e atribuição).
-- Esteira Condor publicada na LastLink (principal + decoy + 3 bumps + upsell + downsell + cross).
+- Esteira Condor publicada na LastLink (principal único + 3 bumps + upsell + downsell + cross).
 - Rollback testado.
 - Meta de negócio: 6 dígitos/mês com ROI positivo via escala de tráfego x AOV da esteira (medir conversão por etapa e take dos bumps após go-live).
