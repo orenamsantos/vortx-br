@@ -80,6 +80,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     currentScreen: "gate",
     currentStepIndex: 0,
     answers: {},
+    route: "ambos",
     userData: { name: "", whatsapp: "", height: 0, weight: 0 },
     optIn: true,
     selectedPlan: "vitalicio",
@@ -221,6 +222,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const n = state.userData.name;
     if (n) return text.replace(/\{name\}/g, n);
     return text.replace(/\{name\},\s*/g, "").replace(/\{name\}/g, "você");
+  }
+
+  function byRoute(de, ep, ambos) {
+    if (state.route === "DE") return de;
+    if (state.route === "EP") return ep;
+    return ambos;
   }
 
   // ── RENDER GATE ───────────────────────────────────────────
@@ -563,6 +570,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           document.querySelectorAll(".option-card").forEach((c) => c.classList.remove("selected"));
           this.classList.add("selected");
           state.answers[step.id] = this.dataset.value;
+          if (step.id === "q1") {
+            var opt = step.options.find(function(o){ return o.value === this.dataset.value; }.bind(this));
+            state.route = (opt && opt.route) || "ambos";
+          }
           const triggerMsg = getTriggerMessage(step, this.dataset.value);
           if (triggerMsg) {
             showShockScreen(injectName(triggerMsg), () => advanceStep());
