@@ -260,134 +260,73 @@ RESULT_DATA={
   }
 },
 
-BRIDGE_DATA={cta:"VER COMO REACENDER MEU CIRCUITO"},
+BRIDGE_DATA={cta:"VER COMO REACENDER MEU CIRCUITO"};
 
-PROTOCOL_DATA={
-  headline:"O Protocolo de Reversão Vascular, Desenhado para o Seu Caso",
-  subheadline:"Sem cirurgia, sem pílulas, sem bomba: o método que destampa os vasos e faz o sangue voltar com pressão total. Montado dia a dia no app VORTX, no seu celular, pro seu diagnóstico: você abre e já sabe exatamente o que fazer hoje.",
+const VIDEO_DATA={
+  enabled:false,
+  url:"",
+  poster:""
+};
+
+var PROTOCOL_DATA={
+  headline:"O Protocolo Condor, montado pro seu circuito",
+  subheadline:"Sem cirurgia, sem pílula, sem bomba. A Respiração do Condor é o interruptor que reacende o circuito que a vida moderna desligou. Montado dia a dia no app Condor, no seu celular, pro seu diagnóstico.",
   features:[
-    {
-      icon:"🍆",
-      title:"Vasos reabertos em 21 dias — tamanho de volta",
-      desc:"Seu pênis está menor porque o sangue não chega. O protocolo destampa os vasos e restaura o volume perdido. Diferença visível sem pílula, sem cirurgia."
-    },
-    {
-      icon:"⏱️",
-      title:"Dure 3 vezes mais — sem terminar antes",
-      desc:"O protocolo fortalece o músculo PC e regula o fluxo. Resultado: você decide quando termina. Não seu corpo."
-    },
-    {
-      icon:"🔩",
-      title:"Ereção natural, sem a pílula azul",
-      desc:"Seus vasos se reabrem e o sangue enche o pênis com a pressão que você tinha aos 25 anos. Sem química, sem dependência."
-    },
-    {
-      icon:"🔥",
-      title:"Desejo de predador — vontade que não para",
-      desc:"Quando os vasos abrem e os hormônios se equilibram, o desejo volta como uma onda. Sua parceira sente antes de você."
-    }
+    {icon:"🔺",title:"Pressão de volta em 21 dias",desc:"O circuito da pressão reabre e o sangue enche com a força que você tinha aos 25. Firmeza sem depender da pílula azul."},
+    {icon:"⏱️",title:"Gatilho sob comando",desc:"Você reinstala o freio. Decide quando termina, em vez de ser pego de surpresa. Durar passa a ser escolha."},
+    {icon:"🌄",title:"A Respiração do Condor",desc:"O ritual que os andinos usam pra manter o circuito aberto a vida toda. 6 minutos por dia, guiado no app."},
+    {icon:"🔥",title:"Desejo que volta junto",desc:"Quando o circuito reacende, a vontade volta como onda. Sua parceira sente antes de você contar."}
   ],
-  seal:"Seu protocolo já está montado no app VORTX, com base no seu diagnóstico. Acesso restrito.",
-  cta:"QUERO DESTRAVAR ISSO AGORA"
+  seal:"Seu protocolo já está montado no app Condor, com base no seu diagnóstico. Acesso restrito.",
+  cta:"QUERO REACENDER ISSO AGORA"
 },
 
 TESTIMONIALS=[
-  {
-    initials:"César M.",age:52,occupation:"Dono de Construtora, São Paulo",
-    photo:"img/testimonials/cesar-m.jpg",
-    text:"15 dias de protocolo e minha esposa me perguntou que diabos eu estava tomando. Voltei a funcionar como se tivesse 30.",
-    result:"Funcionou em 15 dias",highlight:"+ Tamanho e firmeza restaurados",
-    painTags:["parceira","tudo","confianza"]
-  },
-  {
-    initials:"Roberto Q.",age:44,occupation:"Investidor, Rio de Janeiro",
-    photo:"img/testimonials/roberto-q.jpg",
-    text:"Meu pênis tinha encolhido e eu terminava em 2 minutos. Era vascular. O protocolo me devolveu centímetros e controle total.",
-    result:"Tamanho e duração de volta",highlight:"+ Controle total restaurado",
-    painTags:["parceira","eu_mesmo","tudo"]
-  },
-  {
-    initials:"Sergio O.",age:60,occupation:"Ex-Militar, Curitiba",
-    photo:"img/testimonials/sergio-o.jpg",
-    text:"60 anos. Dependia da pílula. Hoje acordo com ereção forte, sem precisar de nada. O tamanho voltou aos meus 40.",
-    result:"Sem pílula aos 60 anos",highlight:"+ Vasos reabertos naturalmente",
-    painTags:["parceira","eu_mesmo","tudo"]
-  },
-  {
-    initials:"Marcos T.",age:48,occupation:"Caminhoneiro, Belo Horizonte",
-    photo:"img/testimonials/marcos-t.jpg",
-    text:"3 semanas de protocolo e minha esposa voltou pro quarto. Hoje aguento a noite toda.",
-    result:"Duração triplicada",highlight:"+ Energia restaurada",
-    painTags:["parceira","tudo"]
-  },
-  {
-    initials:"Ricardo F.",age:55,occupation:"Advogado, Brasília",
-    photo:"img/testimonials/ricardo-f.jpg",
-    text:"Terminava em 1 minuto. Hoje controlo quando quero e minha esposa pede mais.",
-    result:"De 1 minuto pra 40+",highlight:"+ Controle de ejaculação",
-    painTags:["eu_mesmo","parceira","tudo"]
-  },
-  {
-    initials:"Pablo S.",age:41,occupation:"Empresário, São Paulo",
-    photo:"img/testimonials/pablo-s.jpg",
-    text:"60 dias: a barriga sumiu, o peito desapareceu e o tamanho voltou visivelmente. Minha esposa não acreditava.",
-    result:"Corpo e tamanho restaurados",highlight:"+ Estrogênio eliminado",
-    painTags:["eu_mesmo","tudo","confianza"]
-  },
-  {
-    initials:"Andrés L.",age:49,occupation:"Engenheiro, Porto Alegre",
-    photo:"img/testimonials/andres-l.jpg",
-    text:"30 dias de protocolo: minha esposa olhou e disse 'o que aconteceu com você?'. Voltei a ser eu.",
-    result:"Reversão em 30 dias",highlight:"+ Circulação reaberta",
-    painTags:["eu_mesmo","parceira","tudo","confianza"]
-  },
-  {
-    initials:"Felipe R.",age:53,occupation:"Médico, Salvador",
-    photo:"img/testimonials/felipe-r.jpg",
-    text:"Sou médico e não conseguia resolver meu próprio problema. Esse protocolo fez o que 5 anos de consultas não conseguiram.",
-    result:"Funcionou onde a medicina falhou",highlight:"+ Abordagem vascular comprovada",
-    painTags:["eu_mesmo","parceira","tudo"]
-  },
-  {
-    initials:"Jonathan P.",age:46,occupation:"Professor, Florianópolis",
-    photo:"img/testimonials/jonathan-p.jpg",
-    text:"O protocolo abriu os vasos e o sangue voltou com pressão. Minha parceira notou na primeira semana.",
-    result:"Resultado visível em 7 dias",highlight:"+ Fluxo restaurado",
-    painTags:["parceira","tudo"]
-  },
-  {
-    initials:"Gilberto A.",age:58,occupation:"Empresário, Goiânia",
-    photo:"img/testimonials/gilberto-a.jpg",
-    text:"3 semanas: duro como touro, duração que ela nunca tinha visto. Não quer sair da cama.",
-    result:"Firmeza e duração de touro",highlight:"+ Performance total",
-    painTags:["parceira","eu_mesmo","tudo"]
-  },
-  {
-    initials:"Carlos V.",age:43,occupation:"Policial, Recife",
-    photo:"img/testimonials/carlos-v.jpg",
-    text:"Antes terminava antes de começar. Hoje controlo e duro o que quero. VORTX salvou meu casamento.",
-    result:"Ejaculação sob controle",highlight:"+ Performance restaurada",
-    painTags:["eu_mesmo","tudo","confianza"]
-  },
-  {
-    initials:"Daniel M.",age:37,occupation:"Desenvolvedor, Fortaleza",
-    photo:"img/testimonials/daniel-m.jpg",
-    text:"Tinha 37 e achava que era jovem demais pra isso. 3 semanas e a firmeza voltou com força total.",
-    result:"Revertido aos 37",highlight:"+ Vasos reabertos a tempo",
-    painTags:["eu_mesmo","tudo","confianza"]
-  },
-  {
-    initials:"Héctor M.",age:61,occupation:"Aposentado, Manaus",
-    photo:"img/testimonials/hector-m.jpg",
-    text:"61 anos. 5 anos sem funcionar. 3 semanas de protocolo — voltei com tamanho, firmeza e duração. Ela chorou.",
-    result:"Reverteu tudo aos 61",highlight:"+ 5 anos de dano revertidos",
-    painTags:["parceira","eu_mesmo","tudo"]
-  }
+  {initials:"César M.",age:52,occupation:"Dono de Construtora, São Paulo",photo:"img/testimonials/cesar-m.jpg",
+   text:"Achei que era idade. Era o circuito. 15 dias reacendendo e minha esposa perguntou o que eu tava tomando. Firmeza de volta.",
+   result:"Firmeza em 15 dias",highlight:"+ Pressão restaurada",painTags:["de","parceira","tudo","confianza"]},
+  {initials:"Roberto Q.",age:44,occupation:"Investidor, Rio de Janeiro",photo:"img/testimonials/roberto-q.jpg",
+   text:"Eu murchava no meio e terminava em 2 minutos. Reativei os dois lados do circuito. Hoje fico duro e duro o quanto quero.",
+   result:"Pressão e controle de volta",highlight:"+ Circuito reativado",painTags:["ambos","eu_mesmo","tudo"]},
+  {initials:"Sergio O.",age:60,occupation:"Ex-Militar, Curitiba",photo:"img/testimonials/sergio-o.jpg",
+   text:"60 anos, dependia da pílula. Hoje acordo duro sem precisar de nada. O circuito voltou a ligar sozinho.",
+   result:"Sem pílula aos 60",highlight:"+ Pressão natural",painTags:["de","parceira","eu_mesmo","tudo"]},
+  {initials:"Marcos T.",age:48,occupation:"Caminhoneiro, Belo Horizonte",photo:"img/testimonials/marcos-t.jpg",
+   text:"Terminava cedo e minha esposa nem vinha mais pro quarto. Reinstalei o gatilho e hoje aguento a noite toda.",
+   result:"Controle restaurado",highlight:"+ Gatilho sob comando",painTags:["ep","parceira","tudo"]},
+  {initials:"Ricardo F.",age:55,occupation:"Advogado, Brasília",photo:"img/testimonials/ricardo-f.jpg",
+   text:"Terminava em 1 minuto. Hoje decido quando termino e ela pede mais.",
+   result:"De 1 minuto pra 40+",highlight:"+ Controle de ejaculação",painTags:["ep","eu_mesmo","parceira","tudo"]},
+  {initials:"Pablo S.",age:41,occupation:"Empresário, São Paulo",photo:"img/testimonials/pablo-s.jpg",
+   text:"Firmeza fraca e sem controle. 60 dias reacendendo o circuito e os dois voltaram. Minha esposa não acreditava.",
+   result:"Os dois lados de volta",highlight:"+ Circuito inteiro religado",painTags:["ambos","eu_mesmo","tudo","confianza"]},
+  {initials:"Andrés L.",age:49,occupation:"Engenheiro, Porto Alegre",photo:"img/testimonials/andres-l.jpg",
+   text:"30 dias e minha esposa olhou e disse: o que aconteceu com você? A pressão voltou.",
+   result:"Reversão em 30 dias",highlight:"+ Pressão reaberta",painTags:["de","eu_mesmo","parceira","tudo","confianza"]},
+  {initials:"Felipe R.",age:53,occupation:"Médico, Salvador",photo:"img/testimonials/felipe-r.jpg",
+   text:"Sou médico e não resolvia o meu. Esse protocolo fez o que 5 anos de consulta não fizeram.",
+   result:"Funcionou onde a medicina falhou",highlight:"+ Mecanismo do circuito",painTags:["ambos","eu_mesmo","parceira","tudo"]},
+  {initials:"Jonathan P.",age:46,occupation:"Professor, Florianópolis",photo:"img/testimonials/jonathan-p.jpg",
+   text:"O circuito reabriu e o sangue voltou com pressão. Minha parceira notou na primeira semana.",
+   result:"Visível em 7 dias",highlight:"+ Pressão restaurada",painTags:["de","parceira","tudo"]},
+  {initials:"Gilberto A.",age:58,occupation:"Empresário, Goiânia",photo:"img/testimonials/gilberto-a.jpg",
+   text:"3 semanas: duro como pedra e duração que ela nunca viu. Não quer sair da cama.",
+   result:"Firmeza e duração",highlight:"+ Performance total",painTags:["ambos","parceira","eu_mesmo","tudo"]},
+  {initials:"Carlos V.",age:43,occupation:"Policial, Recife",photo:"img/testimonials/carlos-v.jpg",
+   text:"Antes terminava antes de começar. Reacendi o gatilho e hoje duro o quanto quero. Salvou meu casamento.",
+   result:"Gatilho sob controle",highlight:"+ Controle de ejaculação",painTags:["ep","eu_mesmo","tudo","confianza"]},
+  {initials:"Daniel M.",age:37,occupation:"Desenvolvedor, Fortaleza",photo:"img/testimonials/daniel-m.jpg",
+   text:"37 anos e já falhava. 3 semanas reacendendo o circuito e a firmeza voltou com força.",
+   result:"Revertido aos 37",highlight:"+ Circuito reativado a tempo",painTags:["ambos","eu_mesmo","tudo","confianza"]},
+  {initials:"Héctor M.",age:61,occupation:"Aposentado, Manaus",photo:"img/testimonials/hector-m.jpg",
+   text:"61 anos, 5 anos sem funcionar. 3 semanas e voltei com pressão e firmeza. Ela chorou.",
+   result:"Reverteu aos 61",highlight:"+ 5 anos revertidos",painTags:["de","parceira","eu_mesmo","tudo"]}
 ];
 
 function getFilteredTestimonials(e){
-  const o=TESTIMONIALS.filter(o=>o.painTags&&o.painTags.includes(e));
-  return[...o.length>=3?o:TESTIMONIALS].sort(()=>Math.random()-.5).slice(0,3)
+  var key=(e||"").toString().toLowerCase();
+  var o=TESTIMONIALS.filter(function(t){return t.painTags&&t.painTags.indexOf(key)>-1;});
+  return (o.length>=3?o:TESTIMONIALS).slice().sort(function(){return Math.random()-.5;}).slice(0,3);
 }
 
 const PRICING_DATA={

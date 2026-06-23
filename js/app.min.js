@@ -1291,8 +1291,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
     `).join("");
 
-    // ── Depoimentos filtrados pela dor declarada ──
-    const filtered = getFilteredTestimonials(painArea);
+    // ── Depoimentos filtrados pela rota do circuito ──
+    const filtered = getFilteredTestimonials(state.route);
     const testimonialsHtml = filtered.map((t) => `
       <div class="testimonial-card">
         <div class="testimonial-header">
@@ -1317,6 +1317,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         ${appMockupHtml(name)}
       </div>
       <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
+      ${VIDEO_DATA.enabled && VIDEO_DATA.url ? `
+        <div class="protocol-video">
+          <video src="${VIDEO_DATA.url}" ${VIDEO_DATA.poster?`poster="${VIDEO_DATA.poster}"`:""} controls playsinline preload="metadata"></video>
+        </div>` : ""}
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
