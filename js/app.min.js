@@ -99,40 +99,21 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── INTERSTITIALS ─────────────────────────────────────────
   const INTERSTITIALS = [
     {
-      afterStep: 6,  // após erección matinal
-      emoji: "🔬",
-      headline: 'Isso tem nome: <span class="highlight">bloqueio vascular peniano.</span>',
-      getText: () => "Não é a idade. É obstrução nos vasos que levam sangue ao pênis. Agora vamos mapear o dano.",
-      stat: "Quem identifica o padrão agora tem 3.7x mais chances de reverter.",
-      cta: "MAPEAR O DANO",
+      afterStep:"q5",
+      emoji:"🔬",
+      headline:'Isso tem nome: <span class="highlight">Circuito Adormecido.</span>',
+      getText:()=>"Não é idade nem cabeça. É um circuito que a vida moderna desliga. Acabamos de medir o lado da PRESSÃO. Agora o lado do CONTROLE.",
+      stat:"Quem mapeia os dois lados agora tem 3.7x mais chance de reverter.",
+      cta:"MEDIR MEU CONTROLE"
     },
     {
-      afterStep: 9,  // após pastilla
-      emoji: "🧠",
-      headline: 'O seu <span class="highlight">mapa vascular</span> não é animador.',
-      getText: () => {
-        const pastilla = state.answers[9];
-        if (pastilla === "viciado") {
-          return `Seu corpo criou dependência química. Sem a pílula, nada funciona. Mas dá pra reativar sem química.`;
-        }
-        if (pastilla === "asvezes") {
-          return `Ter ela "por garantia" já é sinal. Em 2 anos, sem ela, nada vai responder.`;
-        }
-        return `Seus vasos estão se fechando. Agora cruzamos com seus hábitos pra descobrir o que está acelerando isso.`;
-      },
-      stat: "93% dos homens com esse perfil respondem ao protocolo em menos de 21 dias.",
-      cta: "VER MEUS HÁBITOS",
-    },
-    {
-      afterStep: 10,  // após hábitos — prepara resultado
-      emoji: "🔴",
-      headline: 'Você vai ver um número agora. <span class="highlight">Revela quanto seus vasos se fecharam.</span>',
-      getText: () => {
-        return `O sistema cruzou suas respostas com 17.483 diagnósticos. Alguns homens ficam em choque, outros sentem alívio. Prepare-se.`;
-      },
-      stat: "A maioria dos homens nunca soube que esse número existia.",
-      cta: "VER MEU DIAGNÓSTICO",
-    },
+      afterStep:"q9",
+      emoji:"🔴",
+      headline:'Você vai ver um número agora. <span class="highlight">É quanto do seu circuito já apagou.</span>',
+      getText:()=>"O sistema cruzou suas respostas com 17.483 diagnósticos. Alguns ficam em choque. Prepare-se.",
+      stat:"A maioria nunca soube que esse número existia.",
+      cta:"VER MEU DIAGNÓSTICO"
+    }
   ];
 
 
@@ -1180,10 +1161,16 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     showScreen("result");
     const score = state.score;
     if (window.vortxTrack) vortxTrack("view_result", { score: score });
-    const zone  = RESULT_DATA.scoreZones.find((z) => score >= z.min && score <= z.max);
+    var blockage = Math.max(0, Math.min(100, 100 - state.score));
+    var zone = RESULT_DATA.blockZones.find(function(z){ return blockage >= z.min && blockage <= z.max; }) || RESULT_DATA.blockZones[0];
+    var routeLine = byRoute(
+      "No seu caso o golpe está na PRESSÃO: o sangue não chega com força, por isso a firmeza some.",
+      "No seu caso o golpe está no GATILHO: ele dispara sem comando, por isso você termina cedo.",
+      "No seu caso os DOIS lados caíram: pressão e gatilho. O circuito inteiro adormeceu."
+    );
     const name  = state.userData.name || "";
     const circ  = 2 * Math.PI * 80;
-    const offset= circ - (score / 100) * circ;
+    const offset= circ - (blockage / 100) * circ;
 
     const areasHtml = state.criticalAreas.map((a) => `
       <div class="critical-area-card">
@@ -1205,15 +1192,15 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </svg>
         <div class="result-score-value">
           <div class="result-score-number" id="score-display" style="color:${zone.color}">0</div>
-          <div class="result-score-out-of">/100</div>
+          <div class="result-score-out-of">% travado</div>
           <div class="result-score-label" style="color:${zone.color}">${zone.label}</div>
         </div>
       </div>
-      <p class="result-description">${zone.description}</p>
+      <p class="result-description">${zone.description + " " + routeLine}</p>
       <div class="result-critical-areas">${areasHtml}</div>
       <div class="result-urgency-block">
-        <p class="result-urgency-text">Seus vasos estão se fechando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos sangue, menos tamanho, menos duração. E esse grau ainda tem reversão, mas não pra sempre.</p>
-        <p class="result-urgency-subtext">O protocolo de reversão vascular foi calibrado pro seu perfil exato.</p>
+        <p class="result-urgency-text">Seu circuito está apagando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos pressão, menos controle. E esse grau ainda tem reversão, mas não pra sempre.</p>
+        <p class="result-urgency-subtext">O protocolo de reativação foi calibrado pro seu perfil exato.</p>
       </div>
       <div style="width:100%;padding:20px 0;display:flex;justify-content:center;">
         <button class="btn-cta" id="btn-see-protocol">QUERO VER O QUE RESOLVE ISSO</button>
@@ -1222,7 +1209,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     setTimeout(() => {
       document.getElementById("gauge-fill").style.strokeDashoffset = offset;
-      animateNumber("score-display", 0, score, 1500);
+      animateNumber("score-display", 0, blockage, 1500);
     }, 300);
 
     document.getElementById("btn-see-protocol").addEventListener("click", showBridge);
@@ -1244,23 +1231,21 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function showBridge() {
     showScreen("bridge");
     const name  = state.userData.name || "";
-    // com nome: "Flavio, seus vasos..."; sem nome: "Seus vasos..." (sem apelido genérico)
+    // com nome: "Flavio, seu circuito..."; sem nome: "Seu circuito..." (sem apelido genérico)
     const comVoc = (body) => name ? `${name}, ${body}` : body.charAt(0).toUpperCase() + body.slice(1);
-    const score = state.score;
+    var blockage = 100 - state.score;
 
-    const diasJanela = score <= 35 ? 47 : score <= 60 ? 90 : score <= 80 ? 180 : 365;
-    const urgLabel   = score <= 35 ? "CRÍTICA" : score <= 60 ? "CURTA" : "ABERTA";
-    const urgColor   = score <= 35 ? "#C44B4B" : score <= 60 ? "#D4940A" : "#C9A84C";
+    const diasJanela = blockage >= 71 ? 47 : blockage >= 41 ? 90 : 180;
+    const urgLabel   = blockage >= 71 ? "CRÍTICA" : blockage >= 41 ? "CURTA" : "FECHANDO";
+    const urgColor   = blockage >= 71 ? "#C44B4B" : blockage >= 41 ? "#D4940A" : "#C9A84C";
 
     let bridgeText;
-    if (score <= 35) {
-      bridgeText = comVoc(`seus vasos estão quase fechados. Mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`);
-    } else if (score <= 60) {
-      bridgeText = comVoc(`seus vasos estão se fechando, mês a mês. O tamanho já caiu. A duração já encurtou. O protocolo de reversão vascular está calibrado pro seu grau exato de bloqueio. Mas cada mês sem agir fecha mais um vaso.`);
-    } else if (score <= 80) {
-      bridgeText = comVoc(`a queda ainda é sutil, mas está acelerando. Em 2-3 anos sem intervenção, o dano fica irreversível. O protocolo freia a queda e maximiza o fluxo sanguíneo ao pênis enquanto ainda dá tempo.`);
+    if (blockage >= 71) {
+      bridgeText = comVoc(`seu circuito está em falência. Mas falência não é fim: ainda existe uma janela. O protocolo foi construído exatamente pra esse nível de bloqueio, pra reacender o que apagou. Não é pra todo mundo. É pra quem chegou até aqui e quer a firmeza e o controle de volta.`);
+    } else if (blockage >= 41) {
+      bridgeText = comVoc(`a janela está fechando rápido. O circuito já perdeu firmeza e controle de forma visível. O protocolo de reativação está calibrado pro seu grau exato de bloqueio. Cada mês sem agir apaga mais um trecho do circuito.`);
     } else {
-      bridgeText = comVoc(`seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção. Enquanto os outros ao seu redor vão perdendo.`);
+      bridgeText = comVoc(`ainda dá tempo de reacender, mas o relógio corre. O circuito ainda responde, mas os sinais de queda já estão ligados. Quem age agora reverte em semanas. Quem espera vira o caso grave do ano que vem.`);
     }
 
     document.getElementById("bridge").innerHTML = `

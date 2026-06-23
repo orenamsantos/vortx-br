@@ -225,67 +225,42 @@ STEPS=[
 ],
 
 LOADING_DATA={
-  headline:"Analisando seu mapa vascular...",
+  headline:"Mapeando seu Circuito Adormecido...",
   duration:12e3,
   messages:[
     "Cruzando seus sintomas com o banco de dados...",
-    "Medindo o grau de bloqueio vascular...",
-    "Identificando sua janela de reversão...",
-    "Calculando perda estimada de tamanho e firmeza...",
+    "Medindo o bloqueio da pressão (ereção)...",
+    "Medindo o bloqueio do gatilho (controle)...",
+    "Calculando há quanto tempo o circuito apagou...",
     "Comparando com 17.483 diagnósticos anteriores...",
-    "Isso vai mudar o que você achava que sabia sobre seu corpo...",
-    "Preparando seu protocolo personalizado..."
+    "Isso vai mudar o que você achava do seu corpo...",
+    "Montando seu protocolo de reativação..."
   ]
 },
 
 NAMEGATE_DATA={
-  headline:"Análise concluída",
+  headline:"Mapa concluído",
   question:"Como devo te chamar?",
-  microcopy:"Só o seu primeiro nome. O diagnóstico que vem a seguir é seu, e eu quero te chamar pelo nome enquanto te mostro o que travou. Fica entre nós, ninguém mais vê.",
+  microcopy:"Só o primeiro nome. O diagnóstico que vem a seguir é seu, e quero te chamar pelo nome enquanto te mostro o que apagou. Fica entre nós.",
   placeholder:"Seu primeiro nome...",
   cta:"VER MEU DIAGNÓSTICO"
 },
 
 RESULT_DATA={
   headlineTemplate:"Seu diagnóstico está pronto, {name}.",
-  scoreZones:[
-    {
-      min:0,max:35,
-      label:"COMPROMETIDO",
-      color:"#C44B4B",
-      description:"Seus vasos estão severamente bloqueados. O sangue não chega ao pênis: tamanho reduzido, firmeza zero, duração de segundos. Mas existe um protocolo que força o sangue a voltar."
-    },
-    {
-      min:36,max:60,
-      label:"EM DECLÍNIO",
-      color:"#D4940A",
-      description:"Seus vasos estão se fechando. Você já perdeu tamanho visível e a duração caiu. Ainda dá pra reverter, mas a janela está se fechando."
-    },
-    {
-      min:61,max:80,
-      label:"EM RISCO SILENCIOSO",
-      color:"#C9A84C",
-      description:"Seus vasos ainda funcionam mas já estão perdendo eficiência. Sem intervenção, a queda vai acelerar nos próximos 12 meses. Quando perceber, vai ser mais difícil reverter."
-    },
-    {
-      min:81,max:100,
-      label:"ALERTA PRECOCE",
-      color:"#7FA86B",
-      description:"Seu sistema ainda responde, mas os fatores de risco já estão ativos. Sem protocolo, a queda acelera nos próximos 12 meses. O momento de agir é agora, não depois."
-    }
+  blockZones:[
+    {min:71,max:100,label:"CIRCUITO EM FALÊNCIA",color:"#C44B4B",description:"Seu circuito está quase todo apagado. A pressão não chega (firmeza fraca, murcha) e o gatilho dispara sozinho (termina cedo). Agir hoje não é exagero, é o limite."},
+    {min:41,max:70,label:"EM COLAPSO",color:"#D4940A",description:"Seu circuito está apagando rápido. Você já perdeu firmeza e controle de forma visível. Ainda dá pra reverter, mas a janela está se fechando."},
+    {min:0,max:40,label:"JANELA FECHANDO",color:"#C9A84C",description:"Seu circuito ainda responde, mas os sinais de queda já estão ligados. Quem ignora nessa fase é exatamente quem vira o caso grave em 12 meses. O momento de blindar é agora."}
   ],
   criticalAreas:{
-    libido:{label:"Fluxo Peniano",icon:"🍆"},
-    cuerpo:{label:"Gordura Estrogênica",icon:"⚖️"},
-    energia:{label:"Nível de Energia",icon:"⚡"},
-    sueno:{label:"Qualidade do Sono",icon:"🌙"},
-    fisica:{label:"Dependência Química",icon:"💊"},
-    habitos:{label:"Hábitos Destrutivos",icon:"🔄"},
-    saude:{label:"Risco Medicamentoso",icon:"🏥"}
+    pressao:{label:"Pressão (Ereção)",icon:"🔻"},
+    gatilho:{label:"Gatilho (Controle)",icon:"⏱️"},
+    sabotador:{label:"Sabotadores do Circuito",icon:"🔄"}
   }
 },
 
-BRIDGE_DATA={cta:"VER COMO REVERTER MEU CASO"},
+BRIDGE_DATA={cta:"VER COMO REACENDER MEU CIRCUITO"},
 
 PROTOCOL_DATA={
   headline:"O Protocolo de Reversão Vascular, Desenhado para o Seu Caso",
