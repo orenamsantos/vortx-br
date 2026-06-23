@@ -1,13 +1,13 @@
-const BRAND={name:"VORTX",tagline:"Recuperação da Masculinidade",year:(new Date).getFullYear()},
+const BRAND={name:"CONDOR",tagline:"Reative o Circuito",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"Não é a idade. Não é a cabeça. É vascular. E seu urologista não vai te dizer.",
-  subheadline:"Se você passou dos 35 e percebeu que algo mudou. Tamanho menor, firmeza fraca, duração caindo. Não é hormônio. Não é psicológico. O Dr. Marcus Hale, cirurgião vascular com 23 anos de experiência, descobriu a causa que a medicina tradicional ignora. Faça o teste de 2 minutos e descubra seu nível exato.",
-  cta:"DESCOBRIR MEU NÍVEL AGORA",
+  headline:"Por que homens de 70 anos a 4.500m nos Andes nunca falham na cama nem terminam cedo?",
+  subheadline:"O cirurgião vascular Renato Vasquez foi atrás dessa anomalia e achou a resposta: um circuito que a vida moderna desliga depois dos 35. Não é idade, não é cabeça, não é hormônio. Faça o teste de 2 minutos e veja quanto do seu já apagou.",
+  cta:"DESCOBRIR MEU NÍVEL DE BLOQUEIO",
   timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
-  socialProof:"17.483 homens já reverteram. Resultado médio: 21 dias.",
+  socialProof:"17.483 homens já reativaram o circuito. Tempo médio: 21 dias.",
   privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
-  badge:"17.483 homens reverteram em média em 21 dias"
+  badge:"O circuito que a vida moderna desliga depois dos 35"
 },
 
 PHASES=[
