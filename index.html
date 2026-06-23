@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="facebook-domain-verification" content="43udrjmhtpvce4czygckc2gttlgjyl" />
-<title>CONDOR | O circuito que a vida moderna desliga (e como reacender em 21 dias)</title>
-<meta name="description" content="Não é idade, não é cabeça, não é hormônio. É um circuito que desliga depois dos 35 e tira sua ereção e seu controle. Teste anônimo de 2 minutos mede quanto do seu já apagou.">
+<title>CONDOR | O interruptor que desliga depois dos 35 (e como religar em 21 dias)</title>
+<meta name="description" content="Você não fica duro e termina rápido. Não é idade: é um interruptor que desligou depois dos 35. Teste anônimo de 2 minutos mede o quanto o seu já desligou.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#14161B">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
@@ -33,7 +33,7 @@
 <link rel="preload" href="/fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- styles.css carregado sem bloquear render. fonts.css é carregado depois do `load` (não é
-     necessário para o gate — as @font-face dos fontes acima-do-fold estão inline acima). -->
+     necessário para o gate: as @font-face dos fontes acima-do-fold estão inline acima). -->
 <link rel="preload" href="css/styles.min.css?v=19" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="css/styles.min.css?v=19"></noscript>
 <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
@@ -43,14 +43,14 @@
 
     <section id="gate" class="screen gate active">
       <div class="gate-logo">CONDOR<span></span></div>
-      <div class="gate-badge">O circuito que a vida moderna desliga depois dos 35</div>
-      <h1 class="gate-headline">Por que homens de 70 anos a 4.500m nos Andes nunca falham na cama nem terminam cedo?</h1>
-      <p class="gate-subheadline">O cirurgião vascular Renato Vasquez foi atrás dessa anomalia e achou a resposta: um circuito que a vida moderna desliga depois dos 35. Não é idade, não é cabeça, não é hormônio. Faça o teste de 2 minutos e veja quanto do seu já apagou.</p>
+      <div class="gate-badge">O interruptor que desliga depois dos 35</div>
+      <h1 class="gate-headline">Você não fica duro e termina rápido. Não é idade: é um interruptor que desligou.</h1>
+      <p class="gate-subheadline">Homens de 70 anos a 4.500m nos Andes ficam duro e duram a noite toda. O cirurgião vascular Renato Vasquez descobriu o motivo: lá o interruptor da ereção e do controle nunca desliga. No resto do mundo, depois dos 35, ele apaga. Faça o teste de 2 minutos e veja o quanto o seu já desligou.</p>
       <div class="gate-timer-strip">🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança</div>
-      <button class="btn-cta" id="btn-start">DESCOBRIR MEU NÍVEL DE BLOQUEIO</button>
+      <button class="btn-cta" id="btn-start">VER O QUANTO JÁ DESLIGOU</button>
       <div class="gate-social-proof">
         <div class="stars">★ ★ ★ ★ ★</div>
-        <span class="gate-social-count">17.483 homens já reativaram o circuito. Tempo médio: 21 dias.</span>
+        <span class="gate-social-count">17.483 homens já religaram. Tempo médio: 21 dias.</span>
       </div>
       <div class="gate-privacy">100% confidencial • Anônimo • Ninguém vai saber</div>
     </section>
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="block-meter" id="block-meter" aria-hidden="true">
-        <div class="block-meter-label">N&#205;VEL DE BLOQUEIO DO CIRCUITO</div>
+        <div class="block-meter-label">O QUANTO SEU INTERRUPTOR DESLIGOU</div>
         <div class="block-meter-track"><div class="block-meter-fill" id="block-meter-fill"></div></div>
         <div class="block-meter-value" id="block-meter-value">0%</div>
       </div>
@@ -90,7 +90,7 @@
        Como app.js só inicializa via document.addEventListener("DOMContentLoaded", init) e o
        evento já passou no momento em que esse script é injetado, interceptamos o registro
        desse listener e o disparamos manualmente após o app.js terminar de parsear.
-       Não tocamos em app.js — toda lógica fica no boot loader. -->
+       Não tocamos em app.js: toda lógica fica no boot loader. -->
   <script>
   (function(){
     // Carrega fonts.css (pesos não-críticos: Inter 300/500/600, Playfair 400/600, JetBrains Mono)
@@ -108,7 +108,7 @@
     function load(){
       if(loading) return; loading=true;
       var s1=document.createElement('script');
-      s1.src='js/quiz-data.min.js?v=25';
+      s1.src='js/quiz-data.min.js?v=26';
       s1.onload=function(){
         // Patch escopado: captura o DOMContentLoaded handler do app.js sem registrá-lo.
         // Restaurado imediatamente após o onload do app.js para não afetar o restante da página.
