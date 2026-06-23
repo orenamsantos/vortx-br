@@ -924,15 +924,29 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function advanceStep() {
     const currentStep = getCurrentStep();
 
-    if (currentStep?.conditional) {
-      const answer = state.answers[currentStep.id];
-      const target = currentStep.conditional[answer];
-      if (target) {
-        const condStep = getStepById(target);
-        if (condStep) {
-          const nextIdx = state.currentStepIndex + 1;
-          if (!stepOrder[nextIdx] || stepOrder[nextIdx].id !== condStep.id)
-            stepOrder.splice(nextIdx, 0, condStep);
+    if (currentStep && currentStep.nextId) {
+      saveProgress();
+      var nIdx = stepOrder.findIndex(function(s){ return s.id === currentStep.nextId; });
+      if (nIdx >= 0) {
+        state.currentStepIndex = nIdx;
+        renderStep();
+        return;
+      }
+    }
+
+    if (currentStep && currentStep.conditional) {
+      var answer = state.answers[currentStep.id];
+      var targetId = currentStep.conditional[answer];
+      if (targetId) {
+        var target = getStepById(targetId);
+        if (target) {
+          if (stepOrder.indexOf(target) === -1) {
+            stepOrder.splice(state.currentStepIndex + 1, 0, target);
+          }
+          state.currentStepIndex++;
+          saveProgress();
+          renderStep();
+          return;
         }
       }
     }

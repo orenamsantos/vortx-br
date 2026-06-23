@@ -151,6 +151,49 @@ STEPS=[
     weight:10,category:"gatilho"
   },
   {
+    id:"gatilho_gate",phase:3,type:"single-select",
+    question:"Vamos medir seu gatilho agora.",
+    microcopy:"Você está num lugar onde pode tentar uma coisa rápida e discreta?",
+    options:[
+      {value:"sim",label:"Sim, posso tentar agora",icon:"✅"},
+      {value:"nao",label:"Agora não dá",icon:"🙈"}
+    ],
+    conditional:{ sim:"gatilho_test", nao:"gatilho_mirror" },
+    weight:0
+  },
+  {
+    id:"gatilho_test",phase:3,type:"single-select",isConditional:true,nextId:"q9",
+    question:"Contraia o assoalho pélvico (como segurar o xixi) com força e segure 30 segundos sem afrouxar.",
+    microcopy:"Conte os segundos. O que aconteceu?",
+    options:[
+      {value:"falhou",label:"Não aguentei, afrouxou rápido",icon:"🛑",score:0},
+      {value:"tremeu",label:"Aguentei, mas tremeu e foi difícil",icon:"⚠️",score:1},
+      {value:"facil",label:"Fácil, aguentei tranquilo",icon:"💪",score:3}
+    ],
+    triggers:{
+      falhou:"🛑 Confirmado: seu gatilho já caiu. É exatamente por isso que você perde o controle.",
+      tremeu:"⚠ Seu gatilho está enfraquecendo. Ainda tem reserva, mas a janela está fechando.",
+      facil:"🔥 Raro. Você tem uma base que poucos têm na sua idade, e é justo isso que despenca mais rápido se você não treinar."
+    },
+    weight:15,category:"gatilho"
+  },
+  {
+    id:"gatilho_mirror",phase:3,type:"single-select",isConditional:true,nextId:"q9",
+    question:"Sem problema. Vamos pela memória.",
+    microcopy:"Da última vez que tentou se segurar pra não terminar, o que rolou?",
+    options:[
+      {value:"falhou",label:"Não consegui segurar",icon:"🛑",score:0},
+      {value:"tremeu",label:"Segurei com muita dificuldade",icon:"⚠️",score:1},
+      {value:"facil",label:"Controlo numa boa",icon:"💪",score:3}
+    ],
+    triggers:{
+      falhou:"🛑 Confirmado: seu gatilho já caiu. É exatamente por isso que você perde o controle.",
+      tremeu:"⚠ Seu gatilho está enfraquecendo. Ainda tem reserva, mas a janela está fechando.",
+      facil:"🔥 Raro. Você tem uma base que poucos têm na sua idade, e é justo isso que despenca mais rápido se você não treinar."
+    },
+    weight:15,category:"gatilho"
+  },
+  {
     id:"q9",phase:4,type:"multi-select",
     question:"O que ainda mantém seu circuito travado?",
     microcopy:"Cada um desses sabota o sangue e o nervo que o circuito usa.",
