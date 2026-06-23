@@ -83,7 +83,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     route: "ambos",
     userData: { name: "", whatsapp: "", height: 0, weight: 0 },
     optIn: true,
-    selectedPlan: "vitalicio",
+    selectedPlan: "completo",
     score: 0,
     criticalAreas: [],
     timerInterval: null,
@@ -1374,7 +1374,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     };
 
     const plansHtml = PRICING_DATA.plans.map((plan) => {
-      const isFeatured  = plan.id === "vitalicio";
+      const isFeatured  = plan.id === "completo";
       const isSelected  = plan.id === state.selectedPlan;
       const isDowngrade = plan.id === "mensal";
       const isAnchor    = plan.isAnchor === true;
@@ -1401,14 +1401,14 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const selectedPrice = PRICING_DATA.plans.find((p) => p.id === state.selectedPlan).price;
 
-    const score = state.score;
-    const pricingHeadline = score <= 35
-      ? `${name ? name + ", no" : "No"} seu nível o sangue quase não passa. Cada semana que você espera, perde mais firmeza.`
-      : score <= 60
-      ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível. Mas não por muito tempo.`
-      : `${name ? name + ", o" : "O"} protocolo vascular está pronto. Só falta você.`;
+    var blockage = 100 - state.score;
+    var pricingHeadline = blockage >= 71
+      ? "Seu circuito está em falência. Reacender agora é o seu limite."
+      : blockage >= 41
+      ? "Seu circuito está em colapso. A janela está fechando."
+      : "Seu circuito ainda responde. Reacenda antes que feche.";
     // nível pro recap personalizado (mesma régua da headline)
-    const nivel = score <= 35 ? "Fluxo travado" : score <= 60 ? "Fluxo parcial" : "Quase reaberto";
+    var nivel = blockage >= 71 ? "Circuito em falência" : blockage >= 41 ? "Circuito em colapso" : "Circuito apagando";
     const vocRecap = name ? `${name}, ` : "";
 
     document.getElementById("pricing").innerHTML = `

@@ -335,53 +335,33 @@ const PRICING_DATA={
   checkoutCtaMap:{
     parceira:"RECUPERAR MEU CASAMENTO HOJE",
     eu_mesmo:"VOLTAR A SER HOMEM AGORA",
-    tudo:"REVERTER TUDO EM 60 DIAS",
+    tudo:"REACENDER TUDO EM 21 DIAS",
     confianza:"RECUPERAR MEU CORPO E MINHA CONFIANÇA",
-    _default:"LIBERAR MEU PROTOCOLO"
+    _default:"REACENDER MEU CIRCUITO"
   },
   plans:[
     {
-      id:"esencial",
-      name:"ACESSO ESSENCIAL",
-      price:17,
-      originalPrice:97,
-      period:"pagamento único",
-      description:"Módulo vascular básico apenas",
-      badge:"",
-      ctaLabel:"QUERO O ACESSO ESSENCIAL",
-      ctaTag:"VERSÃO BÁSICA",
-      isAnchor:true,
-      features:[
-        "Protocolo vascular básico — módulo 1 apenas",
-        "Sem módulo de duração nem controle avançado",
-        "Sem protocolo de sono hormonal",
-        "Sem guia de eliminação de gordura estrogênica",
-        "Sem atualizações futuras incluídas"
-      ]
-    },
-    {
-      id:"vitalicio",
-      name:"PROTOCOLO COMPLETO — ACESSO VITALÍCIO",
+      id:"completo",
+      name:"PROTOCOLO CONDOR COMPLETO",
       price:37,
-      originalPrice:547,
+      originalPrice:197,
       period:"pagamento único, acesso vitalício",
-      description:"O protocolo completo de reversão vascular",
-      badge:"🔓 MELHOR ESCOLHA",
+      description:"O protocolo completo de reativação do circuito",
+      badge:"🔓 ACESSO TOTAL",
       ctaLabel:"QUERO O PROTOCOLO COMPLETO",
       ctaTag:"ACESSO TOTAL",
       features:[
-        "Vasos reabertos em 21 dias — tamanho e firmeza sem pílula",
-        "Durar 3 vezes mais — controle total de ejaculação",
-        "Ereção matinal de volta — sem dependência química",
-        "Eliminação de gordura estrogênica — corpo voltando a responder",
-        "Protocolo de sono profundo — produção hormonal noturna",
-        "Acesso vitalício — todas as atualizações incluídas"
+        "Pressão de volta em 21 dias, firmeza sem pílula",
+        "Gatilho sob comando, durar vira escolha",
+        "A Respiração do Condor guiada, 6 minutos por dia",
+        "App Condor personalizado pelo seu diagnóstico",
+        "Acesso vitalício, com todas as atualizações incluídas"
       ]
     }
   ],
   guarantee:{
-    title:"30 dias de teste. Se não funcionar, devolvo tudo — sem perguntas.",
-    text:"Siga o protocolo por 30 dias. Se seu tamanho, sua firmeza e sua duração não melhorarem de forma visível, devolvo 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo meu.",
+    title:"30 dias. Se o circuito não reacender, eu devolvo tudo.",
+    text:"Siga o protocolo por 30 dias. Se sua firmeza e seu controle não melhorarem de forma visível, devolvo 100%. Sem perguntas. O risco é meu.",
     icon:"🛡️"
   },
   paymentMethods:["Cartão de Crédito • PIX • Pagamento 100% Seguro 🔒"]
@@ -389,12 +369,12 @@ const PRICING_DATA={
 
 THANKYOU_DATA={
   headline:"Bem-vindo ao outro lado, {name}.",
-  subheadline:"O protocolo de reversão vascular está liberado — a partir de agora cada dia conta.",
+  subheadline:"O Protocolo Condor está liberado. A partir de agora cada dia reacende mais o circuito.",
   steps:[
-    {number:"01",title:"Acesso chega em menos de 5 minutos",desc:"O link chega no seu WhatsApp assim que o pagamento for confirmado."},
-    {number:"02",title:"Comece pelo Protocolo Vascular (Módulo 1)",desc:"É a base de tudo: sem destampar os vasos, nada funciona. Leia hoje."},
-    {number:"03",title:"Siga exatamente como está escrito",desc:"Vai parecer simples demais — não mude nada. Aí está o resultado."},
-    {number:"04",title:"Não conte pra ninguém, deixe o resultado falar",desc:"Em 2-3 semanas sua parceira vai ser a primeira a notar."}
+    {number:"01",title:"Acesso em menos de 5 minutos",desc:"O link chega no seu e-mail ou WhatsApp assim que o pagamento confirmar."},
+    {number:"02",title:"Comece pela Respiração do Condor (Dia 1)",desc:"É o interruptor. Sem ela, nada reacende. Faça hoje."},
+    {number:"03",title:"Siga exatamente como está escrito",desc:"Vai parecer simples demais. Não mude nada. Aí está o resultado."},
+    {number:"04",title:"Deixe o resultado falar",desc:"Em 2 a 3 semanas sua parceira vai ser a primeira a notar."}
   ],
   cta:"ACESSAR O PROTOCOLO AGORA"
 };
