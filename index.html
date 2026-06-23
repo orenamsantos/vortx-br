@@ -37,12 +37,29 @@
 <link rel="preload" href="css/styles.min.css?v=19" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="css/styles.min.css?v=19"></noscript>
 <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
+
+<!-- Gate Altitude: assinatura visual (brasao condor, serra, wordmark) acima-do-fold -->
+<style>
+.gate{position:relative;overflow:hidden}
+.gate>*:not(.gate-ridge){position:relative;z-index:1}
+.gate-ridge{position:absolute;left:0;bottom:0;width:100%;height:130px;opacity:.55;z-index:0;pointer-events:none}
+.gate-logo{display:flex;align-items:center;justify-content:center;gap:12px;letter-spacing:0}
+.gate-mark{width:38px;height:38px;flex:0 0 auto}
+.gate-wordmark{font-family:var(--font-display);font-weight:700;font-size:1.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-primary)}
+.gate-wordmark b{color:var(--gold);font-weight:700}
+.gate-badge{border-color:var(--gold-dark);color:var(--gold)}
+.gate-headline{font-family:var(--font-display);letter-spacing:-0.005em;line-height:1.04}
+</style>
 </head>
 <body>
   <div class="app-container">
 
     <section id="gate" class="screen gate active">
-      <div class="gate-logo">CONDOR<span></span></div>
+      <svg class="gate-ridge" viewBox="0 0 1080 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L150 54 L260 92 L420 26 L560 80 L700 36 L860 96 L980 50 L1080 84 L1080 120 Z" fill="#1A1D23"/><path d="M0 120 L210 78 L360 104 L520 60 L660 100 L820 64 L1000 104 L1080 86 L1080 120 Z" fill="#14161B"/></svg>
+      <div class="gate-logo">
+        <svg class="gate-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>
+        <span class="gate-wordmark">CON<b>DOR</b></span>
+      </div>
       <div class="gate-badge">O interruptor que desliga depois dos 35</div>
       <h1 class="gate-headline">Você não fica duro e termina rápido. Não é idade: é um interruptor que desligou.</h1>
       <p class="gate-subheadline">Homens de 70 anos a 4.500m nos Andes ficam duro e duram a noite toda. O cirurgião vascular Renato Vasquez descobriu o motivo: lá o interruptor da ereção e do controle nunca desliga. No resto do mundo, depois dos 35, ele apaga. Faça o teste de 2 minutos e veja o quanto o seu já desligou.</p>
@@ -120,7 +137,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=32';
+        s2.src='js/app.min.js?v=33';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){
