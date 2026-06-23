@@ -298,30 +298,33 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   }
 
   function partialBlockage() {
-    var totalWeight = 0, weightedScore = 0;
+    var totalPossible = 0, damage = 0;
     for (var i = 0; i < STEPS.length; i++) {
       var step = STEPS[i];
       if (!step.weight || step.weight === 0) continue;
       var answer = state.answers[step.id];
+      if (step.isConditional && answer === undefined) continue;
+      totalPossible += step.weight;
       if (answer === undefined) continue;
-      totalWeight += step.weight;
+      var norm = 1;
       if (step.type === "single-select") {
         var opt = step.options.find(function(o){ return o.value === answer; });
         if (opt && opt.score !== undefined) {
           var max = Math.max.apply(null, step.options.filter(function(o){return o.score!==undefined;}).map(function(o){return o.score;}));
-          weightedScore += (max > 0 ? opt.score / max : 0) * step.weight;
+          norm = max > 0 ? opt.score / max : 0;
         }
       } else if (step.type === "multi-select" && Array.isArray(answer)) {
         var none = answer.indexOf("nenhum") > -1 || answer.indexOf("nenhuma") > -1;
-        if (none) { weightedScore += step.weight; }
+        if (none) { norm = 1; }
         else {
           var maxOpts = step.options.filter(function(o){return o.value!=="nenhum"&&o.value!=="nenhuma";}).length;
-          weightedScore += Math.max(0, 1 - answer.length / maxOpts) * step.weight;
+          norm = Math.max(0, 1 - answer.length / maxOpts);
         }
       }
+      damage += (1 - norm) * step.weight;
     }
-    var score = totalWeight > 0 ? (weightedScore / totalWeight) * 100 : 0;
-    return Math.round(Math.max(35, Math.min(96, 100 - score)));
+    var frac = totalPossible > 0 ? damage / totalPossible : 0;
+    return Math.round(Math.max(18, Math.min(98, 18 + frac * 80)));
   }
 
   function updateBlockMeter() {

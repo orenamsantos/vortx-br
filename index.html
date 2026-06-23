@@ -53,6 +53,16 @@
 .alt-mark{display:block;width:44px;height:44px;margin:4px auto 16px}
 .result-screen,.pricing-screen{position:relative;overflow:hidden}
 .result-screen>*:not(.alt-ridge),.pricing-screen>*:not(.alt-ridge){position:relative;z-index:1}
+/* logo do gate centralizada (compensa o tracking que empurra pra esquerda) */
+.gate-wordmark{margin-right:-.16em}
+/* medidor como protagonista: tira a cara de quiz (esconde fases + contador) */
+.progress-phases,.progress-phase-labels{display:none!important}
+#progress-step-counter{display:none!important}
+.progress-inner{margin-bottom:2px}
+.block-meter{padding:2px 2px 5px!important}
+.block-meter-label{font-size:.64rem!important;letter-spacing:.18em!important;color:var(--text-secondary)!important}
+.block-meter-track{height:14px!important}
+.block-meter-value{font-size:.98rem!important}
 </style>
 </head>
 <body>
@@ -64,9 +74,9 @@
         <svg class="gate-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>
         <span class="gate-wordmark">CON<b>DOR</b></span>
       </div>
-      <div class="gate-badge">O interruptor que desliga depois dos 35</div>
-      <h1 class="gate-headline">Você não fica duro e termina rápido. Não é idade: é um interruptor que desligou.</h1>
-      <p class="gate-subheadline">Homens de 70 anos a 4.500m nos Andes ficam duro e duram a noite toda. O cirurgião vascular Renato Vasquez descobriu o motivo: lá o interruptor da ereção e do controle nunca desliga. No resto do mundo, depois dos 35, ele apaga. Faça o teste de 2 minutos e veja o quanto o seu já desligou.</p>
+      <div class="gate-badge">Não é idade. Não é a sua cabeça.</div>
+      <h1 class="gate-headline">Você murcha na hora H, ou acaba rápido demais. E já evita o sexo pra não passar vergonha.</h1>
+      <p class="gate-subheadline">Não é idade, não é frescura, não é a sua cabeça. Tem um interruptor da ereção e do controle, e depois dos 35 ele vai desligando sozinho. Homens de 70 anos nos Andes nunca perderam o deles, e um cirurgião vascular descobriu por quê. Faça o teste de 2 minutos e veja na tela o quanto o seu já desligou, e como ligar de novo.</p>
       <div class="gate-timer-strip">🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança</div>
       <button class="btn-cta" id="btn-start">VER O QUANTO JÁ DESLIGOU</button>
       <div class="gate-social-proof">
@@ -129,7 +139,7 @@
     function load(){
       if(loading) return; loading=true;
       var s1=document.createElement('script');
-      s1.src='js/quiz-data.min.js?v=26';
+      s1.src='js/quiz-data.min.js?v=27';
       s1.onload=function(){
         // Patch escopado: captura o DOMContentLoaded handler do app.js sem registrá-lo.
         // Restaurado imediatamente após o onload do app.js para não afetar o restante da página.
@@ -141,7 +151,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=35';
+        s2.src='js/app.min.js?v=36';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){

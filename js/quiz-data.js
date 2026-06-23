@@ -1,13 +1,13 @@
 const BRAND={name:"CONDOR",tagline:"O Interruptor",year:(new Date).getFullYear()},
 
 GATE_DATA={
-  headline:"Você não fica duro e termina rápido. Não é idade: é um interruptor que desligou.",
-  subheadline:"Homens de 70 anos a 4.500m nos Andes ficam duro e duram a noite toda. O cirurgião vascular Renato Vasquez descobriu o motivo: lá o interruptor da ereção e do controle nunca desliga. No resto do mundo, depois dos 35, ele apaga. Faça o teste de 2 minutos e veja o quanto o seu já desligou.",
+  headline:"Você murcha na hora H, ou acaba rápido demais. E já evita o sexo pra não passar vergonha.",
+  subheadline:"Não é idade, não é frescura, não é a sua cabeça. Tem um interruptor da ereção e do controle, e depois dos 35 ele vai desligando sozinho. Homens de 70 anos nos Andes nunca perderam o deles, e um cirurgião vascular descobriu por quê. Faça o teste de 2 minutos e veja na tela o quanto o seu já desligou, e como ligar de novo.",
   cta:"VER O QUANTO JÁ DESLIGOU",
   timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
   socialProof:"17.483 homens já religaram. Tempo médio: 21 dias.",
   privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
-  badge:"O interruptor que desliga depois dos 35"
+  badge:"Não é idade. Não é a sua cabeça."
 },
 
 PHASES=[
