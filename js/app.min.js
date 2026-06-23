@@ -167,7 +167,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       const resumeDiv = document.createElement("div");
       resumeDiv.className = "resume-banner";
       resumeDiv.innerHTML = `
-        <p>Vamos continuar de onde você parou, ${data.userData.name}. Você está no passo ${data.currentStepId || 3} de ${STEPS.length}.</p>
+        <p>Vamos continuar de onde você parou, ${data.userData.name}. Você está no passo ${data.currentStepId || "1"} de ${STEPS.length}.</p>
         <div class="resume-actions">
           <button class="btn-resume-yes">CONTINUAR</button>
           <button class="btn-resume-no">COMEÇAR DE NOVO</button>
@@ -179,7 +179,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         state.userData = data.userData;
         state.answers = data.answers || {};
         state.selectedPlan = data.selectedPlan || state.selectedPlan;
-        state.currentStepId = data.currentStepId || 3;
+        state.currentStepId = data.currentStepId || "q1";
         resumeDiv.remove();
         document.getElementById("gate").classList.remove("active");
         document.getElementById("progress-bar").style.display = "block";

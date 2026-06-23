@@ -11,163 +11,171 @@ GATE_DATA={
 },
 
 PHASES=[
-  {id:1,label:"VALIDAÇÃO",steps:[1,2]},
-  {id:2,label:"PERFIL",steps:[4]},
-  {id:3,label:"SINTOMAS",steps:[5,6,7,8,9]},
-  {id:4,label:"HÁBITOS",steps:[10]},
-  {id:5,label:"VEREDITO",steps:[12]}
+  {id:1,label:"VALIDAÇÃO",steps:["q1","q2"]},
+  {id:2,label:"PRESSÃO",steps:["q3","q4","q5"]},
+  {id:3,label:"GATILHO",steps:["q6","q7","q8"]},
+  {id:4,label:"SABOTADOR",steps:["q9"]},
+  {id:5,label:"VEREDITO",steps:["q10"]}
 ],
 
 STEPS=[
   {
-    id:1,phase:1,type:"single-select",
-    question:"Vamos ser honestos por 10 segundos.",
-    microcopy:"Passou dos 35 e algo mudou. O que mais pesa em você?",
+    id:"q1",phase:1,type:"single-select",
+    question:"Seja honesto por 10 segundos.",
+    microcopy:"O que mais te corrói hoje?",
     options:[
-      {value:"si_molesta",label:"Perdi firmeza ou tamanho",icon:"🔥"},
-      {value:"si_activo",label:"Não duro como antes",icon:"⏱️"},
-      {value:"si_empezando",label:"Sinto que tá começando agora",icon:"⚡"}
-    ],
-    weight:0
-  },
-  {
-    id:2,phase:1,type:"single-select",
-    question:"73% dos homens acima de 35 têm isso. E os médicos não detectam.",
-    microcopy:"O problema não é hormonal. É 3 vezes mais comum do que dizem. Você sabia?",
-    options:[
-      {value:"no_sabia",label:"Não, nunca tinha ouvido falar",icon:"🧐"},
-      {value:"sospechaba",label:"Suspeitava de algo assim",icon:"🔍"},
-      {value:"quiero_saber",label:"Quero saber exatamente o que é",icon:"🔓"}
+      {value:"de",label:"Perdi firmeza ou não fica em pé",icon:"🔻",route:"DE"},
+      {value:"ep",label:"Termino rápido demais, sem controle",icon:"⏱️",route:"EP"},
+      {value:"ambos",label:"Os dois ao mesmo tempo",icon:"🔥",route:"ambos"},
+      {value:"comecando",label:"Tá começando agora, mas já assusta",icon:"⚠️",route:"ambos"}
     ],
     triggers:{
-      "no_sabia":"🛑 Isso é exatamente o que as farmacêuticas não querem que você saiba. Continue. Você vai entender.",
-      "sospechaba":"⚡ Sua intuição está certa. O teste vai confirmar exatamente o que está acontecendo no seu corpo.",
-      "quiero_saber":"🔥 Bom. Responda as próximas perguntas com honestidade. O diagnóstico depende disso."
+      de:"🛑 Firmeza que cai é o primeiro sinal de que o circuito da pressão apagou. Continue.",
+      ep:"⚡ Terminar cedo não é frescura nem cabeça: é o gatilho do circuito disparando sozinho. Vamos medir.",
+      ambos:"🔥 Quando os dois caem juntos, é o circuito inteiro adormecido. Justo o que esse teste mede.",
+      comecando:"⚠ Pegar no começo muda tudo. A maioria só descobre tarde demais."
     },
     weight:0
   },
   {
-    id:4,phase:2,type:"single-select",
+    id:"q2",phase:1,type:"single-select",
     question:"Quantos anos você tem?",
-    microcopy:"A velocidade do dano muda brutalmente de uma faixa para outra.",
+    microcopy:"A velocidade que o circuito apaga muda brutalmente de uma faixa pra outra.",
     options:[
       {value:"35-39",label:"35 a 39 anos",icon:"⚠️"},
       {value:"40-44",label:"40 a 44 anos",icon:"⚠️"},
       {value:"45-49",label:"45 a 49 anos",icon:"🚨"},
       {value:"50-54",label:"50 a 54 anos",icon:"🚨"},
       {value:"55-59",label:"55 a 59 anos",icon:"🛑"},
-      {value:"60-65",label:"60 a 65 anos",icon:"🛑"}
+      {value:"60-70",label:"60 anos ou mais",icon:"🛑"}
     ],
     triggers:{
-      "35-39":"⚠ A maioria percebe depois dos 40. Você está descobrindo antes. Isso muda tudo.",
-      "40-44":"⚠ Nessa idade o corpo já começou a reduzir o fluxo. Em 3 anos você não vai se reconhecer.",
-      "45-49":"🚨 O fluxo já caiu pela metade e o encolhimento já é visível. Mas ainda tem solução.",
-      "50-54":"🛑 Depois dos 50 o corpo perdeu metade da capacidade. Existe uma forma de reverter.",
-      "55-59":"🛑 Faixa crítica. Os vasos estão se fechando mês a mês. Mas você ainda está aqui.",
-      "60-65":"🛑 Situação grave. Vasos quase bloqueados, mas homens de 63 anos já reverteram com o protocolo."
+      "35-39":"⚠ Você está descobrindo antes da maioria. Isso joga a seu favor.",
+      "40-44":"⚠ Nessa faixa o circuito já começou a apagar. Em 3 anos sem agir, você não se reconhece.",
+      "45-49":"🚨 Metade do circuito já caiu. Ainda dá pra reacender, mas a janela aperta.",
+      "50-54":"🛑 Depois dos 50 o circuito perdeu metade da força. Existe forma de religar.",
+      "55-59":"🛑 Faixa crítica. O circuito apaga mês a mês. Mas você ainda está aqui.",
+      "60-70":"🛑 Situação grave, e mesmo assim homens de 63 anos reacenderam o circuito com o protocolo."
     },
     weight:0
   },
   {
-    id:5,phase:3,type:"single-select",
-    question:"O que mais te corrói?",
-    microcopy:"Ninguém vai ver. Só você e eu.",
+    id:"q3",phase:2,type:"single-select",
+    question:"Quando foi a última vez que você acordou duro, sem precisar de nada?",
+    microcopy:"Ereção matinal forte significa pressão chegando. Se sumiu, o circuito da pressão já caiu.",
     options:[
-      {value:"libido",label:"Perdeu tamanho, firmeza ou os dois",icon:"🔥"},
-      {value:"cuerpo",label:"Barriga cresceu, músculo sumiu",icon:"⚖️"},
-      {value:"energia",label:"Sem energia, destruído todo dia",icon:"⚡"},
-      {value:"mental",label:"Sem fogo, sem vontade de nada",icon:"🧠"}
-    ],
-    weight:0
-  },
-  {
-    id:6,phase:3,type:"single-select",
-    question:"Quando foi a última vez que você acordou com ereção sem precisar de nada?",
-    microcopy:"Ereção matinal forte = sangue chegando com pressão. Se parou, o problema já está avançado.",
-    options:[
-      {value:"siempre",label:"Todo dia, sem falta",icon:"✅",score:3},
+      {value:"sempre",label:"Quase todo dia",icon:"✅",score:3},
       {value:"raro",label:"Raramente, só com sorte",icon:"⚠️",score:1},
-      {value:"nunca",label:"Faz anos que não acontece",icon:"🛑",score:0}
+      {value:"nunca",label:"Faz tempo que não acontece",icon:"🛑",score:0}
     ],
     triggers:{
-      nunca:"🛑 Sem ereção matinal os vasos estão bloqueados. Por isso parece menor. O protocolo reverte isso.",
-      raro:"⚠ Vasos comprometidos. O sangue chega mas sem pressão: tamanho reduzido, firmeza fraca."
+      nunca:"🛑 Sem ereção matinal, a pressão não está chegando. É por isso que fraqueja na hora.",
+      raro:"⚠ A pressão chega, mas fraca. Firmeza parcial é o circuito pela metade."
     },
-    weight:20,category:"libido"
+    weight:20,category:"pressao"
   },
   {
-    id:7,phase:3,type:"single-select",
+    id:"q4",phase:2,type:"single-select",
     question:"Na hora H, como você está?",
-    microcopy:"Sem desculpas. O que acontece quando você precisa render?",
+    microcopy:"Sem desculpa. O que acontece quando precisa render?",
     options:[
-      {value:"toro",label:"Duro do início ao fim, sempre",icon:"💪",score:3},
-      {value:"falho",label:"Não fica em pé ou preciso da pílula",icon:"🚨",score:0},
-      {value:"fujo",label:"Evito, tenho medo de falhar",icon:"🏃",score:0}
+      {value:"firme",label:"Duro do início ao fim",icon:"💪",score:3},
+      {value:"murcha",label:"Não fica em pé ou murcha no meio",icon:"🚨",score:0},
+      {value:"pilula",label:"Só com a pílula azul",icon:"💊",score:0}
     ],
     triggers:{
-      fujo:"🛑 Fugir da sua parceira destrói um homem por dentro. Quanto mais foge, pior fica. Mas tem saída.",
-      falho:"🚨 O sangue entra mas não fica. Vasos fracos. O protocolo corrige exatamente isso."
+      murcha:"🚨 O sangue entra mas não fica preso. Pressão sem retenção. O protocolo corrige isso.",
+      pilula:"🛑 Depender da pílula é o circuito terceirizado. Dá pra reativar o seu, sem química."
     },
-    weight:15,category:"libido"
+    weight:15,category:"pressao"
   },
   {
-    id:8,phase:3,type:"multi-select",
-    question:"Se olhe agora. O que você vê?",
-    microcopy:"Cada quilo de barriga fabrica hormônio feminino e rouba sangue do pênis.",
-    minSelections:1,
+    id:"q5",phase:2,type:"single-select",
+    question:"Você evita o sexo por medo de falhar?",
+    microcopy:"Fugir corrói por dentro e piora o circuito. Honestidade aqui vale o diagnóstico.",
     options:[
-      {value:"barriga",label:"Barriga grande, dura ou mole",icon:"⚖️"},
-      {value:"peito",label:"Peito inchado, parecido com seios",icon:"🍎"},
-      {value:"braco",label:"Braços finos, sem músculo",icon:"📏"},
-      {value:"rosto",label:"Rosto inchado, sem definição",icon:"🌝"},
-      {value:"nenhuma",label:"Nenhuma dessas. Estou bem",icon:"✅"}
+      {value:"nao",label:"Não, encaro normal",icon:"🚫",score:3},
+      {value:"asvezes",label:"Às vezes invento desculpa",icon:"⚠️",score:1},
+      {value:"sempre",label:"Quase sempre fujo",icon:"🛑",score:0}
     ],
     triggers:{
-      _any_except_nenhuma:"🛑 Essa gordura fabrica hormônio feminino dentro de você agora. É o que encolhe, amolece e tira o controle."
+      sempre:"🛑 Cada fuga ensina o corpo a desligar mais. É um ciclo, e tem saída.",
+      asvezes:"⚠ A desculpa de hoje vira o hábito de amanhã. Dá pra quebrar isso."
     },
-    weight:10,category:"cuerpo",scoreLogic:"count-negative"
+    weight:10,category:"pressao"
   },
   {
-    id:9,phase:3,type:"single-select",
-    question:"Já precisou da pílula azul para funcionar?",
-    microcopy:"Cada vez que você usa, seu corpo aprende a não funcionar sozinho.",
+    id:"q6",phase:3,type:"single-select",
+    question:"Quando começa, quanto tempo você dura?",
+    microcopy:"Da penetração até terminar. Sem arredondar pra cima.",
     options:[
-      {value:"nao",label:"Nunca precisei",icon:"🚫",score:3},
-      {value:"asvezes",label:"Já usei ou tenho por garantia",icon:"💊",score:1},
-      {value:"viciado",label:"Sem ela, nem tento mais",icon:"🚨",score:0}
+      {value:"menos1",label:"Menos de 1 minuto",icon:"🛑",score:0},
+      {value:"1a3",label:"Entre 1 e 3 minutos",icon:"🚨",score:1},
+      {value:"3a7",label:"Entre 3 e 7 minutos",icon:"⚠️",score:2},
+      {value:"controlo",label:"Aguento o quanto eu quiser",icon:"💪",score:3}
     ],
     triggers:{
-      viciado:"🛑 Seu corpo criou dependência. Sem a pílula, nada funciona. Mas dá pra reativar sem química.",
-      asvezes:"⚠ Ter ela 'por garantia' é o primeiro passo pra virar refém. Em 2 anos, sem ela, nada vai responder."
+      menos1:"🛑 Menos de 1 minuto é o gatilho disparando sem comando nenhum. É o circuito do controle apagado.",
+      "1a3":"🚨 O gatilho dispara antes de você decidir. Dá pra retomar o comando."
     },
-    weight:10,category:"fisica"
+    weight:20,category:"gatilho"
   },
   {
-    id:10,phase:4,type:"multi-select",
-    question:"Quais desses hábitos você tem?",
-    microcopy:"Cada um deles fecha os vasos que alimentam o pênis por dentro.",
+    id:"q7",phase:3,type:"single-select",
+    question:"Você termina antes de querer, sem aviso?",
+    microcopy:"Aquele ponto sem volta que chega cedo demais.",
+    options:[
+      {value:"nunca",label:"Não, sinto e controlo",icon:"✅",score:3},
+      {value:"asvezes",label:"Às vezes me pega de surpresa",icon:"⚠️",score:1},
+      {value:"sempre",label:"Quase sempre, sem controle",icon:"🛑",score:0}
+    ],
+    triggers:{
+      sempre:"🛑 Sem aviso significa gatilho sem freio. É o sinal mais claro do circuito do controle apagado.",
+      asvezes:"⚠ Te pegar de surpresa é o freio falhando. Dá pra reinstalar o comando."
+    },
+    weight:15,category:"gatilho"
+  },
+  {
+    id:"q8",phase:3,type:"single-select",
+    question:"Você consegue parar quase no fim e voltar?",
+    microcopy:"O famoso segura e volta. Ou é tudo ou nada?",
+    options:[
+      {value:"sim",label:"Sim, consigo segurar e voltar",icon:"💪",score:3},
+      {value:"dificil",label:"Tento, mas quase sempre falho",icon:"⚠️",score:1},
+      {value:"nao",label:"É tudo ou nada, não controlo",icon:"🛑",score:0}
+    ],
+    triggers:{
+      nao:"🛑 Tudo ou nada é o gatilho sem modulação. O protocolo reinstala esse freio.",
+      dificil:"⚠ Você tenta mas o freio não responde. É treinável, dia a dia."
+    },
+    weight:10,category:"gatilho"
+  },
+  {
+    id:"q9",phase:4,type:"multi-select",
+    question:"O que ainda mantém seu circuito travado?",
+    microcopy:"Cada um desses sabota o sangue e o nervo que o circuito usa.",
     minSelections:1,
     options:[
       {value:"alcool",label:"Bebo álcool toda semana",icon:"🍺"},
       {value:"cigarro",label:"Fumo ou fumei por anos",icon:"🚬"},
-      {value:"remedio",label:"Medicação crônica (pressão, etc.)",icon:"💊"},
       {value:"sedentario",label:"Sem exercício há meses",icon:"🛋️"},
+      {value:"estresse",label:"Vivo no estresse e dormindo mal",icon:"🧠"},
       {value:"nenhum",label:"Nenhum desses",icon:"✅"}
     ],
     triggers:{
-      _any_except_nenhum:"🛑 Cada um desses hábitos fecha os vasos do pênis. Quantos mais marcou, mais bloqueado está."
+      _any_except_nenhum:"🛑 Cada um desses mantém o circuito desligado. Quanto mais marcou, mais fundo o bloqueio."
     },
-    weight:8,category:"habitos",scoreLogic:"count-negative"
+    weight:8,category:"sabotador",scoreLogic:"count-negative"
   },
   {
-    id:12,phase:5,type:"single-select",
+    id:"q10",phase:5,type:"single-select",
     question:"Última pergunta. Por quem você está fazendo isso?",
-    microcopy:"Guarda esse motivo. Daqui a 2 minutos ele vai ser o que te faz começar hoje, e não 'segunda que vem'.",
+    microcopy:"Guarda esse motivo. Em 2 minutos ele é o que te faz começar hoje, não segunda que vem.",
     options:[
-      {value:"parceira",label:"Pela minha parceira. Quero voltar à altura",icon:"💑"},
-      {value:"eu_mesmo",label:"Por mim. Quero me sentir homem de novo",icon:"🦾"},
-      {value:"tudo",label:"Por tudo — quero minha vida de volta",icon:"🔥"},
-      {value:"confianza",label:"Pelos dois. Quero meu corpo e confiança",icon:"💪"}
+      {value:"parceira",label:"Pela minha parceira",icon:"💑"},
+      {value:"eu_mesmo",label:"Por mim, quero me sentir homem de novo",icon:"🦾"},
+      {value:"tudo",label:"Por tudo, quero minha vida de volta",icon:"🔥"},
+      {value:"confianza",label:"Pelos dois, corpo e confiança",icon:"💪"}
     ],
     weight:0
   }
