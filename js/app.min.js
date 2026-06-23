@@ -1247,7 +1247,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const diasJanela = blockage >= 71 ? 47 : blockage >= 41 ? 90 : 180;
     const urgLabel   = blockage >= 71 ? "CRÍTICA" : blockage >= 41 ? "CURTA" : "FECHANDO";
-    const urgColor   = blockage >= 71 ? "#C44B4B" : blockage >= 41 ? "#D4940A" : "#C9A84C";
+    const urgColor   = blockage >= 71 ? "#C44B4B" : blockage >= 41 ? "#D4940A" : "#C08A4A";
 
     let bridgeText;
     if (blockage >= 71) {
@@ -1326,11 +1326,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div style="margin:18px 0 4px;">
         ${appMockupHtml(name)}
       </div>
-      <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
+      <p class="body-sm" style="text-align:center;color:var(--gold);margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
       ${VIDEO_DATA.enabled && VIDEO_DATA.url ? `
         <div class="protocol-video">
           <video src="${VIDEO_DATA.url}" ${VIDEO_DATA.poster?`poster="${VIDEO_DATA.poster}"`:""} controls playsinline preload="metadata"></video>
-        </div>` : ""}
+        </div>` : `
+        <div class="protocol-video protocol-video--ph"><div class="pv-ph-inner"><span class="pv-ph-play">▶</span><span class="pv-ph-txt">Vídeo do Dr. Vasquez entra aqui</span></div></div>`}
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
@@ -1352,17 +1353,17 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const greet = name ? `Bom dia, ${name}` : "Bom dia";
     return `
       <div class="vx-phone">
-        <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">V<i>X</i></div><div><b>VORTX</b><small>Protocolo Vascular</small></div></div><div class="vx-ph-bell">🔔</div></div>
+        <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">C<i>D</i></div><div><b>CONDOR</b><small>O Interruptor</small></div></div><div class="vx-ph-bell">🔔</div></div>
         <div class="vx-ph-hero">
-          <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#26262f" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#e9c55a" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
-          <div class="vx-ph-hbody"><div class="vx-ph-greet">${greet}</div><div class="vx-ph-htitle">Seus vasos já reagem.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 4 min hoje e o fluxo sobe.</div></div>
+          <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#2a2e36" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#C08A4A" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
+          <div class="vx-ph-hbody"><div class="vx-ph-greet">${greet}</div><div class="vx-ph-htitle">Seu interruptor já reage.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 6 min hoje e ele liga mais.</div></div>
         </div>
         <div class="vx-ph-sec">Hoje</div>
         <div class="vx-today">
           <span class="vx-tflag">🔓 Liberado agora</span>
-          <div class="vx-tname">Reabertura Vascular</div>
-          <div class="vx-tmeta">Fase 2 · <b>4 rotinas</b> · 9 min</div>
-          <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🫀</div><div class="vx-clb">Bomba</div></div><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">💪</div><div class="vx-clb">Músculo</div></div><div class="vx-chip"><div class="vx-cic">🥗</div><div class="vx-clb">Pré</div></div></div>
+          <div class="vx-tname">Respiração do Condor</div>
+          <div class="vx-tmeta">Dia 7 · <b>1 rotina</b> · 6 min</div>
+          <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">🔺</div><div class="vx-clb">Duro</div></div><div class="vx-chip"><div class="vx-cic">⏱️</div><div class="vx-clb">Durar</div></div><div class="vx-chip"><div class="vx-cic">🔒</div><div class="vx-clb">Freio</div></div></div>
           <div class="vx-tcta">▶ Começar a rotina de hoje</div>
         </div>
         <div class="vx-ph-sec">Sua trilha de 21 dias</div>
@@ -1392,7 +1393,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       return `
         <div class="pricing-plan ${isFeatured ? "featured" : ""} ${isSelected ? "selected" : ""} ${isDowngrade ? "plan-downgrade" : ""} ${isAnchor ? "plan-anchor" : ""}" data-plan="${plan.id}">
           ${plan.badge ? `<div class="pricing-plan-badge-top">${plan.badge}</div>` : ""}
-          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada: sem protocolo vascular</div>` : ""}
+          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada: sem o método completo</div>` : ""}
           ${isAnchor ? `<div class="plan-anchor-label">⚠ Versão limitada: sem protocolo completo</div>` : ""}
           <div class="pricing-plan-header">
             <div class="pricing-plan-name">${plan.name}</div>
@@ -1431,7 +1432,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="pricing-timer-container">
         <div class="pricing-timer-label">${PRICING_DATA.urgencyText}</div>
         <div class="pricing-timer" id="pricing-timer">08:00</div>
-        <div class="pricing-timer-sub">Depois disso volta para o valor real: R$ 547</div>
+        <div class="pricing-timer-sub">Depois disso volta pro valor real: R$ 197</div>
       </div>
 
       <div class="pricing-social-counter">
@@ -1448,7 +1449,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <!-- HORMOZI VALUE STACK -->
       <div class="value-stack">
-        <div class="value-stack-header">TUDO QUE VOCÊ DESBLOQUEIA HOJE NO APP VORTX:</div>
+        <div class="value-stack-header">TUDO QUE VOCÊ DESBLOQUEIA HOJE NO APP CONDOR:</div>
 
         <!-- APP NA DECISÃO -->
         <div class="vx-appblock">
@@ -1459,90 +1460,66 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vx-ph-cap">É <b>exatamente assim</b> que ele abre, com o seu nome em cima.</div>
         </div>
 
-        <div class="vx-vsgroup">O protocolo</div>
+        <div class="vx-vsgroup">O método</div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
-            <div class="vsi-title">Diagnóstico Vascular Personalizado</div>
-            <div class="vsi-desc">Seu mapa exato de bloqueio com base nas respostas do teste</div>
+            <div class="vsi-title">Método Condor: 21 dias pra religar</div>
+            <div class="vsi-desc">A Respiração do Condor guiada dia a dia no app, 6 minutos por dia, pra voltar a ficar duro e durar</div>
           </div>
-          <div class="vsi-price">R$ 47</div>
+          <div class="vsi-price">R$ 67</div>
         </div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
-            <div class="vsi-title">Protocolo Vascular de 21 Dias</div>
-            <div class="vsi-desc">As 4 rotinas organizadas dia a dia no app, quase nenhuma leva mais de 4 minutos</div>
+            <div class="vsi-title">Diagnóstico do seu Interruptor</div>
+            <div class="vsi-desc">Seu mapa exato do que desligou, montado pelas respostas do teste</div>
           </div>
-          <div class="vsi-price">R$ 97</div>
-        </div>
-        <div class="value-stack-item">
-          <div class="vsi-check">✓</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Plano Alimentar Anti-Estrogênio</div>
-            <div class="vsi-desc">Os 12 alimentos que disparam testosterona + os 10 que destroem</div>
-          </div>
-          <div class="vsi-price">R$ 39</div>
-        </div>
-        <div class="value-stack-item">
-          <div class="vsi-check">✓</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Stack Hormonal Noturno</div>
-            <div class="vsi-desc">3 compostos baratos que triplicam sua testosterona enquanto você dorme</div>
-          </div>
-          <div class="vsi-price">R$ 29</div>
+          <div class="vsi-price">R$ 30</div>
         </div>
 
         <div class="vx-vsgroup vx-vsgroup--bonus">Bônus de hoje</div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🔥</div>
           <div class="vsi-content">
-            <div class="vsi-title">Protocolo Primeira Noite</div>
-            <div class="vsi-desc">A rotina de choque pra você sentir a diferença já nas primeiras 72h</div>
+            <div class="vsi-title">Primeira Noite</div>
+            <div class="vsi-desc">A rotina-choque pra você ficar duro de novo já nas primeiras 72 horas</div>
           </div>
-          <div class="vsi-price">R$ 67</div>
+          <div class="vsi-price">R$ 30</div>
+        </div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">⏱️</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Controle Total</div>
+            <div class="vsi-desc">A técnica pra durar o quanto quiser e nunca mais gozar antes da hora</div>
+          </div>
+          <div class="vsi-price">R$ 30</div>
         </div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">❤️‍🔥</div>
           <div class="vsi-content">
-            <div class="vsi-title">Modo Casal: como ela volta a te procurar</div>
-            <div class="vsi-desc">O jeito discreto de reacender o desejo dela sem você ter que falar nada</div>
+            <div class="vsi-title">Modo Casal <span class="vx-onlynow">· só pra quem entra agora</span></div>
+            <div class="vsi-desc">Como ela volta a te procurar sem você ter que falar nada</div>
           </div>
-          <div class="vsi-price">R$ 97</div>
-        </div>
-        <div class="value-stack-item value-stack-bonus">
-          <div class="vsi-check">⚡</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Turbo 48h <span class="vx-onlynow">· só pra quem entra agora</span></div>
-            <div class="vsi-desc">Um empurrão concentrado que destrava o fluxo nas primeiras 48 horas</div>
-          </div>
-          <div class="vsi-price">R$ 57</div>
+          <div class="vsi-price">R$ 20</div>
         </div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🛡️</div>
           <div class="vsi-content">
-            <div class="vsi-title">Manutenção Vitalícia</div>
-            <div class="vsi-desc">Como continuar firme depois dos 21 dias, pra nunca mais voltar atrás</div>
+            <div class="vsi-title">Blindagem Vitalícia</div>
+            <div class="vsi-desc">Como manter o interruptor ligado pra sempre e nunca mais voltar pro começo</div>
           </div>
-          <div class="vsi-price">R$ 67</div>
-        </div>
-        <div class="value-stack-item value-stack-bonus">
-          <div class="vsi-check">🎁</div>
-          <div class="vsi-content">
-            <div class="vsi-title">App vitalício, seu pra sempre</div>
-            <div class="vsi-desc">O app fica no seu celular com acesso vitalício, e toda atualização nova já entra liberada</div>
-          </div>
-          <div class="vsi-price">R$ 47</div>
+          <div class="vsi-price">R$ 20</div>
         </div>
 
         <div class="value-stack-total">
           <div class="vst-label">VALOR REAL DE TUDO ISTO:</div>
-          <div class="vst-old">R$ 547</div>
+          <div class="vst-old">R$ 197</div>
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
           <div class="vsth-price"><span>R$</span>37</div>
-          <div class="vsth-tag">93% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-tag">81% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
@@ -1581,7 +1558,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
 
       <div class="pricing-urgency-bio-block">
-        <p class="pricing-urgency-bio-text">Hoje à noite você vai deitar. Vai olhar pro teto e vai saber que podia ter feito algo diferente. Amanhã vai acordar igual ou pior. O bloqueio vascular não espera, não para, não negocia. <strong>A única pergunta é: você vai agir enquanto ainda dá tempo?</strong></p>
+        <p class="pricing-urgency-bio-text">Hoje à noite você vai deitar. Vai olhar pro teto e vai saber que podia ter feito algo diferente. Amanhã vai acordar igual ou pior. O interruptor não espera, não para, não negocia. <strong>A única pergunta é: você vai agir enquanto ainda dá tempo?</strong></p>
       </div>
 
       <!-- WHATSAPP-STYLE TESTIMONIAL PLACEHOLDERS (you'll add real images here) -->
@@ -1862,7 +1839,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
             <div class="timer-expired-block">
               <div class="timer-expired-icon">⏰</div>
               <p class="timer-expired-title">Esse preço não está mais disponível.</p>
-              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 547.</p>
+              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 197.</p>
               <button class="btn-cta" id="btn-recover-offer">QUERO 10 MINUTOS A MAIS COM O PREÇO ESPECIAL</button>
             </div>
           `;
