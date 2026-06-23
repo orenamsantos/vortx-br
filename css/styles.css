@@ -3078,11 +3078,17 @@ a { color: var(--gold); text-decoration: none; }
 .guarantee-box--doubled .guarantee-text-big strong { color: #6fcf97; }
 
 /* ── BLOCK METER ─────────────────────────────────────────── */
-.block-meter{padding:6px 4px 2px}
-.block-meter-label{font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:#9A978F;margin-bottom:4px}
-.block-meter-track{height:8px;border-radius:30px;background:rgba(255,255,255,.06);overflow:hidden}
-.block-meter-fill{height:100%;width:0;border-radius:30px;background:linear-gradient(90deg,#D4940A,#C44B4B);transition:width .6s cubic-bezier(.16,1,.3,1)}
-.block-meter-value{text-align:right;font-size:.7rem;font-weight:700;color:#C44B4B;margin-top:3px}
+.block-meter{padding:10px 4px 4px}
+.block-meter-label{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-secondary);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.block-meter-label::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--status-critical);box-shadow:0 0 8px var(--status-critical);animation:bm-pulse 1.8s ease-in-out infinite}
+.block-meter-track{position:relative;height:10px;border-radius:30px;background:rgba(255,255,255,.05);box-shadow:inset 0 1px 2px rgba(0,0,0,.4);overflow:hidden}
+.block-meter-track::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 19px,rgba(255,255,255,.06) 19px,rgba(255,255,255,.06) 20px);pointer-events:none}
+.block-meter-fill{position:relative;height:100%;width:0;border-radius:30px;background:linear-gradient(90deg,var(--status-attention),var(--status-critical));box-shadow:0 0 12px rgba(196,75,75,.5);transition:width .7s cubic-bezier(.16,1,.3,1)}
+.block-meter-fill::after{content:"";position:absolute;inset:0;border-radius:30px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:translateX(-100%);animation:bm-shimmer 2.4s ease-in-out infinite}
+.block-meter-value{text-align:right;font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.5px;color:var(--status-critical);margin-top:5px}
+@keyframes bm-pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes bm-shimmer{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.block-meter-label::before{animation:none}.block-meter-fill::after{display:none}.block-meter-fill{transition:none}}
 
 /* ── PROTOCOL VIDEO ──────────────────────────────────────── */
 .protocol-video{margin:0 0 24px;border-radius:16px;overflow:hidden}
