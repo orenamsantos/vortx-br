@@ -101,16 +101,16 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     {
       afterStep:"q5",
       emoji:"🔬",
-      headline:'Isso tem nome: <span class="highlight">Circuito Adormecido.</span>',
-      getText:()=>"Não é idade nem cabeça. É um circuito que a vida moderna desliga. Acabamos de medir o lado da PRESSÃO. Agora o lado do CONTROLE.",
-      stat:"Quem mapeia os dois lados agora tem 3.7x mais chance de reverter.",
-      cta:"MEDIR MEU CONTROLE"
+      headline:'Tem nome: <span class="highlight">o interruptor desligou.</span>',
+      getText:()=>"Não é idade nem cabeça. Tem um interruptor da ereção e do controle, e o seu apagou. Já medi o lado de FICAR DURO. Agora o lado de DURAR.",
+      stat:"Quem mede os dois lados agora tem 3.7x mais chance de religar.",
+      cta:"MEDIR SE EU DURO"
     },
     {
       afterStep:"q9",
       emoji:"🔴",
-      headline:'Você vai ver um número agora. <span class="highlight">É quanto do seu circuito já apagou.</span>',
-      getText:()=>"O sistema cruzou suas respostas com 17.483 diagnósticos. Alguns ficam em choque. Prepare-se.",
+      headline:'Vem um número agora. <span class="highlight">É o quanto do seu interruptor já desligou.</span>',
+      getText:()=>"Cruzei suas respostas com 17.483 homens. Tem gente que toma um susto. Se prepara.",
       stat:"A maioria nunca soube que esse número existia.",
       cta:"VER MEU DIAGNÓSTICO"
     }
@@ -322,7 +322,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     if (!fill || !val) return;
     var blk = partialBlockage();
     fill.style.width = blk + "%";
-    val.textContent = blk + "% travado";
+    val.textContent = blk + "% desligado";
   }
 
 
@@ -1164,9 +1164,9 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     var blockage = Math.max(0, Math.min(100, 100 - state.score));
     var zone = RESULT_DATA.blockZones.find(function(z){ return blockage >= z.min && blockage <= z.max; }) || RESULT_DATA.blockZones[0];
     var routeLine = byRoute(
-      "No seu caso o golpe está na PRESSÃO: o sangue não chega com força, por isso a firmeza some.",
-      "No seu caso o golpe está no GATILHO: ele dispara sem comando, por isso você termina cedo.",
-      "No seu caso os DOIS lados caíram: pressão e gatilho. O circuito inteiro adormeceu."
+      "No seu caso o problema é FICAR DURO: não sobe ou murcha no meio. É o lado da ereção do interruptor.",
+      "No seu caso o problema é DURAR: você goza antes de querer. É o lado do controle do interruptor.",
+      "No seu caso os DOIS lados desligaram: não fica duro e ainda goza cedo. O interruptor apagou inteiro."
     );
     const name  = state.userData.name || "";
     const circ  = 2 * Math.PI * 80;
@@ -1192,14 +1192,14 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </svg>
         <div class="result-score-value">
           <div class="result-score-number" id="score-display" style="color:${zone.color}">0</div>
-          <div class="result-score-out-of">% travado</div>
+          <div class="result-score-out-of">% desligado</div>
           <div class="result-score-label" style="color:${zone.color}">${zone.label}</div>
         </div>
       </div>
       <p class="result-description">${zone.description + " " + routeLine}</p>
       <div class="result-critical-areas">${areasHtml}</div>
       <div class="result-urgency-block">
-        <p class="result-urgency-text">Seu circuito está apagando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos pressão, menos controle. E esse grau ainda tem reversão, mas não pra sempre.</p>
+        <p class="result-urgency-text">Seu interruptor está apagando agora, enquanto você lê isso. Cada mês sem agir é mais desligado, menos ereção, menos controle. E esse grau ainda tem reversão, mas não pra sempre.</p>
         <p class="result-urgency-subtext">O protocolo de reativação foi calibrado pro seu perfil exato.</p>
       </div>
       <div style="width:100%;padding:20px 0;display:flex;justify-content:center;">
@@ -1241,11 +1241,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     let bridgeText;
     if (blockage >= 71) {
-      bridgeText = comVoc(`seu circuito está em falência. Mas falência não é fim: ainda existe uma janela. O protocolo foi construído exatamente pra esse nível de bloqueio, pra reacender o que apagou. Não é pra todo mundo. É pra quem chegou até aqui e quer a firmeza e o controle de volta.`);
+      bridgeText = "Seu interruptor está quase apagado. Religar agora é sua última chance real.";
     } else if (blockage >= 41) {
-      bridgeText = comVoc(`a janela está fechando rápido. O circuito já perdeu firmeza e controle de forma visível. O protocolo de reativação está calibrado pro seu grau exato de bloqueio. Cada mês sem agir apaga mais um trecho do circuito.`);
+      bridgeText = "Seu interruptor está apagando rápido. A janela tá fechando.";
     } else {
-      bridgeText = comVoc(`ainda dá tempo de reacender, mas o relógio corre. O circuito ainda responde, mas os sinais de queda já estão ligados. Quem age agora reverte em semanas. Quem espera vira o caso grave do ano que vem.`);
+      bridgeText = "Seu interruptor ainda responde. Religue antes que apague de vez.";
     }
 
     document.getElementById("bridge").innerHTML = `
@@ -1276,7 +1276,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const headlineMap = {
       parceira: "O Protocolo Para Que Sua Parceira Não Queira Que Você Pare",
       eu_mesmo: "O Protocolo Para Você Voltar a Se Reconhecer Como Homem",
-      tudo:     "O Protocolo Para Recuperar Tamanho, Duração e Controle — Tudo de Volta",
+      tudo:     "O Protocolo Para Recuperar Tamanho, Duração e Controle: Tudo de Volta",
       confianza:"O Protocolo Para Recuperar Seu Corpo e Sua Confiança",
     };
     const headline = headlineMap[painArea] || PROTOCOL_DATA.headline;
@@ -1382,8 +1382,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       return `
         <div class="pricing-plan ${isFeatured ? "featured" : ""} ${isSelected ? "selected" : ""} ${isDowngrade ? "plan-downgrade" : ""} ${isAnchor ? "plan-anchor" : ""}" data-plan="${plan.id}">
           ${plan.badge ? `<div class="pricing-plan-badge-top">${plan.badge}</div>` : ""}
-          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada — sem protocolo vascular</div>` : ""}
-          ${isAnchor ? `<div class="plan-anchor-label">⚠ Versão limitada — sem protocolo completo</div>` : ""}
+          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada: sem protocolo vascular</div>` : ""}
+          ${isAnchor ? `<div class="plan-anchor-label">⚠ Versão limitada: sem protocolo completo</div>` : ""}
           <div class="pricing-plan-header">
             <div class="pricing-plan-name">${plan.name}</div>
             <div class="pricing-plan-price-container">
@@ -1403,12 +1403,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     var blockage = 100 - state.score;
     var pricingHeadline = blockage >= 71
-      ? "Seu circuito está em falência. Reacender agora é o seu limite."
+      ? "Seu interruptor está quase apagado. Religar agora é o seu limite."
       : blockage >= 41
-      ? "Seu circuito está em colapso. A janela está fechando."
-      : "Seu circuito ainda responde. Reacenda antes que feche.";
+      ? "Seu interruptor está apagando rápido. A janela tá fechando."
+      : "Seu interruptor ainda responde. Religue antes que apague.";
     // nível pro recap personalizado (mesma régua da headline)
-    var nivel = blockage >= 71 ? "Circuito em falência" : blockage >= 41 ? "Circuito em colapso" : "Circuito apagando";
+    var nivel = blockage >= 71 ? "Quase todo desligado" : blockage >= 41 ? "Desligando rápido" : "Começando a desligar";
     const vocRecap = name ? `${name}, ` : "";
 
     document.getElementById("pricing").innerHTML = `
