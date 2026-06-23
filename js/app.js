@@ -211,6 +211,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     return ambos;
   }
 
+  // ── Assinatura visual Altitude (reuso em result/pricing) ──
+  const ALT_RIDGE = '<svg class="alt-ridge" viewBox="0 0 1080 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L150 54 L260 92 L420 26 L560 80 L700 36 L860 96 L980 50 L1080 84 L1080 120 Z" fill="#1A1D23"/><path d="M0 120 L210 78 L360 104 L520 60 L660 100 L820 64 L1000 104 L1080 86 L1080 120 Z" fill="#14161B"/></svg>';
+  const ALT_MARK = '<svg class="alt-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>';
+
   // ── RENDER GATE ───────────────────────────────────────────
   function renderGate() {
     document.getElementById("gate").innerHTML = `
@@ -1187,6 +1191,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     `).join("");
 
     document.getElementById("result").innerHTML = `
+      ${ALT_RIDGE}
+      ${ALT_MARK}
       <h2 class="heading-xl">${name ? RESULT_DATA.headlineTemplate.replace("{name}", name) : "Seu diagnóstico está pronto."}</h2>
       <div class="result-gauge">
         <svg viewBox="0 0 200 200">
@@ -1416,6 +1422,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const vocRecap = name ? `${name}, ` : "";
 
     document.getElementById("pricing").innerHTML = `
+      ${ALT_RIDGE}
+      ${ALT_MARK}
       <div style="text-align:center;">
         <h2 class="heading-xl">${pricingHeadline}</h2>
       </div>

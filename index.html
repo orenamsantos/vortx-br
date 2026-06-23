@@ -49,6 +49,10 @@
 .gate-wordmark b{color:var(--gold);font-weight:700}
 .gate-badge{border-color:var(--gold-dark);color:var(--gold)}
 .gate-headline{font-family:var(--font-display);letter-spacing:-0.005em;line-height:1.04}
+.alt-ridge{position:absolute;left:0;bottom:0;width:100%;height:120px;opacity:.45;z-index:0;pointer-events:none}
+.alt-mark{display:block;width:44px;height:44px;margin:4px auto 16px}
+.result-screen,.pricing-screen{position:relative;overflow:hidden}
+.result-screen>*:not(.alt-ridge),.pricing-screen>*:not(.alt-ridge){position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -137,7 +141,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=33';
+        s2.src='js/app.min.js?v=34';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){
