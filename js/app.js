@@ -305,6 +305,43 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       counterNum.textContent = `Passo ${currentIdx} de ${totalSteps}`;
       counterPct.textContent = `${pct}%`;
     }
+    updateBlockMeter();
+  }
+
+  function partialBlockage() {
+    var totalWeight = 0, weightedScore = 0;
+    for (var i = 0; i < STEPS.length; i++) {
+      var step = STEPS[i];
+      if (!step.weight || step.weight === 0) continue;
+      var answer = state.answers[step.id];
+      if (answer === undefined) continue;
+      totalWeight += step.weight;
+      if (step.type === "single-select") {
+        var opt = step.options.find(function(o){ return o.value === answer; });
+        if (opt && opt.score !== undefined) {
+          var max = Math.max.apply(null, step.options.filter(function(o){return o.score!==undefined;}).map(function(o){return o.score;}));
+          weightedScore += (max > 0 ? opt.score / max : 0) * step.weight;
+        }
+      } else if (step.type === "multi-select" && Array.isArray(answer)) {
+        var none = answer.indexOf("nenhum") > -1 || answer.indexOf("nenhuma") > -1;
+        if (none) { weightedScore += step.weight; }
+        else {
+          var maxOpts = step.options.filter(function(o){return o.value!=="nenhum"&&o.value!=="nenhuma";}).length;
+          weightedScore += Math.max(0, 1 - answer.length / maxOpts) * step.weight;
+        }
+      }
+    }
+    var score = totalWeight > 0 ? (weightedScore / totalWeight) * 100 : 0;
+    return Math.round(Math.max(35, Math.min(96, 100 - score)));
+  }
+
+  function updateBlockMeter() {
+    var fill = document.getElementById("block-meter-fill");
+    var val = document.getElementById("block-meter-value");
+    if (!fill || !val) return;
+    var blk = partialBlockage();
+    fill.style.width = blk + "%";
+    val.textContent = blk + "% travado";
   }
 
 
@@ -467,6 +504,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     container.innerHTML = html;
     bindStepEvents(step);
     restoreAnswer(step);
+    updateBlockMeter();
   }
 
   // ── RENDER HELPERS ────────────────────────────────────────
