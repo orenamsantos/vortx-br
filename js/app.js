@@ -334,6 +334,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     var blk = partialBlockage();
     fill.style.width = blk + "%";
     val.textContent = blk + "% desligado";
+    // reserva o espaco exato da barra fixa pra ela nao cobrir a pergunta
+    var bar = document.getElementById("progress-bar");
+    var qz = document.querySelector(".quiz-screen");
+    if (bar && qz && bar.offsetHeight) qz.style.paddingTop = (bar.offsetHeight + 18) + "px";
   }
 
 
