@@ -2,12 +2,12 @@ const BRAND={name:"CONDOR",tagline:"O Interruptor",year:(new Date).getFullYear()
 
 GATE_DATA={
   headline:"Você murcha na hora H, ou acaba rápido demais. E já evita o sexo pra não passar vergonha.",
-  subheadline:"Não é idade, não é frescura, não é a sua cabeça. Tem um interruptor da ereção e do controle, e depois dos 35 ele vai desligando sozinho. Homens de 70 anos nos Andes nunca perderam o deles, e um cirurgião vascular descobriu por quê. Faça o teste de 2 minutos e veja na tela o quanto o seu já desligou, e como ligar de novo.",
-  cta:"VER O QUANTO JÁ DESLIGOU",
-  timerStrip:"🔒 Teste anônimo • Resultado imediato na tela • Sem cadastro, sem cobrança",
+  subheadline:"Não é idade, não é frescura, não é a sua cabeça. Tem um interruptor da ereção e do controle, e depois dos 35 ele vai desligando sozinho. Homens de 70 anos nos Andes nunca perderam o deles, e um cirurgião vascular descobriu por quê. Em 2 minutos o teste mostra o número exato do seu, e o que fazer pra ligar de novo.",
+  cta:"QUERO VER O MEU NÚMERO",
+  timerStrip:"🔒 Anônimo de verdade. Ninguém vai saber. Resultado na hora.",
   socialProof:"17.483 homens já religaram. Tempo médio: 21 dias.",
   privacySeal:"100% confidencial • Anônimo • Ninguém vai saber",
-  badge:"Não é idade. Não é a sua cabeça."
+  badge:"O interruptor que o seu médico nunca testou."
 },
 
 PHASES=[
