@@ -80,9 +80,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     currentScreen: "gate",
     currentStepIndex: 0,
     answers: {},
+    route: "ambos",
     userData: { name: "", whatsapp: "", height: 0, weight: 0 },
     optIn: true,
-    selectedPlan: "vitalicio",
+    selectedPlan: "completo",
     score: 0,
     criticalAreas: [],
     timerInterval: null,
@@ -98,40 +99,21 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── INTERSTITIALS ─────────────────────────────────────────
   const INTERSTITIALS = [
     {
-      afterStep: 6,  // após erección matinal
-      emoji: "🔬",
-      headline: 'Isso tem nome: <span class="highlight">bloqueio vascular peniano.</span>',
-      getText: () => "Não é a idade. É obstrução nos vasos que levam sangue ao pênis. Agora vamos mapear o dano.",
-      stat: "Quem identifica o padrão agora tem 3.7x mais chances de reverter.",
-      cta: "MAPEAR O DANO",
+      afterStep:"q5",
+      emoji:"🔬",
+      headline:'Tem nome: <span class="highlight">o interruptor desligou.</span>',
+      getText:()=>"Não é idade nem cabeça. Tem um interruptor da ereção e do controle, e o seu apagou. Já medi o lado de FICAR DURO. Agora o lado de DURAR.",
+      stat:"Quem mede os dois lados agora tem 3.7x mais chance de religar.",
+      cta:"MEDIR SE EU DURO"
     },
     {
-      afterStep: 9,  // após pastilla
-      emoji: "🧠",
-      headline: 'O seu <span class="highlight">mapa vascular</span> não é animador.',
-      getText: () => {
-        const pastilla = state.answers[9];
-        if (pastilla === "viciado") {
-          return `Seu corpo criou dependência química. Sem a pílula, nada funciona. Mas dá pra reativar sem química.`;
-        }
-        if (pastilla === "asvezes") {
-          return `Ter ela "por garantia" já é sinal. Em 2 anos, sem ela, nada vai responder.`;
-        }
-        return `Seus vasos estão se fechando. Agora cruzamos com seus hábitos pra descobrir o que está acelerando isso.`;
-      },
-      stat: "93% dos homens com esse perfil respondem ao protocolo em menos de 21 dias.",
-      cta: "VER MEUS HÁBITOS",
-    },
-    {
-      afterStep: 10,  // após hábitos — prepara resultado
-      emoji: "🔴",
-      headline: 'Você vai ver um número agora. <span class="highlight">Revela quanto seus vasos se fecharam.</span>',
-      getText: () => {
-        return `O sistema cruzou suas respostas com 17.483 diagnósticos. Alguns homens ficam em choque, outros sentem alívio. Prepare-se.`;
-      },
-      stat: "A maioria dos homens nunca soube que esse número existia.",
-      cta: "VER MEU DIAGNÓSTICO",
-    },
+      afterStep:"q9",
+      emoji:"🔴",
+      headline:'Vem um número agora. <span class="highlight">É o quanto do seu interruptor já desligou.</span>',
+      getText:()=>"Cruzei suas respostas com 17.483 homens. Tem gente que toma um susto. Se prepara.",
+      stat:"A maioria nunca soube que esse número existia.",
+      cta:"VER MEU DIAGNÓSTICO"
+    }
   ];
 
 
@@ -167,7 +149,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       const resumeDiv = document.createElement("div");
       resumeDiv.className = "resume-banner";
       resumeDiv.innerHTML = `
-        <p>Vamos continuar de onde você parou, ${data.userData.name}. Você está no passo ${data.currentStepId || 3} de ${STEPS.length}.</p>
+        <p>Vamos continuar de onde você parou, ${data.userData.name}. Você está no passo ${data.currentStepId || "1"} de ${STEPS.length}.</p>
         <div class="resume-actions">
           <button class="btn-resume-yes">CONTINUAR</button>
           <button class="btn-resume-no">COMEÇAR DE NOVO</button>
@@ -179,7 +161,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         state.userData = data.userData;
         state.answers = data.answers || {};
         state.selectedPlan = data.selectedPlan || state.selectedPlan;
-        state.currentStepId = data.currentStepId || 3;
+        state.currentStepId = data.currentStepId || "q1";
         resumeDiv.remove();
         document.getElementById("gate").classList.remove("active");
         document.getElementById("progress-bar").style.display = "block";
@@ -223,10 +205,24 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     return text.replace(/\{name\},\s*/g, "").replace(/\{name\}/g, "você");
   }
 
+  function byRoute(de, ep, ambos) {
+    if (state.route === "DE") return de;
+    if (state.route === "EP") return ep;
+    return ambos;
+  }
+
+  // ── Assinatura visual Altitude (reuso em result/pricing) ──
+  const ALT_RIDGE = '<svg class="alt-ridge" viewBox="0 0 1080 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L150 54 L260 92 L420 26 L560 80 L700 36 L860 96 L980 50 L1080 84 L1080 120 Z" fill="#1A1D23"/><path d="M0 120 L210 78 L360 104 L520 60 L660 100 L820 64 L1000 104 L1080 86 L1080 120 Z" fill="#14161B"/></svg>';
+  const ALT_MARK = '<svg class="alt-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>';
+
   // ── RENDER GATE ───────────────────────────────────────────
   function renderGate() {
     document.getElementById("gate").innerHTML = `
-      <div class="gate-logo">VORTX<span></span></div>
+      <svg class="gate-ridge" viewBox="0 0 1080 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L150 54 L260 92 L420 26 L560 80 L700 36 L860 96 L980 50 L1080 84 L1080 120 Z" fill="#1A1D23"/><path d="M0 120 L210 78 L360 104 L520 60 L660 100 L820 64 L1000 104 L1080 86 L1080 120 Z" fill="#14161B"/></svg>
+      <div class="gate-logo">
+        <svg class="gate-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>
+        <span class="gate-wordmark">CON<b>DOR</b></span>
+      </div>
       <div class="gate-badge">${GATE_DATA.badge}</div>
       <h1 class="gate-headline">${GATE_DATA.headline}</h1>
       <p class="gate-subheadline">${GATE_DATA.subheadline}</p>
@@ -298,6 +294,46 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       counterNum.textContent = `Passo ${currentIdx} de ${totalSteps}`;
       counterPct.textContent = `${pct}%`;
     }
+    updateBlockMeter();
+  }
+
+  function partialBlockage() {
+    var totalPossible = 0, damage = 0;
+    for (var i = 0; i < STEPS.length; i++) {
+      var step = STEPS[i];
+      if (!step.weight || step.weight === 0) continue;
+      var answer = state.answers[step.id];
+      if (step.isConditional && answer === undefined) continue;
+      totalPossible += step.weight;
+      if (answer === undefined) continue;
+      var norm = 1;
+      if (step.type === "single-select") {
+        var opt = step.options.find(function(o){ return o.value === answer; });
+        if (opt && opt.score !== undefined) {
+          var max = Math.max.apply(null, step.options.filter(function(o){return o.score!==undefined;}).map(function(o){return o.score;}));
+          norm = max > 0 ? opt.score / max : 0;
+        }
+      } else if (step.type === "multi-select" && Array.isArray(answer)) {
+        var none = answer.indexOf("nenhum") > -1 || answer.indexOf("nenhuma") > -1;
+        if (none) { norm = 1; }
+        else {
+          var maxOpts = step.options.filter(function(o){return o.value!=="nenhum"&&o.value!=="nenhuma";}).length;
+          norm = Math.max(0, 1 - answer.length / maxOpts);
+        }
+      }
+      damage += (1 - norm) * step.weight;
+    }
+    var frac = totalPossible > 0 ? damage / totalPossible : 0;
+    return Math.round(Math.max(18, Math.min(98, 18 + frac * 80)));
+  }
+
+  function updateBlockMeter() {
+    var fill = document.getElementById("block-meter-fill");
+    var val = document.getElementById("block-meter-value");
+    if (!fill || !val) return;
+    var blk = partialBlockage();
+    fill.style.width = blk + "%";
+    val.textContent = blk + "% desligado";
   }
 
 
@@ -460,6 +496,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     container.innerHTML = html;
     bindStepEvents(step);
     restoreAnswer(step);
+    updateBlockMeter();
   }
 
   // ── RENDER HELPERS ────────────────────────────────────────
@@ -563,6 +600,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           document.querySelectorAll(".option-card").forEach((c) => c.classList.remove("selected"));
           this.classList.add("selected");
           state.answers[step.id] = this.dataset.value;
+          if (step.id === "q1") {
+            var opt = step.options.find(function(o){ return o.value === this.dataset.value; }.bind(this));
+            state.route = (opt && opt.route) || "ambos";
+          }
           const triggerMsg = getTriggerMessage(step, this.dataset.value);
           if (triggerMsg) {
             showShockScreen(injectName(triggerMsg), () => advanceStep());
@@ -913,15 +954,29 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function advanceStep() {
     const currentStep = getCurrentStep();
 
-    if (currentStep?.conditional) {
-      const answer = state.answers[currentStep.id];
-      const target = currentStep.conditional[answer];
-      if (target) {
-        const condStep = getStepById(target);
-        if (condStep) {
-          const nextIdx = state.currentStepIndex + 1;
-          if (!stepOrder[nextIdx] || stepOrder[nextIdx].id !== condStep.id)
-            stepOrder.splice(nextIdx, 0, condStep);
+    if (currentStep && currentStep.nextId) {
+      saveProgress();
+      var nIdx = stepOrder.findIndex(function(s){ return s.id === currentStep.nextId; });
+      if (nIdx >= 0) {
+        state.currentStepIndex = nIdx;
+        renderStep();
+        return;
+      }
+    }
+
+    if (currentStep && currentStep.conditional) {
+      var answer = state.answers[currentStep.id];
+      var targetId = currentStep.conditional[answer];
+      if (targetId) {
+        var target = getStepById(targetId);
+        if (target) {
+          if (stepOrder.indexOf(target) === -1) {
+            stepOrder.splice(state.currentStepIndex + 1, 0, target);
+          }
+          state.currentStepIndex++;
+          saveProgress();
+          renderStep();
+          return;
         }
       }
     }
@@ -1117,10 +1172,16 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     showScreen("result");
     const score = state.score;
     if (window.vortxTrack) vortxTrack("view_result", { score: score });
-    const zone  = RESULT_DATA.scoreZones.find((z) => score >= z.min && score <= z.max);
+    var blockage = Math.max(0, Math.min(100, 100 - state.score));
+    var zone = RESULT_DATA.blockZones.find(function(z){ return blockage >= z.min && blockage <= z.max; }) || RESULT_DATA.blockZones[0];
+    var routeLine = byRoute(
+      "No seu caso o problema é FICAR DURO: não sobe ou murcha no meio. É o lado da ereção do interruptor.",
+      "No seu caso o problema é DURAR: você goza antes de querer. É o lado do controle do interruptor.",
+      "No seu caso os DOIS lados desligaram: não fica duro e ainda goza cedo. O interruptor apagou inteiro."
+    );
     const name  = state.userData.name || "";
     const circ  = 2 * Math.PI * 80;
-    const offset= circ - (score / 100) * circ;
+    const offset= circ - (blockage / 100) * circ;
 
     const areasHtml = state.criticalAreas.map((a) => `
       <div class="critical-area-card">
@@ -1133,6 +1194,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     `).join("");
 
     document.getElementById("result").innerHTML = `
+      ${ALT_RIDGE}
+      ${ALT_MARK}
       <h2 class="heading-xl">${name ? RESULT_DATA.headlineTemplate.replace("{name}", name) : "Seu diagnóstico está pronto."}</h2>
       <div class="result-gauge">
         <svg viewBox="0 0 200 200">
@@ -1142,15 +1205,15 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
         </svg>
         <div class="result-score-value">
           <div class="result-score-number" id="score-display" style="color:${zone.color}">0</div>
-          <div class="result-score-out-of">/100</div>
+          <div class="result-score-out-of">% desligado</div>
           <div class="result-score-label" style="color:${zone.color}">${zone.label}</div>
         </div>
       </div>
-      <p class="result-description">${zone.description}</p>
+      <p class="result-description">${zone.description + " " + routeLine}</p>
       <div class="result-critical-areas">${areasHtml}</div>
       <div class="result-urgency-block">
-        <p class="result-urgency-text">Seus vasos estão se fechando agora, enquanto você lê isso. Cada mês sem agir é mais bloqueio, menos sangue, menos tamanho, menos duração. E esse grau ainda tem reversão, mas não pra sempre.</p>
-        <p class="result-urgency-subtext">O protocolo de reversão vascular foi calibrado pro seu perfil exato.</p>
+        <p class="result-urgency-text">Seu interruptor está apagando agora, enquanto você lê isso. Cada mês sem agir é mais desligado, menos ereção, menos controle. E esse grau ainda tem reversão, mas não pra sempre.</p>
+        <p class="result-urgency-subtext">O protocolo de reativação foi calibrado pro seu perfil exato.</p>
       </div>
       <div style="width:100%;padding:20px 0;display:flex;justify-content:center;">
         <button class="btn-cta" id="btn-see-protocol">QUERO VER O QUE RESOLVE ISSO</button>
@@ -1159,7 +1222,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     setTimeout(() => {
       document.getElementById("gauge-fill").style.strokeDashoffset = offset;
-      animateNumber("score-display", 0, score, 1500);
+      animateNumber("score-display", 0, blockage, 1500);
     }, 300);
 
     document.getElementById("btn-see-protocol").addEventListener("click", showBridge);
@@ -1181,23 +1244,21 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function showBridge() {
     showScreen("bridge");
     const name  = state.userData.name || "";
-    // com nome: "Flavio, seus vasos..."; sem nome: "Seus vasos..." (sem apelido genérico)
+    // com nome: "Flavio, seu circuito..."; sem nome: "Seu circuito..." (sem apelido genérico)
     const comVoc = (body) => name ? `${name}, ${body}` : body.charAt(0).toUpperCase() + body.slice(1);
-    const score = state.score;
+    var blockage = 100 - state.score;
 
-    const diasJanela = score <= 35 ? 47 : score <= 60 ? 90 : score <= 80 ? 180 : 365;
-    const urgLabel   = score <= 35 ? "CRÍTICA" : score <= 60 ? "CURTA" : "ABERTA";
-    const urgColor   = score <= 35 ? "#C44B4B" : score <= 60 ? "#D4940A" : "#C9A84C";
+    const diasJanela = blockage >= 71 ? 47 : blockage >= 41 ? 90 : 180;
+    const urgLabel   = blockage >= 71 ? "CRÍTICA" : blockage >= 41 ? "CURTA" : "FECHANDO";
+    const urgColor   = blockage >= 71 ? "#C44B4B" : blockage >= 41 ? "#D4940A" : "#C08A4A";
 
     let bridgeText;
-    if (score <= 35) {
-      bridgeText = comVoc(`seus vasos estão quase fechados. Mas "quase" significa que ainda tem tempo. O protocolo foi criado exatamente pra esse grau de bloqueio, pra forçar o sangue a voltar. Não é pra todo mundo. É pra quem chegou até aqui e quer o tamanho, a firmeza e a duração de volta.`);
-    } else if (score <= 60) {
-      bridgeText = comVoc(`seus vasos estão se fechando, mês a mês. O tamanho já caiu. A duração já encurtou. O protocolo de reversão vascular está calibrado pro seu grau exato de bloqueio. Mas cada mês sem agir fecha mais um vaso.`);
-    } else if (score <= 80) {
-      bridgeText = comVoc(`a queda ainda é sutil, mas está acelerando. Em 2-3 anos sem intervenção, o dano fica irreversível. O protocolo freia a queda e maximiza o fluxo sanguíneo ao pênis enquanto ainda dá tempo.`);
+    if (blockage >= 71) {
+      bridgeText = "Seu interruptor está quase apagado. Religar agora é sua última chance real.";
+    } else if (blockage >= 41) {
+      bridgeText = "Seu interruptor está apagando rápido. A janela tá fechando.";
     } else {
-      bridgeText = comVoc(`seus vasos ainda respondem. Mas os fatores de risco estão aí. O protocolo garante que você mantenha e maximize cada centímetro, cada minuto de duração, cada ereção. Enquanto os outros ao seu redor vão perdendo.`);
+      bridgeText = "Seu interruptor ainda responde. Religue antes que apague de vez.";
     }
 
     document.getElementById("bridge").innerHTML = `
@@ -1228,7 +1289,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const headlineMap = {
       parceira: "O Protocolo Para Que Sua Parceira Não Queira Que Você Pare",
       eu_mesmo: "O Protocolo Para Você Voltar a Se Reconhecer Como Homem",
-      tudo:     "O Protocolo Para Recuperar Tamanho, Duração e Controle — Tudo de Volta",
+      tudo:     "O Protocolo Para Recuperar Tamanho, Duração e Controle: Tudo de Volta",
       confianza:"O Protocolo Para Recuperar Seu Corpo e Sua Confiança",
     };
     const headline = headlineMap[painArea] || PROTOCOL_DATA.headline;
@@ -1243,8 +1304,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
     `).join("");
 
-    // ── Depoimentos filtrados pela dor declarada ──
-    const filtered = getFilteredTestimonials(painArea);
+    // ── Depoimentos filtrados pela rota do circuito ──
+    const filtered = getFilteredTestimonials(state.route);
     const testimonialsHtml = filtered.map((t) => `
       <div class="testimonial-card">
         <div class="testimonial-header">
@@ -1268,7 +1329,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div style="margin:18px 0 4px;">
         ${appMockupHtml(name)}
       </div>
-      <p class="body-sm" style="text-align:center;color:#c9a84c;margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
+      <p class="body-sm" style="text-align:center;color:var(--gold);margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
+      ${VIDEO_DATA.enabled && VIDEO_DATA.url ? `
+        <div class="protocol-video">
+          <video src="${VIDEO_DATA.url}" ${VIDEO_DATA.poster?`poster="${VIDEO_DATA.poster}"`:""} controls playsinline preload="metadata"></video>
+        </div>` : `
+        <div class="protocol-video protocol-video--ph"><div class="pv-ph-inner"><span class="pv-ph-play">▶</span><span class="pv-ph-txt">Vídeo do Dr. Vasquez entra aqui</span></div></div>`}
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
@@ -1290,17 +1356,17 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     const greet = name ? `Bom dia, ${name}` : "Bom dia";
     return `
       <div class="vx-phone">
-        <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">V<i>X</i></div><div><b>VORTX</b><small>Protocolo Vascular</small></div></div><div class="vx-ph-bell">🔔</div></div>
+        <div class="vx-ph-top"><div class="vx-ph-brand"><div class="vx-ph-logo">C<i>D</i></div><div><b>CONDOR</b><small>O Interruptor</small></div></div><div class="vx-ph-bell">🔔</div></div>
         <div class="vx-ph-hero">
-          <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#26262f" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#e9c55a" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
-          <div class="vx-ph-hbody"><div class="vx-ph-greet">${greet}</div><div class="vx-ph-htitle">Seus vasos já reagem.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 4 min hoje e o fluxo sobe.</div></div>
+          <div class="vx-ring"><svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="30" stroke="#2a2e36" stroke-width="7" fill="none"/><circle cx="35" cy="35" r="30" stroke="#C08A4A" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="126" transform="rotate(-90 35 35)"/></svg><div class="vx-pct"><b>33%</b><span>Dia 7/21</span></div></div>
+          <div class="vx-ph-hbody"><div class="vx-ph-greet">${greet}</div><div class="vx-ph-htitle">Seu interruptor já reage.</div><div class="vx-ph-hsub"><b>6 dias seguidos.</b> Mais 6 min hoje e ele liga mais.</div></div>
         </div>
         <div class="vx-ph-sec">Hoje</div>
         <div class="vx-today">
           <span class="vx-tflag">🔓 Liberado agora</span>
-          <div class="vx-tname">Reabertura Vascular</div>
-          <div class="vx-tmeta">Fase 2 · <b>4 rotinas</b> · 9 min</div>
-          <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🫀</div><div class="vx-clb">Bomba</div></div><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">💪</div><div class="vx-clb">Músculo</div></div><div class="vx-chip"><div class="vx-cic">🥗</div><div class="vx-clb">Pré</div></div></div>
+          <div class="vx-tname">Respiração do Condor</div>
+          <div class="vx-tmeta">Dia 7 · <b>1 rotina</b> · 6 min</div>
+          <div class="vx-routine"><div class="vx-chip"><div class="vx-cic">🌬️</div><div class="vx-clb">Respiro</div></div><div class="vx-chip"><div class="vx-cic">🔺</div><div class="vx-clb">Duro</div></div><div class="vx-chip"><div class="vx-cic">⏱️</div><div class="vx-clb">Durar</div></div><div class="vx-chip"><div class="vx-cic">🔒</div><div class="vx-clb">Freio</div></div></div>
           <div class="vx-tcta">▶ Começar a rotina de hoje</div>
         </div>
         <div class="vx-ph-sec">Sua trilha de 21 dias</div>
@@ -1322,7 +1388,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     };
 
     const plansHtml = PRICING_DATA.plans.map((plan) => {
-      const isFeatured  = plan.id === "vitalicio";
+      const isFeatured  = plan.id === "completo";
       const isSelected  = plan.id === state.selectedPlan;
       const isDowngrade = plan.id === "mensal";
       const isAnchor    = plan.isAnchor === true;
@@ -1330,8 +1396,8 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       return `
         <div class="pricing-plan ${isFeatured ? "featured" : ""} ${isSelected ? "selected" : ""} ${isDowngrade ? "plan-downgrade" : ""} ${isAnchor ? "plan-anchor" : ""}" data-plan="${plan.id}">
           ${plan.badge ? `<div class="pricing-plan-badge-top">${plan.badge}</div>` : ""}
-          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada — sem protocolo vascular</div>` : ""}
-          ${isAnchor ? `<div class="plan-anchor-label">⚠ Versão limitada — sem protocolo completo</div>` : ""}
+          ${isDowngrade ? `<div class="plan-downgrade-label">⚠ Versão limitada: sem o método completo</div>` : ""}
+          ${isAnchor ? `<div class="plan-anchor-label">⚠ Versão limitada: sem protocolo completo</div>` : ""}
           <div class="pricing-plan-header">
             <div class="pricing-plan-name">${plan.name}</div>
             <div class="pricing-plan-price-container">
@@ -1349,17 +1415,19 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const selectedPrice = PRICING_DATA.plans.find((p) => p.id === state.selectedPlan).price;
 
-    const score = state.score;
-    const pricingHeadline = score <= 35
-      ? `${name ? name + ", no" : "No"} seu nível o sangue quase não passa. Cada semana que você espera, perde mais firmeza.`
-      : score <= 60
-      ? `${name ? name + ", o" : "O"} bloqueio ainda é reversível. Mas não por muito tempo.`
-      : `${name ? name + ", o" : "O"} protocolo vascular está pronto. Só falta você.`;
+    var blockage = 100 - state.score;
+    var pricingHeadline = blockage >= 71
+      ? "Seu interruptor está quase apagado. Religar agora é o seu limite."
+      : blockage >= 41
+      ? "Seu interruptor está apagando rápido. A janela tá fechando."
+      : "Seu interruptor ainda responde. Religue antes que apague.";
     // nível pro recap personalizado (mesma régua da headline)
-    const nivel = score <= 35 ? "Fluxo travado" : score <= 60 ? "Fluxo parcial" : "Quase reaberto";
+    var nivel = blockage >= 71 ? "Quase todo desligado" : blockage >= 41 ? "Desligando rápido" : "Começando a desligar";
     const vocRecap = name ? `${name}, ` : "";
 
     document.getElementById("pricing").innerHTML = `
+      ${ALT_RIDGE}
+      ${ALT_MARK}
       <div style="text-align:center;">
         <h2 class="heading-xl">${pricingHeadline}</h2>
       </div>
@@ -1367,7 +1435,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="pricing-timer-container">
         <div class="pricing-timer-label">${PRICING_DATA.urgencyText}</div>
         <div class="pricing-timer" id="pricing-timer">08:00</div>
-        <div class="pricing-timer-sub">Depois disso volta para o valor real: R$ 547</div>
+        <div class="pricing-timer-sub">Depois disso volta pro valor real: R$ 197</div>
       </div>
 
       <div class="pricing-social-counter">
@@ -1384,7 +1452,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <!-- HORMOZI VALUE STACK -->
       <div class="value-stack">
-        <div class="value-stack-header">TUDO QUE VOCÊ DESBLOQUEIA HOJE NO APP VORTX:</div>
+        <div class="value-stack-header">TUDO QUE VOCÊ DESBLOQUEIA HOJE NO APP CONDOR:</div>
 
         <!-- APP NA DECISÃO -->
         <div class="vx-appblock">
@@ -1395,90 +1463,66 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           <div class="vx-ph-cap">É <b>exatamente assim</b> que ele abre, com o seu nome em cima.</div>
         </div>
 
-        <div class="vx-vsgroup">O protocolo</div>
+        <div class="vx-vsgroup">O método</div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
-            <div class="vsi-title">Diagnóstico Vascular Personalizado</div>
-            <div class="vsi-desc">Seu mapa exato de bloqueio com base nas respostas do teste</div>
+            <div class="vsi-title">Método Condor: 21 dias pra religar</div>
+            <div class="vsi-desc">A Respiração do Condor guiada dia a dia no app, 6 minutos por dia, pra voltar a ficar duro e durar</div>
           </div>
-          <div class="vsi-price">R$ 47</div>
+          <div class="vsi-price">R$ 67</div>
         </div>
         <div class="value-stack-item">
           <div class="vsi-check">✓</div>
           <div class="vsi-content">
-            <div class="vsi-title">Protocolo Vascular de 21 Dias</div>
-            <div class="vsi-desc">As 4 rotinas organizadas dia a dia no app, quase nenhuma leva mais de 4 minutos</div>
+            <div class="vsi-title">Diagnóstico do seu Interruptor</div>
+            <div class="vsi-desc">Seu mapa exato do que desligou, montado pelas respostas do teste</div>
           </div>
-          <div class="vsi-price">R$ 97</div>
-        </div>
-        <div class="value-stack-item">
-          <div class="vsi-check">✓</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Plano Alimentar Anti-Estrogênio</div>
-            <div class="vsi-desc">Os 12 alimentos que disparam testosterona + os 10 que destroem</div>
-          </div>
-          <div class="vsi-price">R$ 39</div>
-        </div>
-        <div class="value-stack-item">
-          <div class="vsi-check">✓</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Stack Hormonal Noturno</div>
-            <div class="vsi-desc">3 compostos baratos que triplicam sua testosterona enquanto você dorme</div>
-          </div>
-          <div class="vsi-price">R$ 29</div>
+          <div class="vsi-price">R$ 30</div>
         </div>
 
         <div class="vx-vsgroup vx-vsgroup--bonus">Bônus de hoje</div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🔥</div>
           <div class="vsi-content">
-            <div class="vsi-title">Protocolo Primeira Noite</div>
-            <div class="vsi-desc">A rotina de choque pra você sentir a diferença já nas primeiras 72h</div>
+            <div class="vsi-title">Primeira Noite</div>
+            <div class="vsi-desc">A rotina-choque pra você ficar duro de novo já nas primeiras 72 horas</div>
           </div>
-          <div class="vsi-price">R$ 67</div>
+          <div class="vsi-price">R$ 30</div>
+        </div>
+        <div class="value-stack-item value-stack-bonus">
+          <div class="vsi-check">⏱️</div>
+          <div class="vsi-content">
+            <div class="vsi-title">Controle Total</div>
+            <div class="vsi-desc">A técnica pra durar o quanto quiser e nunca mais gozar antes da hora</div>
+          </div>
+          <div class="vsi-price">R$ 30</div>
         </div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">❤️‍🔥</div>
           <div class="vsi-content">
-            <div class="vsi-title">Modo Casal: como ela volta a te procurar</div>
-            <div class="vsi-desc">O jeito discreto de reacender o desejo dela sem você ter que falar nada</div>
+            <div class="vsi-title">Modo Casal <span class="vx-onlynow">· só pra quem entra agora</span></div>
+            <div class="vsi-desc">Como ela volta a te procurar sem você ter que falar nada</div>
           </div>
-          <div class="vsi-price">R$ 97</div>
-        </div>
-        <div class="value-stack-item value-stack-bonus">
-          <div class="vsi-check">⚡</div>
-          <div class="vsi-content">
-            <div class="vsi-title">Turbo 48h <span class="vx-onlynow">· só pra quem entra agora</span></div>
-            <div class="vsi-desc">Um empurrão concentrado que destrava o fluxo nas primeiras 48 horas</div>
-          </div>
-          <div class="vsi-price">R$ 57</div>
+          <div class="vsi-price">R$ 20</div>
         </div>
         <div class="value-stack-item value-stack-bonus">
           <div class="vsi-check">🛡️</div>
           <div class="vsi-content">
-            <div class="vsi-title">Manutenção Vitalícia</div>
-            <div class="vsi-desc">Como continuar firme depois dos 21 dias, pra nunca mais voltar atrás</div>
+            <div class="vsi-title">Blindagem Vitalícia</div>
+            <div class="vsi-desc">Como manter o interruptor ligado pra sempre e nunca mais voltar pro começo</div>
           </div>
-          <div class="vsi-price">R$ 67</div>
-        </div>
-        <div class="value-stack-item value-stack-bonus">
-          <div class="vsi-check">🎁</div>
-          <div class="vsi-content">
-            <div class="vsi-title">App vitalício, seu pra sempre</div>
-            <div class="vsi-desc">O app fica no seu celular com acesso vitalício, e toda atualização nova já entra liberada</div>
-          </div>
-          <div class="vsi-price">R$ 47</div>
+          <div class="vsi-price">R$ 20</div>
         </div>
 
         <div class="value-stack-total">
           <div class="vst-label">VALOR REAL DE TUDO ISTO:</div>
-          <div class="vst-old">R$ 547</div>
+          <div class="vst-old">R$ 197</div>
         </div>
         <div class="value-stack-today">
           <div class="vsth-label">HOJE, SÓ HOJE:</div>
           <div class="vsth-price"><span>R$</span>37</div>
-          <div class="vsth-tag">93% de desconto porque você entrou pelo diagnóstico gratuito</div>
+          <div class="vsth-tag">81% de desconto porque você entrou pelo diagnóstico gratuito</div>
         </div>
       </div>
 
@@ -1517,7 +1561,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
 
       <div class="pricing-urgency-bio-block">
-        <p class="pricing-urgency-bio-text">Hoje à noite você vai deitar. Vai olhar pro teto e vai saber que podia ter feito algo diferente. Amanhã vai acordar igual ou pior. O bloqueio vascular não espera, não para, não negocia. <strong>A única pergunta é: você vai agir enquanto ainda dá tempo?</strong></p>
+        <p class="pricing-urgency-bio-text">Hoje à noite você vai deitar. Vai olhar pro teto e vai saber que podia ter feito algo diferente. Amanhã vai acordar igual ou pior. O interruptor não espera, não para, não negocia. <strong>A única pergunta é: você vai agir enquanto ainda dá tempo?</strong></p>
       </div>
 
       <!-- WHATSAPP-STYLE TESTIMONIAL PLACEHOLDERS (you'll add real images here) -->
@@ -1798,7 +1842,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
             <div class="timer-expired-block">
               <div class="timer-expired-icon">⏰</div>
               <p class="timer-expired-title">Esse preço não está mais disponível.</p>
-              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 547.</p>
+              <p class="timer-expired-text">O preço especial expirou e o protocolo voltou para R$ 197.</p>
               <button class="btn-cta" id="btn-recover-offer">QUERO 10 MINUTOS A MAIS COM O PREÇO ESPECIAL</button>
             </div>
           `;
