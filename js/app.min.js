@@ -1444,7 +1444,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="pricing-social-counter">
         <div class="pricing-social-num" id="social-counter">17.483</div>
         <div class="pricing-social-txt">homens já começaram o protocolo</div>
-        <div class="pricing-social-live"><span class="pulse-dot"></span> <span id="live-viewers">34</span> pessoas vendo essa página agora</div>
+        <div class="pricing-social-live"><span class="pulse-dot"></span> <span id="live-viewers">483</span> pessoas vendo essa página agora</div>
       </div>
 
       <!-- RECAP PERSONALIZADO -->
@@ -1807,21 +1807,21 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   }
 
   // ── LIVE VIEWERS — prova social dinâmica ──────────────────
-  // Piso fixo de 34 (nunca mostra menos) e tendência de ALTA: enquanto o lead
+  // Piso fixo de 440 (nunca mostra menos) e tendência de ALTA: enquanto o lead
   // está na página o número sobe (mais gente chegando), com recuos pequenos e
   // raros pra não parecer travado. Teto varia por sessão pra não repetir.
   function startLiveViewers() {
     if (state.viewersTimer) clearTimeout(state.viewersTimer);
-    const FLOOR = 34;
-    let n = FLOOR + Math.floor(Math.random() * 7);     // começa em 34..40
-    const ceil = 78 + Math.floor(Math.random() * 16);  // teto 78..93 por sessão
+    const FLOOR = 440;
+    let n = FLOOR + Math.floor(Math.random() * 50);    // começa em 440..489
+    const ceil = 500 + Math.floor(Math.random() * 30); // teto 500..529 por sessão
     const render = () => {
       const el = document.getElementById("live-viewers");
       if (el) el.textContent = n;
     };
     render();
     const tick = () => {
-      // ~78% das vezes sobe 1..3; ~22% recua 1. Sempre clampado em [34, teto].
+      // ~78% das vezes sobe 1..3; ~22% recua 1. Sempre clampado em [440, teto].
       const step = Math.random() < 0.78 ? 1 + Math.floor(Math.random() * 3) : -1;
       n = Math.max(FLOOR, Math.min(ceil, n + step));
       render();
