@@ -34,8 +34,8 @@
 
 <!-- styles.css carregado sem bloquear render. fonts.css é carregado depois do `load` (não é
      necessário para o gate: as @font-face dos fontes acima-do-fold estão inline acima). -->
-<link rel="preload" href="css/styles.min.css?v=20" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="css/styles.min.css?v=20"></noscript>
+<link rel="preload" href="css/styles.min.css?v=21" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="css/styles.min.css?v=21"></noscript>
 <noscript><link rel="stylesheet" href="/fonts/fonts.css"></noscript>
 
 <!-- Gate Altitude: assinatura visual (brasao condor, serra, wordmark) acima-do-fold -->
@@ -141,7 +141,7 @@
     function load(){
       if(loading) return; loading=true;
       var s1=document.createElement('script');
-      s1.src='js/quiz-data.min.js?v=28';
+      s1.src='js/quiz-data.min.js?v=29';
       s1.onload=function(){
         // Patch escopado: captura o DOMContentLoaded handler do app.js sem registrá-lo.
         // Restaurado imediatamente após o onload do app.js para não afetar o restante da página.
@@ -153,7 +153,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=39';
+        s2.src='js/app.min.js?v=40';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){

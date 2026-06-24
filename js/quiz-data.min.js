@@ -263,9 +263,10 @@ RESULT_DATA={
 BRIDGE_DATA={cta:"VER COMO RELIGAR ISSO"};
 
 const VIDEO_DATA={
-  enabled:false,
-  url:"",
-  poster:""
+  enabled:true,
+  url:"https://play.tynk.ai/p/7c53bf70-d248-44c5-b748-048a88d9b07f",
+  poster:"",
+  embed:true
 };
 
 var PROTOCOL_DATA={
