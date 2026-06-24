@@ -215,35 +215,6 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   const ALT_RIDGE = '<svg class="alt-ridge" viewBox="0 0 1080 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L150 54 L260 92 L420 26 L560 80 L700 36 L860 96 L980 50 L1080 84 L1080 120 Z" fill="#1A1D23"/><path d="M0 120 L210 78 L360 104 L520 60 L660 100 L820 64 L1000 104 L1080 86 L1080 120 Z" fill="#14161B"/></svg>';
   const ALT_MARK = '<svg class="alt-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 12 L40 30 C33 27 28 27 24 30 C20 27 15 27 8 30 Z" fill="#C08A4A"/><path d="M24 16 L24 34" stroke="#8E6334" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="#C08A4A"/></svg>';
 
-  // ── ÍCONES DUOTONE DO QUIZ (no lugar dos emojis) ──────────
-  var QUIZ_ICONS = {
-    "🔻":{s:"",p:'<rect class="gf" x="9" y="3" width="6" height="10" rx="3"/><path class="g" d="M12 3v12M7 13l5 6 5-6"/>'},
-    "⏱️":{s:"",p:'<circle class="gf" cx="12" cy="13" r="8"/><circle class="g" cx="12" cy="13" r="8"/><path class="g" d="M12 9v4l3 2M9 3h6"/>'},
-    "🔥":{s:"",p:'<path class="gf" d="M12 3c3 4 5 6 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 2 2 2 0-3-2-4 1-9z"/><path class="g" d="M12 3c3 4 5 6 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 2 2 2 0-3-2-4 1-9z"/>'},
-    "⚠️":{s:"",p:'<path class="gf" d="M12 4l8 14H4z"/><path class="g" d="M12 4l8 14H4zM12 10v3M12 16h.01"/>'},
-    "🚨":{s:"crit",p:'<path class="gf" d="M12 4l8 14H4z"/><path class="g" d="M12 4l8 14H4zM12 10v3M12 16h.01"/>'},
-    "🛑":{s:"crit",p:'<path class="gf" d="M8 3h8l5 5v8l-5 5H8l-5-5V8z"/><path class="g" d="M8 3h8l5 5v8l-5 5H8l-5-5V8zM12 8v4M12 16h.01"/>'},
-    "✅":{s:"good",p:'<circle class="gf" cx="12" cy="12" r="9"/><path class="g" d="M7 12l3.5 3.5L17 8"/>'},
-    "💪":{s:"",p:'<path class="gf" d="M7 9h10v6H7z"/><path class="g" d="M4 9v6M6 8v8M18 8v8M20 9v6M7 12h10"/>'},
-    "💊":{s:"",p:'<rect class="gf" x="3.5" y="8" width="17" height="8" rx="4" transform="rotate(45 12 12)"/><rect class="g" x="3.5" y="8" width="17" height="8" rx="4" transform="rotate(45 12 12)"/><path class="g" d="M8.5 8.5l7 7"/>'},
-    "🚫":{s:"",p:'<circle class="gf" cx="12" cy="12" r="9"/><path class="g" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM6 6l12 12"/>'},
-    "🍺":{s:"",p:'<path class="gf" d="M7 8h8v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path class="g" d="M7 8h8v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2zM15 10h2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2M9 5v2M12 4v3"/>'},
-    "🚬":{s:"",p:'<rect class="gf" x="3" y="13" width="14" height="4" rx="1"/><path class="g" d="M3 13h14v4H3zM19 13v4M16 7c0-2 2-2 2-4M19 8c0-2 2-2 2-4"/>'},
-    "🛋️":{s:"",p:'<path class="gf" d="M3 11a3 3 0 0 1 6 0h6a3 3 0 0 1 6 0v6H3z"/><path class="g" d="M5 11v-1a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v1M3 17v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M5 17v2M19 17v2"/>'},
-    "🧠":{s:"",p:'<path class="gf" d="M8 4a4 4 0 0 1 8 0 3 3 0 0 1 1 6 3 3 0 0 1-3 4h-4a3 3 0 0 1-3-4 3 3 0 0 1 1-6z"/><path class="g" d="M9 4a4 4 0 0 1 7 1M13 11l-2 3h3l-2 3"/>'},
-    "💑":{s:"",p:'<path class="gf" d="M8 7c-2 0-3 1.5-3 3 0 2.5 3 4 3 4s3-1.5 3-4c0-1.5-1-3-3-3z"/><path class="g" d="M8 7c-2 0-3 1.5-3 3 0 2.5 3 4 3 4s3-1.5 3-4c0-1.5-1-3-3-3zM16 9c-1.5 0-2.5 1-2.5 2.5 0 2 2.5 3.5 2.5 3.5s2.5-1.5 2.5-3.5C18.5 10 17.5 9 16 9z"/>'},
-    "🦾":{s:"",p:'<circle class="gf" cx="12" cy="8" r="4"/><path class="g" d="M12 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM5 20a7 7 0 0 1 14 0"/>'},
-    "🙈":{s:"",p:'<path class="gf" d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><path class="g" d="M4 4l16 16M9.5 9.6A3 3 0 0 0 12 15a3 3 0 0 0 2.4-1.2M6 6.5C4 8 3 12 3 12s3.5 6 9 6c1.7 0 3.2-.5 4.5-1.2M9 5.2C10 5 11 5 12 5c5.5 0 9 6 9 6s-.6 1-1.7 2.2"/>'},
-    "🔄":{s:"",p:'<path class="gf" d="M12 5a7 7 0 1 1-6 3.5"/><path class="g" d="M4 11a8 8 0 0 1 14-5l2 2M20 13a8 8 0 0 1-14 5l-2-2M18 4v4h-4M6 20v-4h4"/>'},
-    "🔬":{s:"",p:'<circle class="gf" cx="11" cy="11" r="6"/><path class="g" d="M11 5a6 6 0 1 1 0 12 6 6 0 0 1 0-12zM16 16l4 4"/>'},
-    "🔴":{s:"crit",p:'<circle class="gf" cx="12" cy="12" r="9"/><circle class="g" cx="12" cy="12" r="9"/><circle class="g" cx="12" cy="12" r="4"/>'}
-  };
-  function iconSvg(em){
-    var ic = QUIZ_ICONS[em];
-    if(!ic) return em || "";
-    return '<svg class="qi '+ic.s+'" viewBox="0 0 24 24" aria-hidden="true">'+ic.p+'</svg>';
-  }
-
   // ── RENDER GATE ───────────────────────────────────────────
   function renderGate() {
     document.getElementById("gate").innerHTML = `
@@ -535,7 +506,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       const variantClass = opt.variant ? `option-variant-${opt.variant}` : "";
       html += `
         <div class="option-card ${variantClass}" data-value="${opt.value}">
-          <div class="option-card-icon">${iconSvg(opt.icon)}</div>
+          <div class="option-card-icon">${opt.icon}</div>
           <span class="option-card-label">${opt.label}</span>
         </div>
       `;
@@ -548,7 +519,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     step.options.forEach((opt) => {
       html += `
         <div class="option-card" data-value="${opt.value}">
-          <div class="option-card-icon">${iconSvg(opt.icon)}</div>
+          <div class="option-card-icon">${opt.icon}</div>
           <span class="option-card-label">${opt.label}</span>
           <div class="option-card-check"></div>
         </div>
@@ -1036,7 +1007,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     container.innerHTML = `
       <div class="interstitial-image">
-        <span class="interstitial-image-placeholder">${iconSvg(inter.emoji)}</span>
+        <span class="interstitial-image-placeholder">${inter.emoji}</span>
       </div>
       <h2 class="interstitial-headline">${injectName(inter.headline)}</h2>
       <p class="interstitial-text">${dynamicText}</p>
@@ -1214,7 +1185,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     const areasHtml = state.criticalAreas.map((a) => `
       <div class="critical-area-card">
-        <span class="critical-area-icon">${iconSvg(a.icon)}</span>
+        <span class="critical-area-icon">${a.icon}</span>
         <div>
           <div class="critical-area-label">${a.label}</div>
           <div class="critical-area-status status-${a.status}">${({critical:"Crítico",attention:"Atenção",moderate:"Moderado",good:"Bom"})[a.status] || a.status}</div>
