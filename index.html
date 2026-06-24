@@ -63,6 +63,17 @@
 .block-meter-label{font-size:.64rem!important;letter-spacing:.18em!important;color:var(--text-secondary)!important}
 .block-meter-track{height:14px!important}
 .block-meter-value{font-size:.98rem!important}
+/* icones duotone do quiz (tile + traco bronze + plate translucido; severidade por cor) */
+.option-card-icon{width:46px!important;height:46px!important;min-width:46px;border-radius:12px!important;display:grid!important;place-items:center!important;background:rgba(192,138,74,.12)!important;font-size:0!important;flex:0 0 auto}
+.option-card-icon .qi{width:24px;height:24px}
+.qi .g{fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.qi .gf{fill:var(--gold);opacity:.22}
+.qi.crit .g{stroke:var(--status-critical)}
+.qi.crit .gf{fill:var(--status-critical)}
+.qi.good .g{stroke:#6FB07A}
+.qi.good .gf{fill:#6FB07A}
+.critical-area-icon .qi{width:22px;height:22px}
+.interstitial-image .qi,.interstitial-image-placeholder .qi{width:56px;height:56px}
 </style>
 </head>
 <body>
@@ -151,7 +162,7 @@
           return origAdd.call(this,ev,fn,opts);
         };
         var s2=document.createElement('script');
-        s2.src='js/app.min.js?v=36';
+        s2.src='js/app.min.js?v=37';
         s2.onload=function(){
           document.addEventListener=origAdd;
           if(capturedInit){
