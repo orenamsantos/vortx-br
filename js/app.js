@@ -1337,8 +1337,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       ${VIDEO_DATA.enabled && VIDEO_DATA.url ? `
         <div class="protocol-video">
           <video src="${VIDEO_DATA.url}" ${VIDEO_DATA.poster?`poster="${VIDEO_DATA.poster}"`:""} controls playsinline preload="metadata"></video>
-        </div>` : `
-        <div class="protocol-video protocol-video--ph"><div class="pv-ph-inner"><span class="pv-ph-play">▶</span><span class="pv-ph-txt">Vídeo do Dr. Vasquez entra aqui</span></div></div>`}
+        </div>` : ``}
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
