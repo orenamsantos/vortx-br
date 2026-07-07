@@ -633,9 +633,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
           const selected = Array.from(document.querySelectorAll(".option-card.selected")).map((c) => c.dataset.value);
           state.answers[step.id] = selected;
           if (btnContinue) btnContinue.disabled = selected.length < (step.minSelections || 1);
-          if (step.triggers && step.triggers._any_except_nenhuma) {
+          const anyTrig = step.triggers && (step.triggers._any_except_nenhuma || step.triggers._any_except_nenhum);
+          if (anyTrig) {
             const hasNeg = selected.some((v) => v !== "nenhuma" && v !== "nenhum");
-            if (hasNeg) showInlineTrigger(injectName(step.triggers._any_except_nenhuma));
+            if (hasNeg) showInlineTrigger(injectName(anyTrig));
           }
         });
       });
@@ -901,10 +902,10 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   // ── SHOCK SCREEN ─────────────────────────────────────────
   function showShockScreen(message, onContinue) {
     const screen = document.getElementById("interstitial");
-    const emojiMatch = message.match(/^(🛑|⚠|⚠️|✓)/u);
+    const emojiMatch = message.match(/^(🛑|🚨|⚠️|⚠|✓|🔥|⚡)/u);
     const emoji = emojiMatch ? emojiMatch[0] : "⚠️";
-    const bodyText = injectName(message.replace(/^(🛑|⚠|⚠️|✓)\s*/u, ""));
-    const isCritical = emoji === "🛑";
+    const bodyText = injectName(message.replace(/^(🛑|🚨|⚠️|⚠|✓|🔥|⚡)\s*/u, ""));
+    const isCritical = emoji === "🛑" || emoji === "🚨";
     const isAlert    = isCritical || emoji === "⚠️" || emoji === "⚠";
     const isPositive = emoji === "✓";
 
@@ -1267,7 +1268,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
     document.getElementById("bridge").innerHTML = `
       <div class="bridge-container">
-        <div class="bridge-icon">⚔️</div>
+        <div class="bridge-icon">🦅</div>
         <p class="bridge-label">PROTOCOLO ENCONTRADO</p>
         <div class="bridge-window-block">
           <span class="bridge-window-label">Janela para agir</span>
@@ -1288,12 +1289,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
   function showProtocol() {
     showScreen("protocol");
     const name     = state.userData.name || "";
-    const painArea = state.answers[12];
+    const painArea = state.answers["q10"];
 
     const headlineMap = {
       parceira: "O Protocolo Para Que Sua Parceira Não Queira Que Você Pare",
       eu_mesmo: "O Protocolo Para Você Voltar a Se Reconhecer Como Homem",
-      tudo:     "O Protocolo Para Recuperar Tamanho, Duração e Controle: Tudo de Volta",
+      tudo:     "O Protocolo Para Recuperar Firmeza, Duração e Controle: Tudo de Volta",
       confianza:"O Protocolo Para Recuperar Seu Corpo e Sua Confiança",
     };
     const headline = headlineMap[painArea] || PROTOCOL_DATA.headline;
@@ -1335,11 +1336,12 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       </div>
       <p class="body-sm" style="text-align:center;color:var(--gold);margin:0 0 8px;">É assim que seu protocolo fica no seu celular, com o seu nome</p>
       ${VIDEO_DATA.enabled && VIDEO_DATA.url ? `
+        <p class="body-sm" style="text-align:center;color:var(--gold);margin:14px 0 6px;">Esse é o cirurgião vascular do início. Em 47 segundos ele explica o que viu nos Andes:</p>
         <div class="protocol-video${VIDEO_DATA.embed?' protocol-video--embed':''}">
           ${VIDEO_DATA.embed ? `<div class="pv-frame"><iframe src="${VIDEO_DATA.url}" title="Vídeo do protocolo" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>` : `<video src="${VIDEO_DATA.url}" ${VIDEO_DATA.poster?`poster="${VIDEO_DATA.poster}"`:""} controls playsinline preload="metadata"></video>`}
         </div>` : ``}
       <div class="protocol-features">${featuresHtml}</div>
-      <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
+      <div class="protocol-seal">🔒 ${PROTOCOL_DATA.seal}</div>
       <div style="padding:16px 0;display:flex;justify-content:center;">
         <button class="btn-cta" id="btn-go-pricing">${PROTOCOL_DATA.cta}</button>
       </div>
@@ -1381,9 +1383,11 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
     showScreen("pricing");
     if (window.vortxTrack) vortxTrack("view_pricing", { score: state.score });
 
-    const painArea  = state.answers[12];
+    const painArea  = state.answers["q10"];
     const name      = state.userData.name || "";
-    const motivationCta = (PRICING_DATA.checkoutCtaMap && (PRICING_DATA.checkoutCtaMap[painArea] || PRICING_DATA.checkoutCtaMap._default)) || "LIBERAR MEU PROTOCOLO";
+    let motivationCta = (PRICING_DATA.checkoutCtaMap && (PRICING_DATA.checkoutCtaMap[painArea] || PRICING_DATA.checkoutCtaMap._default)) || "LIBERAR MEU PROTOCOLO";
+    // rota EP puro: "ficar duro" não é a dor dele, o CTA vira controle
+    if (painArea === "eu_mesmo" && state.route === "EP") motivationCta = "TER CONTROLE TOTAL AGORA";
     const buildCheckoutCta = (planId) => {
       const plan = PRICING_DATA.plans.find((p) => p.id === planId);
       if (!plan) return "";
@@ -1425,8 +1429,15 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       ? "Seu interruptor está apagando rápido. A janela tá fechando."
       : "Seu interruptor ainda responde. Religue antes que apague.";
     // nível pro recap personalizado (mesma régua da headline)
-    var nivel = blockage >= 71 ? "Quase todo desligado" : blockage >= 41 ? "Desligando rápido" : "Começando a desligar";
+    var nivel = blockage >= 71 ? "Quase todo desligado" : blockage >= 41 ? "Desligando rápido" : "Já começou a desligar";
     const vocRecap = name ? `${name}, ` : "";
+    // callback da motivação declarada no q10: o lead lê o próprio compromisso na hora de pagar
+    var motivoLine = ({
+      parceira:  "Você disse que é pela sua parceira. Em 21 dias ela sente a diferença sem você precisar falar nada.",
+      eu_mesmo:  "Você disse que é por você. Em 21 dias você se olha no espelho e se reconhece de novo.",
+      tudo:      "Você disse que quer sua vida de volta. É exatamente isso que os 21 dias devolvem.",
+      confianza: "Você disse que quer corpo e confiança. Um religa o outro."
+    })[painArea] || "";
 
     document.getElementById("pricing").innerHTML = `
       ${ALT_RIDGE}
@@ -1450,7 +1461,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <!-- RECAP PERSONALIZADO -->
       <div class="vx-recap">
         <div class="vx-recap-ic">🩺</div>
-        <div class="vx-recap-txt">Pelas suas respostas, ${vocRecap}montei seu plano pro nível <span class="vx-recap-tag">${nivel}</span>. Ele já está pronto, esperando você no <b>Dia 1</b>.</div>
+        <div class="vx-recap-txt">Pelas suas respostas, ${vocRecap}montei seu plano pro nível <span class="vx-recap-tag">${nivel}</span>. Ele já está pronto, esperando você no <b>Dia 1</b>.${motivoLine ? `<br><b>${motivoLine}</b>` : ""}</div>
       </div>
 
       <!-- HORMOZI VALUE STACK -->
@@ -1542,7 +1553,7 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
 
       <div class="testimonial-pre-cta">
         <div class="testimonial-pre-cta-stars">★★★★★</div>
-        <p class="testimonial-pre-cta-text">"61 anos, 5 anos sem funcionar. 3 semanas de protocolo e voltei com tamanho, firmeza e duração."</p>
+        <p class="testimonial-pre-cta-text">"61 anos, 5 anos sem conseguir. 3 semanas e voltei a ficar duro. Ela chorou."</p>
         <span class="testimonial-pre-cta-author">Héctor M., 61 anos · Manaus</span>
       </div>
 
@@ -1558,8 +1569,16 @@ window.vortxIsLegitimateConversionPage = window.vortxIsLegitimateConversionPage 
       <div class="effort-box">
         <div class="effort-icon">⏱️</div>
         <div class="effort-content">
-          <div class="effort-title">4 minutos por dia. Sem pílulas. Sem receita.</div>
+          <div class="effort-title">6 minutos por dia. Sem pílulas. Sem receita.</div>
           <div class="effort-desc">Sem academia, sem dietas extremas, sem produtos químicos. Só rotinas simples que qualquer homem faz em casa.</div>
+        </div>
+      </div>
+
+      <div class="effort-box">
+        <div class="effort-icon">💊</div>
+        <div class="effort-content">
+          <div class="effort-title">Faz a conta que ninguém te mostra.</div>
+          <div class="effort-desc">A pílula azul: uns R$ 40 por noite, pra sempre, escondendo o problema e te deixando refém. O Método Condor: R$ 37 uma única vez, e o interruptor volta a ligar sozinho. Uma noite de pílula paga o método inteiro.</div>
         </div>
       </div>
 
